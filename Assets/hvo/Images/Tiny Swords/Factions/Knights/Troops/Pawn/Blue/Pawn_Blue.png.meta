@@ -154,7 +154,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -168,7 +168,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -233,10 +233,10 @@ TextureImporter:
       name: Pawn_Blue_0
       rect:
         serializedVersion: 2
-        x: 66
-        y: 1023
-        width: 60
-        height: 61
+        x: 0
+        y: 960
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,10 +255,10 @@ TextureImporter:
       name: Pawn_Blue_1
       rect:
         serializedVersion: 2
-        x: 257
-        y: 1023
-        width: 60
-        height: 59
+        x: 192
+        y: 960
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,10 +277,10 @@ TextureImporter:
       name: Pawn_Blue_2
       rect:
         serializedVersion: 2
-        x: 449
-        y: 1023
-        width: 60
-        height: 58
+        x: 384
+        y: 960
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,10 +299,10 @@ TextureImporter:
       name: Pawn_Blue_3
       rect:
         serializedVersion: 2
-        x: 642
-        y: 1023
-        width: 60
-        height: 59
+        x: 576
+        y: 960
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,10 +321,10 @@ TextureImporter:
       name: Pawn_Blue_4
       rect:
         serializedVersion: 2
-        x: 835
-        y: 1023
-        width: 60
-        height: 60
+        x: 768
+        y: 960
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -343,10 +343,10 @@ TextureImporter:
       name: Pawn_Blue_5
       rect:
         serializedVersion: 2
-        x: 1027
-        y: 1023
-        width: 60
-        height: 61
+        x: 960
+        y: 960
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,10 +365,10 @@ TextureImporter:
       name: Pawn_Blue_6
       rect:
         serializedVersion: 2
-        x: 64
-        y: 831
-        width: 60
-        height: 62
+        x: 0
+        y: 768
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -387,10 +387,10 @@ TextureImporter:
       name: Pawn_Blue_7
       rect:
         serializedVersion: 2
-        x: 257
-        y: 831
-        width: 60
-        height: 61
+        x: 192
+        y: 768
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -409,10 +409,10 @@ TextureImporter:
       name: Pawn_Blue_8
       rect:
         serializedVersion: 2
-        x: 450
-        y: 831
-        width: 60
-        height: 57
+        x: 384
+        y: 768
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -431,10 +431,10 @@ TextureImporter:
       name: Pawn_Blue_9
       rect:
         serializedVersion: 2
-        x: 641
-        y: 831
-        width: 64
-        height: 62
+        x: 576
+        y: 768
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -453,10 +453,10 @@ TextureImporter:
       name: Pawn_Blue_10
       rect:
         serializedVersion: 2
-        x: 834
-        y: 831
-        width: 61
-        height: 61
+        x: 768
+        y: 768
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -475,10 +475,10 @@ TextureImporter:
       name: Pawn_Blue_11
       rect:
         serializedVersion: 2
-        x: 1026
-        y: 831
-        width: 60
-        height: 57
+        x: 960
+        y: 768
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -497,10 +497,10 @@ TextureImporter:
       name: Pawn_Blue_12
       rect:
         serializedVersion: 2
-        x: 63
-        y: 639
-        width: 67
-        height: 77
+        x: 0
+        y: 576
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -519,10 +519,10 @@ TextureImporter:
       name: Pawn_Blue_13
       rect:
         serializedVersion: 2
-        x: 254
-        y: 639
-        width: 67
-        height: 79
+        x: 192
+        y: 576
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -541,10 +541,10 @@ TextureImporter:
       name: Pawn_Blue_14
       rect:
         serializedVersion: 2
-        x: 446
-        y: 639
-        width: 67
-        height: 79
+        x: 384
+        y: 576
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -563,10 +563,10 @@ TextureImporter:
       name: Pawn_Blue_15
       rect:
         serializedVersion: 2
-        x: 639
-        y: 639
-        width: 94
-        height: 64
+        x: 576
+        y: 576
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -585,10 +585,10 @@ TextureImporter:
       name: Pawn_Blue_16
       rect:
         serializedVersion: 2
-        x: 679
-        y: 696
-        width: 24
-        height: 11
+        x: 768
+        y: 576
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -607,10 +607,10 @@ TextureImporter:
       name: Pawn_Blue_17
       rect:
         serializedVersion: 2
-        x: 832
-        y: 639
-        width: 69
-        height: 58
+        x: 960
+        y: 576
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -629,10 +629,10 @@ TextureImporter:
       name: Pawn_Blue_18
       rect:
         serializedVersion: 2
-        x: 884
-        y: 642
-        width: 39
-        height: 54
+        x: 0
+        y: 384
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -651,10 +651,10 @@ TextureImporter:
       name: Pawn_Blue_19
       rect:
         serializedVersion: 2
-        x: 1029
-        y: 639
-        width: 78
-        height: 60
+        x: 192
+        y: 384
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -673,10 +673,10 @@ TextureImporter:
       name: Pawn_Blue_20
       rect:
         serializedVersion: 2
-        x: 42
-        y: 447
-        width: 83
-        height: 62
+        x: 384
+        y: 384
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -695,10 +695,10 @@ TextureImporter:
       name: Pawn_Blue_21
       rect:
         serializedVersion: 2
-        x: 228
-        y: 447
-        width: 90
-        height: 66
+        x: 576
+        y: 384
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -717,10 +717,10 @@ TextureImporter:
       name: Pawn_Blue_22
       rect:
         serializedVersion: 2
-        x: 420
-        y: 447
-        width: 90
-        height: 66
+        x: 768
+        y: 384
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -739,10 +739,10 @@ TextureImporter:
       name: Pawn_Blue_23
       rect:
         serializedVersion: 2
-        x: 628
-        y: 473
-        width: 7
-        height: 14
+        x: 960
+        y: 384
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -761,10 +761,10 @@ TextureImporter:
       name: Pawn_Blue_24
       rect:
         serializedVersion: 2
-        x: 632
-        y: 447
-        width: 108
-        height: 56
+        x: 0
+        y: 192
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -783,10 +783,10 @@ TextureImporter:
       name: Pawn_Blue_25
       rect:
         serializedVersion: 2
-        x: 830
-        y: 461
-        width: 11
-        height: 13
+        x: 192
+        y: 192
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -805,10 +805,10 @@ TextureImporter:
       name: Pawn_Blue_26
       rect:
         serializedVersion: 2
-        x: 841
-        y: 447
-        width: 90
-        height: 58
+        x: 384
+        y: 192
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -827,10 +827,10 @@ TextureImporter:
       name: Pawn_Blue_27
       rect:
         serializedVersion: 2
-        x: 1018
-        y: 439
-        width: 71
-        height: 68
+        x: 576
+        y: 192
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -849,10 +849,10 @@ TextureImporter:
       name: Pawn_Blue_28
       rect:
         serializedVersion: 2
-        x: 66
-        y: 255
-        width: 60
-        height: 62
+        x: 768
+        y: 192
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -871,10 +871,10 @@ TextureImporter:
       name: Pawn_Blue_29
       rect:
         serializedVersion: 2
-        x: 257
-        y: 255
-        width: 60
-        height: 61
+        x: 960
+        y: 192
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -893,10 +893,10 @@ TextureImporter:
       name: Pawn_Blue_30
       rect:
         serializedVersion: 2
-        x: 449
-        y: 255
-        width: 60
-        height: 60
+        x: 0
+        y: 0
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -915,10 +915,10 @@ TextureImporter:
       name: Pawn_Blue_31
       rect:
         serializedVersion: 2
-        x: 642
-        y: 255
-        width: 60
-        height: 59
+        x: 192
+        y: 0
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -937,10 +937,10 @@ TextureImporter:
       name: Pawn_Blue_32
       rect:
         serializedVersion: 2
-        x: 835
-        y: 255
-        width: 60
-        height: 60
+        x: 384
+        y: 0
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -959,10 +959,10 @@ TextureImporter:
       name: Pawn_Blue_33
       rect:
         serializedVersion: 2
-        x: 1027
-        y: 255
-        width: 60
-        height: 61
+        x: 576
+        y: 0
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -981,10 +981,10 @@ TextureImporter:
       name: Pawn_Blue_34
       rect:
         serializedVersion: 2
-        x: 64
-        y: 63
-        width: 60
-        height: 62
+        x: 768
+        y: 0
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1003,10 +1003,10 @@ TextureImporter:
       name: Pawn_Blue_35
       rect:
         serializedVersion: 2
-        x: 257
-        y: 63
-        width: 60
-        height: 62
+        x: 960
+        y: 0
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1021,99 +1021,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Pawn_Blue_36
-      rect:
-        serializedVersion: 2
-        x: 450
-        y: 63
-        width: 60
-        height: 58
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 46e5fbacedb60d430800000000000000
-      internalID: 3805660289756520036
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pawn_Blue_37
-      rect:
-        serializedVersion: 2
-        x: 644
-        y: 63
-        width: 60
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8255ebbafc4a80f40800000000000000
-      internalID: 5694982940656555304
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pawn_Blue_38
-      rect:
-        serializedVersion: 2
-        x: 835
-        y: 63
-        width: 60
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e9620edabe67b7c10800000000000000
-      internalID: 2052364809803933342
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pawn_Blue_39
-      rect:
-        serializedVersion: 2
-        x: 1026
-        y: 63
-        width: 60
-        height: 58
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 93f8a20cde95f9af0800000000000000
-      internalID: -387492165264437447
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 75283c20dbeb948abaa5c89c342206e9
     internalID: 0
     vertices: []
     indices: 
@@ -1122,7 +1034,43 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Pawn_Blue_0: -2526443156231494169
+      Pawn_Blue_1: 85516132271839533
+      Pawn_Blue_10: 418046305020467345
+      Pawn_Blue_11: 4595005759171413359
+      Pawn_Blue_12: 997159254126777594
+      Pawn_Blue_13: -8916734054627887817
+      Pawn_Blue_14: 6250710392093768849
+      Pawn_Blue_15: 4853680120448552626
+      Pawn_Blue_16: 2955165806944396838
+      Pawn_Blue_17: -6152626301178634141
+      Pawn_Blue_18: -5537870070541023844
+      Pawn_Blue_19: 7042123909930582926
+      Pawn_Blue_2: 2298971153527949317
+      Pawn_Blue_20: -5431640271881036569
+      Pawn_Blue_21: -3948862315358351415
+      Pawn_Blue_22: -8928817820482097097
+      Pawn_Blue_23: 1911732741585851992
+      Pawn_Blue_24: 6447538333027347605
+      Pawn_Blue_25: -3013262475566291833
+      Pawn_Blue_26: -4950327178770515442
+      Pawn_Blue_27: -1740134095675873224
+      Pawn_Blue_28: 8191108255482568448
+      Pawn_Blue_29: -4011588955890851760
+      Pawn_Blue_3: -6279286161730005596
+      Pawn_Blue_30: 6053010292413162328
+      Pawn_Blue_31: -108865413175359257
+      Pawn_Blue_32: -2876444873680751900
+      Pawn_Blue_33: 4077430709402110876
+      Pawn_Blue_34: -7077120319603751635
+      Pawn_Blue_35: -2152789970493319388
+      Pawn_Blue_4: 3098459446524620889
+      Pawn_Blue_5: 7598609044430795391
+      Pawn_Blue_6: -3780493671843434630
+      Pawn_Blue_7: -6496901974590534408
+      Pawn_Blue_8: -5659882513805570622
+      Pawn_Blue_9: -7810840403246613998
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
