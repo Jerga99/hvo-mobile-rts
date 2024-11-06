@@ -14,8 +14,5 @@ public abstract class Unit : MonoBehaviour
         {
             m_Animator = animator;
         }
-
-        var manager = GameManager.Get();
-        manager.Test();
     }
 }
