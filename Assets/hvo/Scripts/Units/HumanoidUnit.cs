@@ -10,6 +10,11 @@ public class HumanoidUnit : Unit
 
     public float CurrentSpeed => m_Velocity.magnitude;
 
+    void Start()
+    {
+        m_LastPosition = transform.position;
+    }
+
     protected void Update()
     {
         m_Velocity = new Vector2(

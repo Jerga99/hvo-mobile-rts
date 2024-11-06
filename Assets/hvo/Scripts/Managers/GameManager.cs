@@ -30,11 +30,43 @@ public class GameManager : SingletonManager<GameManager>
     void DetectClick(Vector2 inputPosition)
     {
         Vector2 worldPoint = Camera.main.ScreenToWorldPoint(inputPosition);
-        HandleClickOnGround(worldPoint);
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+
+        if (HasClickedOnUnit(hit, out var unit))
+        {
+            HandleClickOnUnit(unit);
+        }
+        else
+        {
+            HandleClickOnGround(worldPoint);
+        }
+    }
+
+    bool HasClickedOnUnit(RaycastHit2D hit, out Unit unit)
+    {
+        if (hit.collider != null && hit.collider.TryGetComponent<Unit>(out var clickedUnit))
+        {
+            unit = clickedUnit;
+            return true;
+        }
+
+        unit = null;
+        return false;
     }
 
     void HandleClickOnGround(Vector2 worldPoint)
     {
         ActiveUnit.MoveTo(worldPoint);
+    }
+
+    void HandleClickOnUnit(Unit unit)
+    {
+        SelectNewUnit(unit);
+    }
+
+    void SelectNewUnit(Unit unit)
+    {
+        ActiveUnit = unit;
+        Debug.Log("New Active Unit: " + unit.gameObject.name);
     }
 }
