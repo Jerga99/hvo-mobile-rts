@@ -1,6 +1,4 @@
 
-
-
 using UnityEngine;
 
 public class GameManager : SingletonManager<GameManager>
@@ -8,6 +6,8 @@ public class GameManager : SingletonManager<GameManager>
     public Unit ActiveUnit;
 
     private Vector2 m_InitialTouchPosition;
+
+    public bool HasActiveUnit => ActiveUnit != null;
 
     void Update()
     {
@@ -66,7 +66,12 @@ public class GameManager : SingletonManager<GameManager>
 
     void SelectNewUnit(Unit unit)
     {
+        if (HasActiveUnit)
+        {
+            ActiveUnit.Deselect();
+        }
+
         ActiveUnit = unit;
-        Debug.Log("New Active Unit: " + unit.gameObject.name);
+        ActiveUnit.Select();
     }
 }
