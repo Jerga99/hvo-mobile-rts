@@ -4,9 +4,6 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
-    [SerializeField]
-    private Material m_HighlightMaterial;
-
     public bool IsMoving;
     public bool IsTargeted;
 
@@ -14,6 +11,7 @@ public abstract class Unit : MonoBehaviour
     protected AIPawn m_AIPawn;
     protected SpriteRenderer m_SpriteRenderer;
     protected Material m_OriginalMaterial;
+    protected Material m_HighlightMaterial;
 
     protected void Awake()
     {
@@ -29,6 +27,7 @@ public abstract class Unit : MonoBehaviour
 
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         m_OriginalMaterial = m_SpriteRenderer.material;
+        m_HighlightMaterial = Resources.Load<Material>("Materials/Outline");
     }
 
     public void MoveTo(Vector3 destination)
