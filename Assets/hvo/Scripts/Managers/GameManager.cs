@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameManager : SingletonManager<GameManager>
 {
+    public Unit ActiveUnit;
 
     private Vector2 m_InitialTouchPosition;
 
@@ -21,13 +22,19 @@ public class GameManager : SingletonManager<GameManager>
         {
             if (Vector2.Distance(m_InitialTouchPosition, inputPosition) < 10)
             {
-                DeteckClick(inputPosition);
+                DetectClick(inputPosition);
             }
         }
     }
 
-    void DeteckClick(Vector2 inputPosition)
+    void DetectClick(Vector2 inputPosition)
     {
-        Debug.Log(inputPosition);
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(inputPosition);
+        HandleClickOnGround(worldPoint);
+    }
+
+    void HandleClickOnGround(Vector2 worldPoint)
+    {
+        ActiveUnit.MoveTo(worldPoint);
     }
 }

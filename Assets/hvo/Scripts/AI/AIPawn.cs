@@ -11,11 +11,6 @@ public class AIPawn : MonoBehaviour
 
     public Vector3? Destination => m_Destination;
 
-    void Start()
-    {
-        SetDestination(new Vector3(4.5f, 0, 0));
-    }
-
     void Update()
     {
         if (m_Destination.HasValue)
