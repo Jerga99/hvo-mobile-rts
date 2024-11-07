@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Carved_Regular_0: 7515621534131588247
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

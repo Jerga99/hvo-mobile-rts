@@ -772,7 +772,33 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Barrel_Blue_0: 6045454254259307398
+      Barrel_Blue_1: -2423285488819419956
+      Barrel_Blue_10: -5857065392324598592
+      Barrel_Blue_11: 2225278828217939072
+      Barrel_Blue_12: -1052690004320940063
+      Barrel_Blue_13: 871457715994819015
+      Barrel_Blue_14: 4239719258015043117
+      Barrel_Blue_15: 7818603063236946399
+      Barrel_Blue_16: 5120929411463067236
+      Barrel_Blue_17: -2206129326550140029
+      Barrel_Blue_18: -6284387523198709842
+      Barrel_Blue_19: -5411486139309320545
+      Barrel_Blue_2: -5010189232691514005
+      Barrel_Blue_20: -2982696178579544675
+      Barrel_Blue_21: -5992876652804177011
+      Barrel_Blue_22: 5399823191368615344
+      Barrel_Blue_23: 949429558464918651
+      Barrel_Blue_24: -7128455298753691592
+      Barrel_Blue_25: -6297617479400447107
+      Barrel_Blue_3: -5390116343607681507
+      Barrel_Blue_4: -7627501968969996973
+      Barrel_Blue_5: 3007210723233672673
+      Barrel_Blue_6: -2718406118890799503
+      Barrel_Blue_7: 1908858404467654192
+      Barrel_Blue_8: 1519025819761848976
+      Barrel_Blue_9: -4532171271299795306
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

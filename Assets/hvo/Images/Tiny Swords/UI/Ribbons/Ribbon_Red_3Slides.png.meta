@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ribbon_Red_3Slides_0: 8353796772627440949
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

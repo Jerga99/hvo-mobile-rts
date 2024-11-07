@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wood_Tower_InConstruction_0: 2766793018473150071
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

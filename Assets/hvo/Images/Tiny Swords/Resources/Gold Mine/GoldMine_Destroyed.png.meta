@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GoldMine_Destroyed_0: -4502939662549986644
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -322,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HappySheep_Idle_0: -6367260613296689715
+      HappySheep_Idle_1: -8626619091392344333
+      HappySheep_Idle_2: 3723718632635307859
+      HappySheep_Idle_3: -352071954382587109
+      HappySheep_Idle_4: -2625141565471614998
+      HappySheep_Idle_5: 6036646026520181864
+      HappySheep_Idle_6: -8912526117797851183
+      HappySheep_Idle_7: 3473659580424667232
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

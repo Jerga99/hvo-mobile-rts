@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wood_Tower_Blue_0: 1355195777722144874
+      Wood_Tower_Blue_1: 8449136028634530401
+      Wood_Tower_Blue_2: -4340742807042858613
+      Wood_Tower_Blue_3: -3945947257045179373
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

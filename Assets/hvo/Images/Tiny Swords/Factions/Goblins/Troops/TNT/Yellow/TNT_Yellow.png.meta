@@ -622,7 +622,27 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TNT_Yellow_0: -5897788223502500155
+      TNT_Yellow_1: 6495355567584913369
+      TNT_Yellow_10: -8620162259392710406
+      TNT_Yellow_11: -8382507505125069333
+      TNT_Yellow_12: -934563560996068288
+      TNT_Yellow_13: -3839763707124402121
+      TNT_Yellow_14: 4346732994931675347
+      TNT_Yellow_15: 452591549112123371
+      TNT_Yellow_16: -7971032670180350716
+      TNT_Yellow_17: 1780397320674947424
+      TNT_Yellow_18: -8724881437507540233
+      TNT_Yellow_19: -1510895165611675020
+      TNT_Yellow_2: 9117411345305774777
+      TNT_Yellow_3: 2910333032568017722
+      TNT_Yellow_4: 7489665041710281493
+      TNT_Yellow_5: 6334247472151054579
+      TNT_Yellow_6: -5954970504039593574
+      TNT_Yellow_7: 3108974693858557164
+      TNT_Yellow_8: 1755845684380980900
+      TNT_Yellow_9: 6930382179305954324
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

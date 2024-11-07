@@ -422,7 +422,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Archer_Red_(NoArms)_0: -779530754703691295
+      Archer_Red_(NoArms)_1: 1342457956399488464
+      Archer_Red_(NoArms)_10: 6922436141123105126
+      Archer_Red_(NoArms)_11: -4711082139558150911
+      Archer_Red_(NoArms)_2: -760774686098207700
+      Archer_Red_(NoArms)_3: 2945705475700592968
+      Archer_Red_(NoArms)_4: -5854490005169611917
+      Archer_Red_(NoArms)_5: -6278388339237390178
+      Archer_Red_(NoArms)_6: 7675357999706952606
+      Archer_Red_(NoArms)_7: 417398373251102774
+      Archer_Red_(NoArms)_8: -857071193469251862
+      Archer_Red_(NoArms)_9: -7949194503432481910
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

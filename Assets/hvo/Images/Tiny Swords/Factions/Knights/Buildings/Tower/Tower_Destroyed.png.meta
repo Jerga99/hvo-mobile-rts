@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tower_Destroyed_0: 3370451049799072056
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -447,7 +447,20 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Archer_Bow_Blue_0: 4329173317399445151
+      Archer_Bow_Blue_1: 8555011917411257359
+      Archer_Bow_Blue_10: -8750841540471951380
+      Archer_Bow_Blue_11: 2538531249042620503
+      Archer_Bow_Blue_12: 3421040970401981108
+      Archer_Bow_Blue_2: -8681932915944446542
+      Archer_Bow_Blue_3: 5492699376048798953
+      Archer_Bow_Blue_4: -6841447439412970388
+      Archer_Bow_Blue_5: -2523372667273648364
+      Archer_Bow_Blue_6: -1019287073827455614
+      Archer_Bow_Blue_7: 5112643037596333782
+      Archer_Bow_Blue_8: -3112607047936341857
+      Archer_Bow_Blue_9: -8743230344272488137
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
