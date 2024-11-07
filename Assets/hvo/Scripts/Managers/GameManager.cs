@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class GameManager : SingletonManager<GameManager>
 {
+    [Header("UI")]
+    [SerializeField] private PointToClick m_PointToClickPrefab;
+
     public Unit ActiveUnit;
 
     private Vector2 m_InitialTouchPosition;
@@ -56,6 +59,7 @@ public class GameManager : SingletonManager<GameManager>
 
     void HandleClickOnGround(Vector2 worldPoint)
     {
+        DisplayClickEffect(worldPoint);
         ActiveUnit.MoveTo(worldPoint);
     }
 
@@ -73,5 +77,10 @@ public class GameManager : SingletonManager<GameManager>
 
         ActiveUnit = unit;
         ActiveUnit.Select();
+    }
+
+    void DisplayClickEffect(Vector2 worldPoint)
+    {
+        Instantiate(m_PointToClickPrefab, (Vector3)worldPoint, Quaternion.identity);
     }
 }
