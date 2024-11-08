@@ -107,6 +107,11 @@ public class GameManager : SingletonManager<GameManager>
         ActiveUnit = null;
     }
 
+    public void Test()
+    {
+        Debug.Log("Hello World!");
+    }
+
     void DisplayClickEffect(Vector2 worldPoint)
     {
         Instantiate(m_PointToClickPrefab, (Vector3)worldPoint, Quaternion.identity);
