@@ -103,7 +103,7 @@ public class GameManager : SingletonManager<GameManager>
 
         ActiveUnit = unit;
         ActiveUnit.Select();
-        ShowUnitActions();
+        ShowUnitActions(unit);
     }
 
     bool HasClickedOnActiveUnit(Unit clickedUnit)
@@ -129,18 +129,21 @@ public class GameManager : SingletonManager<GameManager>
         Instantiate(m_PointToClickPrefab, (Vector3)worldPoint, Quaternion.identity);
     }
 
-    void ShowUnitActions()
+    void ShowUnitActions(Unit unit)
     {
         ClearActionBarUI();
 
-        var hardcodedAtions = 2;
-
-        for (int i = 0; i < hardcodedAtions; i++)
+        if (unit.Actions.Length == 0)
         {
-            m_ActionBar.RegisterAction();
+            return;
         }
 
         m_ActionBar.Show();
+
+        foreach (var action in unit.Actions)
+        {
+            m_ActionBar.RegisterAction();
+        }
     }
 
     void ClearActionBarUI()
