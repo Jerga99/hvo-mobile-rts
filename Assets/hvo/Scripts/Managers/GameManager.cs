@@ -120,6 +120,8 @@ public class GameManager : SingletonManager<GameManager>
     {
         ActiveUnit.Deselect();
         ActiveUnit = null;
+
+        ClearActionBarUI();
     }
 
     void DisplayClickEffect(Vector2 worldPoint)
