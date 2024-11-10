@@ -10,10 +10,7 @@ public class GameManager : SingletonManager<GameManager>
 
     public Unit ActiveUnit;
 
-    private Vector2 m_InitialTouchPosition;
     private PlacementProcess m_PlacementProcess;
-
-
 
     public bool HasActiveUnit => ActiveUnit != null;
 
@@ -28,20 +25,9 @@ public class GameManager : SingletonManager<GameManager>
         {
             m_PlacementProcess.Update();
         }
-        else
+        else if (HvoUtils.TryGetShortClickPosition(out Vector2 inputPosition))
         {
-            if (HvoUtils.IsLeftClickOrTapDown)
-            {
-                m_InitialTouchPosition = HvoUtils.InputPosition;
-            }
-
-            if (HvoUtils.IsLeftClickOrTapUp)
-            {
-                if (Vector2.Distance(m_InitialTouchPosition, HvoUtils.InputPosition) < 5)
-                {
-                    DetectClick(HvoUtils.InputPosition);
-                }
-            }
+            DetectClick(inputPosition);
         }
     }
 
@@ -53,7 +39,7 @@ public class GameManager : SingletonManager<GameManager>
 
     void DetectClick(Vector2 inputPosition)
     {
-        if (IsPointerOverUIElement())
+        if (HvoUtils.IsPointerOverUIElement())
         {
             return;
         }
@@ -165,18 +151,5 @@ public class GameManager : SingletonManager<GameManager>
     {
         m_ActionBar.ClearActions();
         m_ActionBar.Hide();
-    }
-
-    bool IsPointerOverUIElement()
-    {
-        if (Input.touchCount > 0)
-        {
-            var touch = Input.GetTouch(0);
-            return EventSystem.current.IsPointerOverGameObject(touch.fingerId);
-        }
-        else
-        {
-            return EventSystem.current.IsPointerOverGameObject();
-        }
     }
 }

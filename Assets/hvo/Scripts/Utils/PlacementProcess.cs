@@ -14,13 +14,9 @@ public class PlacementProcess
 
     public void Update()
     {
-        Vector3 worldPosition = HvoUtils.InputHoldWorldPosition;
-        if (worldPosition != Vector3.zero)
+        if (HvoUtils.TryGetHoldPosition(out Vector3 worldPosition))
         {
-            m_PlacementOutline.transform.position = new Vector3(
-                worldPosition.x,
-                worldPosition.y, 0
-            );
+            m_PlacementOutline.transform.position = new Vector3(worldPosition.x, worldPosition.y, 0);
         }
     }
 
