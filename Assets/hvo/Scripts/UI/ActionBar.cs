@@ -18,9 +18,10 @@ public class ActionBar: MonoBehaviour
         m_OriginalBackgroundColor = m_BackgroundImage.color;
     }
 
-    public void RegisterAction()
+    public void RegisterAction(Sprite icon)
     {
         var actionButton = Instantiate(m_ActionButtonPrefab, transform);
+        actionButton.Init(icon);
         m_ActionButtons.Add(actionButton);
     }
 

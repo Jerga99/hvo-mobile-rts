@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762c35c2489b2464ead3cf065da66e13, type: 3}
   m_Name: BuildTowerAction
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
+  Icon: {fileID: 1954810469, guid: 75eac1f1b7e964fd083d8ce219a36316, type: 3}
   ActionName: Build Tower
   Guid: 037d2345-9734-4123-a7ac-cb12a14b73b7
   m_PlacementSprite: {fileID: 0}
