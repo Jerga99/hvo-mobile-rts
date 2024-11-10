@@ -14,6 +14,16 @@ public class PlacementProcess
 
     public void Update()
     {
+        Vector2 screenPosition = Input.touchCount > 0 ?
+            Input.GetTouch(0).position :
+            Input.GetMouseButton(0) ? Input.mousePosition : Vector2.zero;
+
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+
+        if (screenPosition != Vector2.zero)
+        {
+            m_PlacementOutline.transform.position = new Vector3(worldPosition.x, worldPosition.y, 0);
+        }
     }
 
     public void ShowPlacementOutline()
