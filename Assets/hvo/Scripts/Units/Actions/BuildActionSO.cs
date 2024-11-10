@@ -21,5 +21,6 @@ public class BuildActionSO: ActionSO
 
     public override void Execute(GameManager manager)
     {
+        manager.StartBuildProcess(this);
     }
 }
