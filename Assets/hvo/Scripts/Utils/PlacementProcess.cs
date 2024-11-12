@@ -55,8 +55,10 @@ public class PlacementProcess
     void HighlightTiles(Vector3 outlinePosition)
     {
         Vector3Int buildingSize = m_BuildAction.BuildingSize;
-        m_HighlightPositions = new Vector3Int[buildingSize.x * buildingSize.y];
         Vector3 pivotPosition = outlinePosition + m_BuildAction.OriginOffset;
+
+        ClearHighlights();
+        m_HighlightPositions = new Vector3Int[buildingSize.x * buildingSize.y];
 
         for (int x = 0; x < buildingSize.x; x++)
         {
@@ -72,10 +74,16 @@ public class PlacementProcess
             tile.sprite = m_PlaceholderTileSprite;
             tile.color = new Color(0, 0.8f, 1, 0.4f);
             m_OverlayTilemap.SetTile(tilePosition, tile);
-            // m_OverlayTilemap.SetTileFlags(tilePosition, TileFlags.None);
-            // m_OverlayTilemap.SetColor(tilePosition, Color.green);
+        }
+    }
 
+    void ClearHighlights()
+    {
+        if (m_HighlightPositions == null) return;
 
+        foreach (var tilePosition in m_HighlightPositions)
+        {
+            m_OverlayTilemap.SetTile(tilePosition, null);
         }
     }
 }
