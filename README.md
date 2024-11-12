@@ -9,12 +9,19 @@ This repository contains the source code for <a href="https://academy.eincode.co
 
 ## Features
 
-- **Real-Time Strategy Mechanics**: Command units, build structures, and engage in tactical battles.
-- **Mobile Optimization**: Touch controls and UI elements designed for a seamless mobile experience.
-- **2D Graphics**: Stylized art and animations crafted for 2D gameplay.
-- **Artificial Intelligence**: Challenging AI opponents to enhance gameplay.
-- **Resource Management**: Gather and manage resources to expand your base and army.
-- **Multiple Levels**: Diverse environments and increasing difficulty levels.
+1. **Setup**: Download assets, create tilemaps and characters
+2. **Animation**: Animate units (builders, warriors)
+3. **Management**: Implement Game Manager for core functions
+4. **UI**: Design interactive Action Bar
+5. **Building**: Develop placement and construction system
+6. **Economy**: Create resource collection mechanics
+7. **Pathfinding**: Implement A* algorithm
+8. **Combat**: Design enemy types and wave system
+9. **Audio/Visual**: Add sound effects and visual feedback
+10. **Events**: Create announcement system
+11. **Game Conditions**: Set victory/defeat scenarios
+12. **Cross-Platform**: Build and test for iOS/Android
+13. **Publishing**: Prepare for App Store and Google Play release
 
 ## Getting Started
 
