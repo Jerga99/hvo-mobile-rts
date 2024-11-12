@@ -7,6 +7,8 @@ A 2D mobile real-time strategy game developed in Unity, built from scratch to Ap
 
 This repository contains the source code for <a href="https://academy.eincode.com/courses/mobile-rts-game-in-unity-2d-from-scratch-to-app-store" target="_blank">**HVO Mobile RTS Game**</a>, developed as part of the *Mobile RTS Game in Unity 2D: From Scratch to App Store* course. The game demonstrates how to create a fully functional RTS game optimized for mobile devices using Unity.
 
+<img src="https://thrangra.sirv.com/Unity_Rts_1_1_Web.jpeg" alt="Humans vs Orcs Mobile RTS Game" height="200">
+
 ## Features
 
 1. **Setup**: Download assets, create tilemaps and characters
