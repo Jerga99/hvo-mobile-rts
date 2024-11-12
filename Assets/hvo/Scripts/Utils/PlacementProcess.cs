@@ -46,14 +46,15 @@ public class PlacementProcess
 
     void HighlightTiles(Vector3 outlinePosition)
     {
-        Vector2Int buildingSize = new Vector2Int(2, 3);
+        Vector3Int buildingSize = m_BuildAction.BuildingSize;
         m_HighlightPositions = new Vector3Int[buildingSize.x * buildingSize.y];
+        Vector3 pivotPosition = outlinePosition + m_BuildAction.OriginOffset;
 
         for (int x = 0; x < buildingSize.x; x++)
         {
             for (int y = 0; y < buildingSize.y; y++)
             {
-                m_HighlightPositions[x + y * buildingSize.x] = new Vector3Int((int)outlinePosition.x + x, (int)outlinePosition.y + y, 0);
+                m_HighlightPositions[x + y * buildingSize.x] = new Vector3Int((int)pivotPosition.x + x, (int)pivotPosition.y + y, 0);
             }
         }
 
