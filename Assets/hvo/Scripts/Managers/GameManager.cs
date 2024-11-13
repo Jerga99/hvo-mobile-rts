@@ -12,6 +12,7 @@ public class GameManager : SingletonManager<GameManager>
     [Header("UI")]
     [SerializeField] private PointToClick m_PointToClickPrefab;
     [SerializeField] private ActionBar m_ActionBar;
+    [SerializeField] private ConfirmationBar m_BuildConfirmationBar;
 
     public Unit ActiveUnit;
 
@@ -38,6 +39,8 @@ public class GameManager : SingletonManager<GameManager>
 
     public void StartBuildProcess(BuildActionSO buildAction)
     {
+        if (m_PlacementProcess != null) return;
+
         m_PlacementProcess = new PlacementProcess(
             buildAction,
             m_WalkableTilemap,
@@ -45,6 +48,7 @@ public class GameManager : SingletonManager<GameManager>
             m_UnreachableTilemaps
         );
         m_PlacementProcess.ShowPlacementOutline();
+        m_BuildConfirmationBar.Show();
     }
 
     void DetectClick(Vector2 inputPosition)

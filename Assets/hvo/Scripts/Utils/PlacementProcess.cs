@@ -37,6 +37,8 @@ public class PlacementProcess
             HighlightTiles(m_PlacementOutline.transform.position);
         }
 
+        if (HvoUtils.IsPointerOverUIElement()) return;
+
         if (HvoUtils.TryGetHoldPosition(out Vector3 worldPosition))
         {
             m_PlacementOutline.transform.position = SnapToGrid(worldPosition);
