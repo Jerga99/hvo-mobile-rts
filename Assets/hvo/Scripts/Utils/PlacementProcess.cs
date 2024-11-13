@@ -10,6 +10,7 @@ public class PlacementProcess
     private Vector3Int[] m_HighlightPositions;
     private Tilemap m_WalkableTilemap;
     private Tilemap m_OverlayTilemap;
+    private Tilemap[] m_UnreachableTilemaps;
     private Sprite m_PlaceholderTileSprite;
 
     private Color m_HighlightColor = new Color(0, 0.8f, 1, 0.4f);
@@ -18,13 +19,15 @@ public class PlacementProcess
     public PlacementProcess(
         BuildActionSO buildAction,
         Tilemap walkableTilemap,
-        Tilemap overlayTilemap
+        Tilemap overlayTilemap,
+        Tilemap[] unreachableTilemaps
     )
     {
         m_PlaceholderTileSprite = Resources.Load<Sprite>("Images/PlaceholderTileSprite");
         m_BuildAction = buildAction;
         m_WalkableTilemap = walkableTilemap;
         m_OverlayTilemap = overlayTilemap;
+        m_UnreachableTilemaps = unreachableTilemaps;
     }
 
     public void Update()
@@ -101,6 +104,17 @@ public class PlacementProcess
 
     bool CanPlaceTile(Vector3Int tilePosition)
     {
-        return m_WalkableTilemap.HasTile(tilePosition);
+        return m_WalkableTilemap.HasTile(tilePosition) && !IsInUnreachableTilemap(tilePosition);
     }
+
+    bool IsInUnreachableTilemap(Vector3Int tilePosition)
+    {
+        foreach(var tilemap in m_UnreachableTilemaps)
+        {
+            if (tilemap.HasTile(tilePosition)) return true;
+        }
+
+        return false;
+    }
+
 }
