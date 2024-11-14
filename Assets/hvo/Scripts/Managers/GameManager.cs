@@ -53,7 +53,7 @@ public class GameManager : SingletonManager<GameManager>
             m_UnreachableTilemaps
         );
         m_PlacementProcess.ShowPlacementOutline();
-        m_BuildConfirmationBar.Show();
+        m_BuildConfirmationBar.Show(buildAction.GoldCost, buildAction.WoodCost);
         m_BuildConfirmationBar.SetupHooks(ConfirmBuildPlacement, CancelBuildPlacement);
     }
 

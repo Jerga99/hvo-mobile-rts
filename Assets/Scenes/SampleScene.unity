@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 176854862}
   - component: {fileID: 176854861}
   - component: {fileID: 176854863}
+  - component: {fileID: 176854864}
   m_Layer: 5
   m_Name: ResourceRequirementsDisplay
   m_TagString: Untagged
@@ -326,6 +327,20 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &176854864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176854859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf85c62d36fd41f995021df75aa44c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GoldText: {fileID: 633789776}
+  m_WoodText: {fileID: 1151232842}
 --- !u!1 &225200136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,7 +2379,7 @@ Tilemap:
       - {fileID: 7752229987998269982, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: -4710801888167562894, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: 6853023835892009477, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
-      m_AnimationSpeed: 10.000001
+      m_AnimationSpeed: 10
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -11, y: 8, z: 0}
@@ -2529,7 +2544,7 @@ Tilemap:
       - {fileID: 7752229987998269982, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: -4710801888167562894, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: 6853023835892009477, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
-      m_AnimationSpeed: 10
+      m_AnimationSpeed: 10.000001
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 0, y: 8, z: 0}
@@ -17806,6 +17821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d67a79f6e784eb3a938098d8fbf33e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ResourceDisplay: {fileID: 176854864}
   m_ConfirmButton: {fileID: 1484846383}
   m_CancelButton: {fileID: 225200138}
 --- !u!1660057539 &9223372036854775807
