@@ -78,6 +78,11 @@ public class PlacementProcess
 
     bool IsPlacementAreaValid()
     {
+        foreach (var tilePosition in m_HighlightPositions)
+        {
+            if (!CanPlaceTile(tilePosition)) return false;
+        }
+
         return true;
     }
 
