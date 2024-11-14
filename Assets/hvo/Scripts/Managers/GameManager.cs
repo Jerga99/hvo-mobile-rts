@@ -175,6 +175,8 @@ public class GameManager : SingletonManager<GameManager>
 
     void CancelBuildPlacement()
     {
-        Debug.Log("CancelBuildPlacement()");
+        m_BuildConfirmationBar.Hide();
+        m_PlacementProcess.Cleanup();
+        m_PlacementProcess = null;
     }
 }
