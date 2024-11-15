@@ -37,9 +37,9 @@ public class WorkerUnit : HumanoidUnit
         }
     }
 
-    void StartBuilding(StructureUnit unit)
+    void StartBuilding(StructureUnit structure)
     {
-        Debug.Log("Starting building: " + unit.gameObject.name);
+        structure.AssignWorkerToBuildProcess(this);
     }
 
     void ResetState()
@@ -51,6 +51,11 @@ public class WorkerUnit : HumanoidUnit
 
     void CleanupTarget()
     {
+        if (Target is StructureUnit structure)
+        {
+            structure.UnassignWorkerFromBuildProcess();
+        }
+
         SetTarget(null);
     }
 }

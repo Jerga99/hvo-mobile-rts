@@ -5,6 +5,9 @@ using UnityEngine;
 public class BuildingProcess
 {
     private BuildActionSO m_BuildAction;
+    private WorkerUnit m_Worker;
+
+    public bool HasActiveWorker => m_Worker != null;
 
     public BuildingProcess(
         BuildActionSO buildAction,
@@ -25,6 +28,23 @@ public class BuildingProcess
 
     public void Update()
     {
-        Debug.Log("Building is under construction");
+        if (HasActiveWorker)
+        {
+            Debug.Log("Building is under construction");
+        }
+    }
+
+    public void AddWorker(WorkerUnit worker)
+    {
+        if (HasActiveWorker) return;
+        Debug.Log("Adding Worker");
+        m_Worker = worker;
+    }
+
+    public void RemoveWorker()
+    {
+        if (!HasActiveWorker) return;
+        Debug.Log("Removing Worker");
+        m_Worker = null;
     }
 }
