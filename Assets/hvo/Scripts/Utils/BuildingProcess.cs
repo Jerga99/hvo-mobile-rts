@@ -12,10 +12,8 @@ public class BuildingProcess
     )
     {
         m_BuildAction = buildAction;
-        var structureGo = new GameObject(m_BuildAction.ActionName);
-        var renderer = structureGo.AddComponent<SpriteRenderer>();
-        renderer.sortingOrder = 25;
-        renderer.sprite = m_BuildAction.FoundationSprite;
-        structureGo.transform.position = placementPosition;
+        var structure = Object.Instantiate(buildAction.StructurePrefab);
+        structure.Renderer.sprite = m_BuildAction.FoundationSprite;
+        structure.transform.position = placementPosition;
     }
 }

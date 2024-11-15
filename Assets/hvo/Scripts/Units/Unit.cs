@@ -16,6 +16,7 @@ public abstract class Unit : MonoBehaviour
     protected Material m_HighlightMaterial;
 
     public ActionSO[] Actions => m_Actions;
+    public SpriteRenderer Renderer => m_SpriteRenderer;
 
     protected void Awake()
     {
