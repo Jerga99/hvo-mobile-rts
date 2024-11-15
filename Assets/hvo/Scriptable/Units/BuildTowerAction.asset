@@ -16,7 +16,7 @@ MonoBehaviour:
   ActionName: Build Tower
   Guid: 037d2345-9734-4123-a7ac-cb12a14b73b7
   m_PlacementSprite: {fileID: 21300000, guid: 9ee0d74cfce104377afdfbacfb6ee9a2, type: 3}
-  m_FoundationSprite: {fileID: 0}
+  m_FoundationSprite: {fileID: 21300000, guid: ee63998474fe240b29d01da401f5e462, type: 3}
   m_CompletionSprite: {fileID: 0}
   m_BuildingSize: {x: 2, y: 3, z: 0}
   m_OriginOffset: {x: -1, y: -2, z: 0}

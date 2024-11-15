@@ -190,6 +190,8 @@ public class GameManager : SingletonManager<GameManager>
                 buildPosition
             );
 
+            ActiveUnit.MoveTo(buildPosition);
+
             m_PlacementProcess = null;
         }
         else
