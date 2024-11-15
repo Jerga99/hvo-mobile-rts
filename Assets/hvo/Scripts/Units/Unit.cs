@@ -29,6 +29,7 @@ public abstract class Unit : MonoBehaviour
 
     public ActionSO[] Actions => m_Actions;
     public SpriteRenderer Renderer => m_SpriteRenderer;
+    public bool HasTarget => Target != null;
 
     protected void Awake()
     {
@@ -68,6 +69,7 @@ public abstract class Unit : MonoBehaviour
         m_SpriteRenderer.flipX = direction.x < 0;
 
         m_AIPawn.SetDestination(destination);
+        OnSetDestination();
     }
 
     public void Select()
@@ -81,6 +83,8 @@ public abstract class Unit : MonoBehaviour
         UnHighlight();
         IsTargeted = false;
     }
+
+    protected virtual void OnSetDestination(){}
 
     protected virtual void OnSetTask(UnitTask oldTask, UnitTask newTask)
     {

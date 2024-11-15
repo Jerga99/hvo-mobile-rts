@@ -13,6 +13,11 @@ public class WorkerUnit : HumanoidUnit
         }
     }
 
+    protected override void OnSetDestination()
+    {
+        ResetState();
+    }
+
     void CheckForCloseObjects()
     {
         Debug.Log("Checking!");
@@ -35,5 +40,17 @@ public class WorkerUnit : HumanoidUnit
     void StartBuilding(StructureUnit unit)
     {
         Debug.Log("Starting building: " + unit.gameObject.name);
+    }
+
+    void ResetState()
+    {
+        SetTask(UnitTask.None);
+
+        if (HasTarget) CleanupTarget();
+    }
+
+    void CleanupTarget()
+    {
+        SetTarget(null);
     }
 }
