@@ -25,6 +25,8 @@ public abstract class Unit : MonoBehaviour
 
     public UnitState CurrentState { get; protected set; } = UnitState.Idle;
     public UnitTask CurrentTask { get; protected set; } = UnitTask.None;
+    public Unit Target { get; protected set; }
+
     public ActionSO[] Actions => m_Actions;
     public SpriteRenderer Renderer => m_SpriteRenderer;
 
@@ -53,6 +55,11 @@ public abstract class Unit : MonoBehaviour
     public void SetState(UnitState state)
     {
         OnSetState(CurrentState, state);
+    }
+
+    public void SetTarget(Unit target)
+    {
+        Target = target;
     }
 
     public void MoveTo(Vector3 destination)

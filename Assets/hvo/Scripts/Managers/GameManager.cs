@@ -187,11 +187,9 @@ public class GameManager : SingletonManager<GameManager>
 
             new BuildingProcess(
                 m_PlacementProcess.BuildAction,
-                buildPosition
+                buildPosition,
+                (WorkerUnit)ActiveUnit
             );
-
-            ActiveUnit.MoveTo(buildPosition);
-            ActiveUnit.SetTask(UnitTask.Build);
 
             m_PlacementProcess = null;
         }
