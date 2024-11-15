@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Unit : MonoBehaviour
 {
     [SerializeField] private ActionSO[] m_Actions;
+    [SerializeField] private float m_ObjectDetectionRadius = 3f;
 
     public bool IsMoving;
     public bool IsTargeted;
@@ -55,6 +56,11 @@ public abstract class Unit : MonoBehaviour
         IsTargeted = false;
     }
 
+    protected Collider2D[] RunProximityObjectDetection()
+    {
+        return Physics2D.OverlapCircleAll(transform.position, m_ObjectDetectionRadius);
+    }
+
     void Highlight()
     {
         m_SpriteRenderer.material = m_HighlightMaterial;
@@ -63,5 +69,11 @@ public abstract class Unit : MonoBehaviour
     void UnHighlight()
     {
         m_SpriteRenderer.material = m_OriginalMaterial;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(0, 0, 1, 0.3f);
+        Gizmos.DrawSphere(transform.position, m_ObjectDetectionRadius);
     }
 }

@@ -26,6 +26,10 @@ public class HumanoidUnit : Unit
         IsMoving = m_Velocity.magnitude > 0;
 
         m_Animator.SetFloat("Speed", Mathf.Clamp01(CurrentSpeed));
+
+        UpdateBehaviour();
     }
+
+    protected virtual void UpdateBehaviour(){}
 }
 
