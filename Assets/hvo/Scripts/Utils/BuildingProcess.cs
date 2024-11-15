@@ -15,5 +15,11 @@ public class BuildingProcess
         var structure = Object.Instantiate(buildAction.StructurePrefab);
         structure.Renderer.sprite = m_BuildAction.FoundationSprite;
         structure.transform.position = placementPosition;
+        structure.RegisterProcess(this);
+    }
+
+    public void Update()
+    {
+        Debug.Log("Building is under construction");
     }
 }
