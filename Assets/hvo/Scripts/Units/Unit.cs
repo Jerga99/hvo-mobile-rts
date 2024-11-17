@@ -3,7 +3,7 @@
 using UnityEngine;
 
 public enum UnitState {
-    Idle, Moving, Attacking, Chopping, Minig
+    Idle, Moving, Attacking, Chopping, Minig, Building
 }
 
 public enum UnitTask {
