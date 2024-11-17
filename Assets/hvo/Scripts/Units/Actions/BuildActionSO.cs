@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuildActionSO: ActionSO
 {
     [SerializeField] private StructureUnit m_StructurePrefab;
+    [SerializeField] private float m_ConstructionTime;
     [SerializeField] private Sprite m_PlacementSprite;
     [SerializeField] private Sprite m_FoundationSprite;
     [SerializeField] private Sprite m_CompletionSprite;
@@ -16,6 +17,7 @@ public class BuildActionSO: ActionSO
     [SerializeField] private int m_WoodCost;
 
     public StructureUnit StructurePrefab => m_StructurePrefab;
+    public float ConstructionTime => m_ConstructionTime;
     public Sprite PlacementSprite => m_PlacementSprite;
     public Sprite FoundationSprite => m_FoundationSprite;
     public Sprite CompletionSprite => m_CompletionSprite;

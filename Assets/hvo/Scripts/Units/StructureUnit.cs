@@ -14,6 +14,8 @@ public class StructureUnit: Unit
         }
     }
 
+    public void OnConstructionFinished() => m_BuildingProcess = null;
+
     public void RegisterProcess(BuildingProcess process)
     {
         m_BuildingProcess = process;

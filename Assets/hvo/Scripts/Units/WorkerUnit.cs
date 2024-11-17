@@ -13,10 +13,10 @@ public class WorkerUnit : HumanoidUnit
         }
     }
 
-    protected override void OnSetDestination()
-    {
-        ResetState();
-    }
+    protected override void OnSetDestination() => ResetState();
+
+    public void OnBuildingFinished() => ResetState();
+
 
     public void SendToBuild(StructureUnit structure)
     {

@@ -6,7 +6,11 @@ public class BuildingProcess
 {
     private BuildActionSO m_BuildAction;
     private WorkerUnit m_Worker;
+    private StructureUnit m_Structure;
+    private float m_ProgressTimer;
+    private bool m_IsFinished;
 
+    private bool InProgress => HasActiveWorker && m_Worker.CurrentState == UnitState.Building;
     public bool HasActiveWorker => m_Worker != null;
 
     public BuildingProcess(
@@ -16,18 +20,28 @@ public class BuildingProcess
     )
     {
         m_BuildAction = buildAction;
-        var structure = Object.Instantiate(buildAction.StructurePrefab);
-        structure.Renderer.sprite = m_BuildAction.FoundationSprite;
-        structure.transform.position = placementPosition;
-        structure.RegisterProcess(this);
-        worker.SendToBuild(structure);
+        m_Structure = Object.Instantiate(buildAction.StructurePrefab);
+        m_Structure.Renderer.sprite = m_BuildAction.FoundationSprite;
+        m_Structure.transform.position = placementPosition;
+        m_Structure.RegisterProcess(this);
+        worker.SendToBuild(m_Structure);
     }
 
     public void Update()
     {
-        if (HasActiveWorker)
+        if (m_IsFinished) return;
+
+        if (InProgress)
         {
-            Debug.Log("Building is under construction");
+            m_ProgressTimer += Time.deltaTime;
+
+            if (m_ProgressTimer >= m_BuildAction.ConstructionTime)
+            {
+                m_IsFinished = true;
+                m_Structure.Renderer.sprite = m_BuildAction.CompletionSprite;
+                m_Worker.OnBuildingFinished();
+                m_Structure.OnConstructionFinished();
+            }
         }
     }
 
