@@ -107,9 +107,22 @@ public class GameManager : SingletonManager<GameManager>
                 CancelActiveUnit();
                 return;
             }
+            else if (WorkerClickedOnUnfinishedBuild(unit))
+            {
+                ((WorkerUnit)ActiveUnit).SendToBuild(unit as StructureUnit);
+                return;
+            }
         }
 
         SelectNewUnit(unit);
+    }
+
+    bool WorkerClickedOnUnfinishedBuild(Unit clickedUnit)
+    {
+        return
+            ActiveUnit is WorkerUnit &&
+            clickedUnit is StructureUnit structure &&
+            structure.IsUnderConstuction;
     }
 
     void SelectNewUnit(Unit unit)

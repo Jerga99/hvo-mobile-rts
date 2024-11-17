@@ -20,10 +20,7 @@ public class BuildingProcess
         structure.Renderer.sprite = m_BuildAction.FoundationSprite;
         structure.transform.position = placementPosition;
         structure.RegisterProcess(this);
-
-        worker.MoveTo(placementPosition);
-        worker.SetTask(UnitTask.Build);
-        worker.SetTarget(structure);
+        worker.SendToBuild(structure);
     }
 
     public void Update()

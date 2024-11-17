@@ -18,6 +18,14 @@ public class WorkerUnit : HumanoidUnit
         ResetState();
     }
 
+    public void SendToBuild(StructureUnit structure)
+    {
+        MoveTo(structure.transform.position);
+        SetTarget(structure);
+        SetTask(UnitTask.Build);
+    }
+
+
     void CheckForCloseObjects()
     {
         Debug.Log("Checking!");
