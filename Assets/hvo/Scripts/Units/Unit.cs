@@ -13,7 +13,7 @@ public enum UnitTask {
 public abstract class Unit : MonoBehaviour
 {
     [SerializeField] private ActionSO[] m_Actions;
-    [SerializeField] private float m_ObjectDetectionRadius = 3f;
+    [SerializeField] protected float m_ObjectDetectionRadius = 3f;
 
     public bool IsTargeted;
 

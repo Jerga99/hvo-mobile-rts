@@ -7,9 +7,9 @@ public class WorkerUnit : HumanoidUnit
 
     protected override void UpdateBehaviour()
     {
-        if (CurrentTask != UnitTask.None)
+        if (CurrentTask == UnitTask.Build && HasTarget)
         {
-            CheckForCloseObjects();
+            CheckForConstruction();
         }
     }
 
@@ -25,23 +25,13 @@ public class WorkerUnit : HumanoidUnit
         SetTask(UnitTask.Build);
     }
 
-
-    void CheckForCloseObjects()
+    void CheckForConstruction()
     {
-        Debug.Log("Checking!");
-        var hits = RunProximityObjectDetection();
+        var distanceToConstruction = Vector3.Distance(transform.position, Target.transform.position);
 
-        foreach (var hit in hits)
+        if (distanceToConstruction <= m_ObjectDetectionRadius)
         {
-            if (hit.gameObject == this.gameObject) continue;
-
-            if (CurrentTask == UnitTask.Build && hit.gameObject == Target.gameObject)
-            {
-                if (hit.TryGetComponent<StructureUnit>(out var unit))
-                {
-                    StartBuilding(unit);
-                }
-            }
+            StartBuilding(Target as StructureUnit);
         }
     }
 
@@ -67,3 +57,26 @@ public class WorkerUnit : HumanoidUnit
         SetTarget(null);
     }
 }
+
+
+
+
+
+// void CheckForCloseObjects()
+//     {
+//         Debug.Log("Checking!");
+//         var hits = RunProximityObjectDetection();
+
+//         foreach (var hit in hits)
+//         {
+//             if (hit.gameObject == this.gameObject) continue;
+
+//             if (CurrentTask == UnitTask.Build && hit.gameObject == Target.gameObject)
+//             {
+//                 if (hit.TryGetComponent<StructureUnit>(out var unit))
+//                 {
+//                     StartBuilding(unit);
+//                 }
+//             }
+//         }
+//     }
