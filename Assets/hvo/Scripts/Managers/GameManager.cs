@@ -14,6 +14,9 @@ public class GameManager : SingletonManager<GameManager>
     [SerializeField] private ActionBar m_ActionBar;
     [SerializeField] private ConfirmationBar m_BuildConfirmationBar;
 
+    [Header("VFX")]
+    [SerializeField] private ParticleSystem m_ConstructionEffectPrefab;
+
     public Unit ActiveUnit;
 
     private PlacementProcess m_PlacementProcess;
@@ -201,7 +204,8 @@ public class GameManager : SingletonManager<GameManager>
             new BuildingProcess(
                 m_PlacementProcess.BuildAction,
                 buildPosition,
-                (WorkerUnit)ActiveUnit
+                (WorkerUnit)ActiveUnit,
+                m_ConstructionEffectPrefab
             );
 
             m_PlacementProcess = null;
