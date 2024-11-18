@@ -2,6 +2,11 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+public enum ClickType
+{
+    Move, Attack, Build
+}
+
 public class GameManager : SingletonManager<GameManager>
 {
     [Header("Tilemaps")]
@@ -10,7 +15,8 @@ public class GameManager : SingletonManager<GameManager>
     [SerializeField] private Tilemap[] m_UnreachableTilemaps;
 
     [Header("UI")]
-    [SerializeField] private PointToClick m_PointToClickPrefab;
+    [SerializeField] private PointToClick m_PointToMovePrefab;
+    [SerializeField] private PointToClick m_PointToBuildPrefab;
     [SerializeField] private ActionBar m_ActionBar;
     [SerializeField] private ConfirmationBar m_BuildConfirmationBar;
 
@@ -96,7 +102,7 @@ public class GameManager : SingletonManager<GameManager>
     {
         if (HasActiveUnit && IsHumanoid(ActiveUnit))
         {
-            DisplayClickEffect(worldPoint);
+            DisplayClickEffect(worldPoint, ClickType.Move);
             ActiveUnit.MoveTo(worldPoint);
         }
     }
@@ -112,6 +118,7 @@ public class GameManager : SingletonManager<GameManager>
             }
             else if (WorkerClickedOnUnfinishedBuild(unit))
             {
+                DisplayClickEffect(unit.transform.position, ClickType.Build);
                 ((WorkerUnit)ActiveUnit).SendToBuild(unit as StructureUnit);
                 return;
             }
@@ -158,9 +165,16 @@ public class GameManager : SingletonManager<GameManager>
         ClearActionBarUI();
     }
 
-    void DisplayClickEffect(Vector2 worldPoint)
+    void DisplayClickEffect(Vector2 worldPoint, ClickType clickType)
     {
-        Instantiate(m_PointToClickPrefab, (Vector3)worldPoint, Quaternion.identity);
+        if (clickType == ClickType.Move)
+        {
+            Instantiate(m_PointToMovePrefab, (Vector3)worldPoint, Quaternion.identity);
+        }
+        else if (clickType == ClickType.Build)
+        {
+            Instantiate(m_PointToBuildPrefab, (Vector3)worldPoint, Quaternion.identity);
+        }
     }
 
     void ShowUnitActions(Unit unit)
@@ -199,6 +213,7 @@ public class GameManager : SingletonManager<GameManager>
 
         if (m_PlacementProcess.TryFinalizePlacement(out Vector3 buildPosition))
         {
+            DisplayClickEffect(buildPosition, ClickType.Build);
             m_BuildConfirmationBar.Hide();
 
             new BuildingProcess(
