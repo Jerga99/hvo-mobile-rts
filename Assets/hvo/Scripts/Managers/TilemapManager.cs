@@ -9,17 +9,14 @@ public class TilemapManager: SingletonManager<TilemapManager>
     [SerializeField] private Tilemap m_OverlayTilemap;
     [SerializeField] private Tilemap[] m_UnreachableTilemaps;
 
+    public Tilemap PathfindingTilemap => m_WalkableTilemap;
+
     private Pathfinding m_Pathfinding;
 
     void Start()
     {
-        var bounds = m_WalkableTilemap.cellBounds;
-        int width = bounds.size.x;
-        int height = bounds.size.y;
-
         m_Pathfinding = new Pathfinding(
-            width,
-            height
+            this
         );
     }
 
