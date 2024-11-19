@@ -20,6 +20,13 @@ public class TilemapManager: SingletonManager<TilemapManager>
         );
     }
 
+    public bool CanWalkAtTile(Vector3Int tilePosition)
+    {
+        return
+            m_WalkableTilemap.HasTile(tilePosition) &&
+            !IsInUnreachableTilemap(tilePosition);
+    }
+
     public bool CanPlaceTile(Vector3Int tilePosition)
     {
         return

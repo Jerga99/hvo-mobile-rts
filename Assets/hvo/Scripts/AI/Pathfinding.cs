@@ -18,20 +18,28 @@ public class Pathfinding
         m_Width = bounds.size.x;
         m_Height = bounds.size.y;
         m_Grid = new Node[m_Width, m_Height];
-        InitializeGrid(bounds.min);
+        InitializeGrid();
     }
 
-    void InitializeGrid(Vector3Int offset)
+    void InitializeGrid()
     {
+        Vector3 halfCellSize = m_TilemapManager.PathfindingTilemap.cellSize / 2;
+        Vector3Int offset = m_TilemapManager.PathfindingTilemap.cellBounds.min;
+
         for (int x = 0; x < m_Width; x++)
         {
             for (int y = 0; y < m_Height; y++)
             {
-                var nodePosition = new Vector3(x + offset.x, y + offset.y);
-                var node = new Node(nodePosition.x, nodePosition.y, true);
+                Vector3Int nodeLeftBottomPosition = new Vector3Int(x + offset.x, y + offset.y);
+                var nodeCenterPosition = nodeLeftBottomPosition + halfCellSize;
+                bool isWalkable = m_TilemapManager.CanWalkAtTile(nodeLeftBottomPosition);
+                var node = new Node(nodeCenterPosition.x, nodeCenterPosition.y, isWalkable);
                 m_Grid[x, y] = node;
 
-                Debug.Log($"Node x: {x}, y: {y} | Position: Vector2({node.x}, {node.y}) | W: {node.isWalkable}");
+                if (!isWalkable)
+                {
+                    Debug.Log($"Node x: {x}, y: {y} | Position: Vector2({node.x}, {node.y}) | W: {node.isWalkable}");
+                }
             }
         }
     }
