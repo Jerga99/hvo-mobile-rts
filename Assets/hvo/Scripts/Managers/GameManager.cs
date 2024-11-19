@@ -9,11 +9,6 @@ public enum ClickType
 
 public class GameManager : SingletonManager<GameManager>
 {
-    [Header("Tilemaps")]
-    [SerializeField] private Tilemap m_WalkableTilemap;
-    [SerializeField] private Tilemap m_OverlayTilemap;
-    [SerializeField] private Tilemap[] m_UnreachableTilemaps;
-
     [Header("UI")]
     [SerializeField] private PointToClick m_PointToMovePrefab;
     [SerializeField] private PointToClick m_PointToBuildPrefab;
@@ -54,12 +49,10 @@ public class GameManager : SingletonManager<GameManager>
     public void StartBuildProcess(BuildActionSO buildAction)
     {
         if (m_PlacementProcess != null) return;
-
+        var tilemapManager = TilemapManager.Get();
         m_PlacementProcess = new PlacementProcess(
             buildAction,
-            m_WalkableTilemap,
-            m_OverlayTilemap,
-            m_UnreachableTilemaps
+            tilemapManager
         );
         m_PlacementProcess.ShowPlacementOutline();
         m_BuildConfirmationBar.Show(buildAction.GoldCost, buildAction.WoodCost);

@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - GameManager
-  - PathfindingManager
+  - TilemapManager
   layers:
   - Default
   - TransparentFX
