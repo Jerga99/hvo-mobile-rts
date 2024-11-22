@@ -22,4 +22,9 @@ public class Node
 
         this.isWalkable = isWalkable;
     }
+
+    public override string ToString()
+    {
+        return $"({x}, {y})";
+    }
 }

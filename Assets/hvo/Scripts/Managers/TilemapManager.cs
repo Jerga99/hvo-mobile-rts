@@ -9,6 +9,10 @@ public class TilemapManager: SingletonManager<TilemapManager>
     [SerializeField] private Tilemap m_OverlayTilemap;
     [SerializeField] private Tilemap[] m_UnreachableTilemaps;
 
+    [Header("Testing")]
+    [SerializeField] private Transform m_StartTransform;
+    [SerializeField] private Transform m_DestinationTransform;
+
     public Tilemap PathfindingTilemap => m_WalkableTilemap;
 
     private Pathfinding m_Pathfinding;
@@ -17,6 +21,14 @@ public class TilemapManager: SingletonManager<TilemapManager>
     {
         m_Pathfinding = new Pathfinding(
             this
+        );
+    }
+
+    void Update()
+    {
+        m_Pathfinding.FindPath(
+            m_StartTransform.position,
+            m_DestinationTransform.position
         );
     }
 
