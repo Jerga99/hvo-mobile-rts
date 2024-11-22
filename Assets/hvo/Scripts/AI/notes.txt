@@ -1,0 +1,31 @@
+
+
+Mnahattan Distance -> d = |x1 - x2| + |y1 - y2|
+
+if (dstX > dstY)
+{
+  return 14 * dstY + 10 * (dstX - dstY);
+}
+
+return 14 * dstX + 10 * (dstY - dstX);
+
+10 = orthogonal move
+14 = diagonal move
+
+------
+(0,0) -> (4,4)
+
+dstX = |x1 - x2| = |0 - 4| = 4
+dstY = |y1 - y2| = |0 - 4| = 4
+
+14 * 4 + 10 * (4 - 4) = 14 * 4 + 10 * 0
+
+
+-----
+(0, 1) -> (4,4)
+dstX = |0 - 4| = 4
+dstY = |1 - 4| = 3
+
+return 14 * dstY + 10 * (dstX - dstY);
+
+14 * 3 + 10 * 1
