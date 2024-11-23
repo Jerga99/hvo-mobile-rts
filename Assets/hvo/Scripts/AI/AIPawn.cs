@@ -9,8 +9,9 @@ public class AIPawn : MonoBehaviour
     private float m_Speed = 5f;
 
     private Vector3? m_Destination;
-    private List<Node> m_CurrentPath;
+    private List<Node> m_CurrentPath = new();
     private TilemapManager m_TilemapManager;
+    private int m_CurrentNodeIndex;
 
     public Vector3? Destination => m_Destination;
 
@@ -21,17 +22,21 @@ public class AIPawn : MonoBehaviour
 
     void Update()
     {
-        if (m_Destination.HasValue)
+        if (!IsPathValid())
         {
-            var dir = m_Destination.Value - transform.position;
-            transform.position += dir.normalized * Time.deltaTime * m_Speed;
+            m_Destination = null;
+            return;
+        }
 
-            var distanceToDestination = Vector3.Distance(transform.position, m_Destination.Value);
+        Node currentNode = m_CurrentPath[m_CurrentNodeIndex];
+        Vector3 targetPosition = new Vector3(currentNode.centerX, currentNode.centerY);
+        Vector3 direction = (targetPosition - transform.position).normalized;
 
-            if (distanceToDestination < 0.1f)
-            {
-                m_Destination = null;
-            }
+        transform.position += direction * m_Speed * Time.deltaTime;
+
+        if (Vector3.Distance(transform.position, targetPosition) <= 0.15f)
+        {
+            m_CurrentNodeIndex++;
         }
     }
 
@@ -40,5 +45,11 @@ public class AIPawn : MonoBehaviour
         m_CurrentPath = m_TilemapManager.FindPath(transform.position, destination);
         Debug.Log("Path: " + string.Join(", ", m_CurrentPath));
         m_Destination = destination;
+        m_CurrentNodeIndex = 0;
+    }
+
+    bool IsPathValid()
+    {
+        return m_CurrentPath.Count > 0 && m_CurrentNodeIndex < m_CurrentPath.Count;
     }
 }
