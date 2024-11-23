@@ -45,7 +45,7 @@ public class Pathfinding
         }
     }
 
-    public void FindPath(Vector3 startPosition, Vector3 endPosition)
+    public List<Node> FindPath(Vector3 startPosition, Vector3 endPosition)
     {
         Node startNode = FindNode(startPosition);
         Node endNode = FindNode(endPosition);
@@ -53,7 +53,7 @@ public class Pathfinding
         if (startNode == null || endNode == null)
         {
             Debug.Log("Cannot find the path!");
-            return;
+            return new List<Node>();
         }
 
         List<Node> openList = new();
@@ -67,8 +67,8 @@ public class Pathfinding
 
             if (currentNode == endNode)
             {
-                Debug.Log("CL: " + string.Join(", ", closedList));
-                return;
+                var path = RetracePath(startNode, endNode);
+                return path;
             }
 
             openList.Remove(currentNode);
@@ -95,7 +95,24 @@ public class Pathfinding
             }
         }
 
-        Debug.Log("No Path found!");
+        return new List<Node>();
+    }
+
+    List<Node> RetracePath(Node startNode, Node endNode)
+    {
+        List<Node> path = new();
+        Node currentNode = endNode;
+
+        while(currentNode != startNode)
+        {
+            path.Add(currentNode);
+            currentNode = currentNode.parent;
+        }
+
+        path.Add(startNode);
+        path.Reverse();
+
+        return path;
     }
 
     float GetDistance(Node nodeA, Node nodeB)
