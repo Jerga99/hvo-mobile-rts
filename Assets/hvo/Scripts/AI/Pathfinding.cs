@@ -45,6 +45,21 @@ public class Pathfinding
         }
     }
 
+    public Node FindNode(Vector3 position)
+    {
+        Vector3Int flooredPosition = new Vector3Int(Mathf.FloorToInt(position.x), Mathf.FloorToInt(position.y));
+
+        int gridX = flooredPosition.x - m_GridOffset.x;
+        int gridY = flooredPosition.y - m_GridOffset.y;
+
+        if (gridX >= 0 && gridX < m_Width && gridY >= 0 && gridY < m_Height)
+        {
+            return m_Grid[gridX, gridY];
+        }
+
+        return null;
+    }
+
     public List<Node> FindPath(Vector3 startPosition, Vector3 endPosition)
     {
         Node startNode = FindNode(startPosition);
@@ -168,20 +183,5 @@ public class Pathfinding
         }
 
         return lowestFCostNode;
-    }
-
-    Node FindNode(Vector3 position)
-    {
-        Vector3Int flooredPosition = new Vector3Int(Mathf.FloorToInt(position.x), Mathf.FloorToInt(position.y));
-
-        int gridX = flooredPosition.x - m_GridOffset.x;
-        int gridY = flooredPosition.y - m_GridOffset.y;
-
-        if (gridX >= 0 && gridX < m_Width && gridY >= 0 && gridY < m_Height)
-        {
-            return m_Grid[gridX, gridY];
-        }
-
-        return null;
     }
 }
