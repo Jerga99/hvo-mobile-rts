@@ -2,6 +2,9 @@
 
 Mnahattan Distance -> d = |x1 - x2| + |y1 - y2|
 
+dstX = |x1 - x2|
+dstY = |y1 - y2|
+
 if (dstX > dstY)
 {
   return 14 * dstY + 10 * (dstX - dstY);

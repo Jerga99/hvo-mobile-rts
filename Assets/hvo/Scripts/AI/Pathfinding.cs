@@ -1,6 +1,7 @@
 
 
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Pathfinding
@@ -66,21 +67,48 @@ public class Pathfinding
 
             if (currentNode == endNode)
             {
-                Debug.Log("Path Found!");
+                Debug.Log("CL: " + string.Join(", ", closedList));
                 return;
             }
 
             openList.Remove(currentNode);
             closedList.Add(currentNode);
 
-            Debug.Log("OL: " + string.Join(", ", openList));
-            Debug.Log("CL: " + string.Join(", ", closedList));
+            foreach(Node neighbor in GetNeighbors(currentNode))
+            {
+                if (!neighbor.isWalkable || closedList.Contains(neighbor)) continue;
 
-            var neighbors = GetNeighbors(currentNode);
+                float tentativeG = currentNode.gCost + GetDistance(currentNode, neighbor);
 
-            Debug.Log("neighbors: " + string.Join(", ", neighbors));
+                if (tentativeG < neighbor.gCost || !openList.Contains(neighbor))
+                {
+                    neighbor.gCost = tentativeG;
+                    neighbor.hCost = GetDistance(neighbor, endNode);
+                    neighbor.fCost = neighbor.gCost + neighbor.hCost;
+                    neighbor.parent = currentNode;
+
+                    if (!openList.Contains(neighbor))
+                    {
+                        openList.Add(neighbor);
+                    }
+                }
+            }
         }
 
+        Debug.Log("No Path found!");
+    }
+
+    float GetDistance(Node nodeA, Node nodeB)
+    {
+        int dstX = Mathf.Abs(nodeA.x - nodeB.x);
+        int dstY = Mathf.Abs(nodeA.y - nodeB.y);
+
+        if (dstX > dstY)
+        {
+            return 14 * dstY + 10 * (dstX - dstY);
+        }
+
+        return 14 * dstX + 10 * (dstY - dstX);
     }
 
     List<Node> GetNeighbors(Node node)
@@ -99,7 +127,6 @@ public class Pathfinding
                 if (checkX >= 0 && checkX < m_Width && checkY >= 0 && checkY < m_Height)
                 {
                     var neighbor = m_Grid[checkX, checkY];
-                    if (!neighbor.isWalkable) continue;
                     neighbors.Add(neighbor);
                 }
             }
