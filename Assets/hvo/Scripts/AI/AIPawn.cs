@@ -1,5 +1,6 @@
 
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AIPawn : MonoBehaviour
@@ -8,8 +9,15 @@ public class AIPawn : MonoBehaviour
     private float m_Speed = 5f;
 
     private Vector3? m_Destination;
+    private List<Node> m_CurrentPath;
+    private TilemapManager m_TilemapManager;
 
     public Vector3? Destination => m_Destination;
+
+    void Start()
+    {
+        m_TilemapManager = TilemapManager.Get();
+    }
 
     void Update()
     {
@@ -29,6 +37,8 @@ public class AIPawn : MonoBehaviour
 
     public void SetDestination(Vector3 destination)
     {
+        m_CurrentPath = m_TilemapManager.FindPath(transform.position, destination);
+        Debug.Log("Path: " + string.Join(", ", m_CurrentPath));
         m_Destination = destination;
     }
 }
