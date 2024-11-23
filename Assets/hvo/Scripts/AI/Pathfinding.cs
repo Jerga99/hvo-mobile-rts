@@ -75,8 +75,37 @@ public class Pathfinding
 
             Debug.Log("OL: " + string.Join(", ", openList));
             Debug.Log("CL: " + string.Join(", ", closedList));
+
+            var neighbors = GetNeighbors(currentNode);
+
+            Debug.Log("neighbors: " + string.Join(", ", neighbors));
         }
 
+    }
+
+    List<Node> GetNeighbors(Node node)
+    {
+        List<Node> neighbors = new();
+
+        for (int x = -1; x <= 1; x++)
+        {
+            for (int y = -1; y <= 1; y++)
+            {
+                if (x == 0 && y == 0) continue;
+
+                int checkX = node.x + x - m_GridOffset.x;
+                int checkY = node.y + y - m_GridOffset.y;
+
+                if (checkX >= 0 && checkX < m_Width && checkY >= 0 && checkY < m_Height)
+                {
+                    var neighbor = m_Grid[checkX, checkY];
+                    if (!neighbor.isWalkable) continue;
+                    neighbors.Add(neighbor);
+                }
+            }
+        }
+
+        return neighbors;
     }
 
     Node GetLowestFCostNode(List<Node> openList)
