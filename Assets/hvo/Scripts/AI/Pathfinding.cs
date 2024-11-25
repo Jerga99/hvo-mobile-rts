@@ -115,6 +115,28 @@ public class Pathfinding
         return new List<Vector3>();
     }
 
+    public void UpdateNodesInArea(Vector3Int startPosition, int width, int height)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                int xPosition = startPosition.x + x;
+                int yPosition = startPosition.y + y;
+
+                int gridX = xPosition - m_GridOffset.x;
+                int gridY = yPosition - m_GridOffset.y;
+
+                if (gridX >= 0 && gridX < m_Width && gridY >= 0 && gridY < m_Height)
+                {
+                    Node node = m_Grid[gridX, gridY];
+                    Vector3Int cellPosition = new Vector3Int(node.x, node.y, 0);
+                    node.isWalkable = m_TilemapManager.CanWalkAtTile(cellPosition);
+                }
+            }
+        }
+    }
+
     void ResetNodes(List<Node> openList, HashSet<Node> closedList)
     {
         foreach(Node node in openList)
