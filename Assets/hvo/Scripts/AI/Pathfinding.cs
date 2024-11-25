@@ -83,6 +83,7 @@ public class Pathfinding
             if (currentNode == endNode)
             {
                 var path = RetracePath(startNode, endNode, startPosition);
+                ResetNodes(openList, closedList);
                 return path;
             }
 
@@ -110,7 +111,28 @@ public class Pathfinding
             }
         }
 
+        ResetNodes(openList, closedList);
         return new List<Vector3>();
+    }
+
+    void ResetNodes(List<Node> openList, HashSet<Node> closedList)
+    {
+        foreach(Node node in openList)
+        {
+            node.gCost = 0;
+            node.hCost = 0;
+            node.parent = null;
+        }
+
+        foreach(Node node in closedList)
+        {
+            node.gCost = 0;
+            node.hCost = 0;
+            node.parent = null;
+        }
+
+        openList.Clear();
+        closedList.Clear();
     }
 
     List<Vector3> RetracePath(Node startNode, Node endNode, Vector3 startPosition)
