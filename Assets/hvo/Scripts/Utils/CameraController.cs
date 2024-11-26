@@ -8,6 +8,8 @@ public class CameraController
     private float m_PanSpeed;
     private float m_MobilePanSpeed;
 
+    public bool LockCamera { get; set; }
+
     public CameraController(float panSpeed, float mobilePanSpeed)
     {
         m_PanSpeed = panSpeed;
@@ -16,6 +18,8 @@ public class CameraController
 
     public void Update()
     {
+        if (LockCamera) return;
+
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
