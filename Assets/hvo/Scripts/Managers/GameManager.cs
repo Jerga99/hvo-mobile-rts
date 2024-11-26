@@ -15,11 +15,16 @@ public class GameManager : SingletonManager<GameManager>
     [SerializeField] private ActionBar m_ActionBar;
     [SerializeField] private ConfirmationBar m_BuildConfirmationBar;
 
+    [Header("Camera Settings")]
+    [SerializeField] private float m_PanSpeed = 100;
+    [SerializeField] private float m_MobilePanSpeed = 10;
+
     [Header("VFX")]
     [SerializeField] private ParticleSystem m_ConstructionEffectPrefab;
 
     public Unit ActiveUnit;
 
+    private CameraController m_CameraController;
     private PlacementProcess m_PlacementProcess;
     private int m_Gold = 1000;
     private int m_Wood = 1000;
@@ -31,11 +36,14 @@ public class GameManager : SingletonManager<GameManager>
 
     void Start()
     {
+        m_CameraController = new CameraController(m_PanSpeed, m_MobilePanSpeed);
         ClearActionBarUI();
     }
 
     void Update()
     {
+        m_CameraController.Update();
+
         if (m_PlacementProcess != null)
         {
             m_PlacementProcess.Update();
