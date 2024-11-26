@@ -1,6 +1,7 @@
 
 
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -76,6 +77,9 @@ public class Pathfinding
 
         openList.Add(startNode);
 
+        Node closestNode = startNode;
+        var closestDistanceToEnd = GetDistance(closestNode, endNode);
+
         while (openList.Count > 0)
         {
             Node currentNode = GetLowestFCostNode(openList);
@@ -98,10 +102,17 @@ public class Pathfinding
 
                 if (tentativeG < neighbor.gCost || !openList.Contains(neighbor))
                 {
+                    var distance = GetDistance(neighbor, endNode);
                     neighbor.gCost = tentativeG;
-                    neighbor.hCost = GetDistance(neighbor, endNode);
+                    neighbor.hCost = distance;
                     neighbor.fCost = neighbor.gCost + neighbor.hCost;
                     neighbor.parent = currentNode;
+
+                    if (distance < closestDistanceToEnd)
+                    {
+                        closestNode = neighbor;
+                        closestDistanceToEnd = distance;
+                    }
 
                     if (!openList.Contains(neighbor))
                     {
@@ -110,9 +121,9 @@ public class Pathfinding
                 }
             }
         }
-
+        var unfinshedPath = RetracePath(startNode, closestNode, startPosition);
         ResetNodes(openList, closedList);
-        return new List<Vector3>();
+        return unfinshedPath;
     }
 
     public void UpdateNodesInArea(Vector3Int startPosition, int width, int height)
