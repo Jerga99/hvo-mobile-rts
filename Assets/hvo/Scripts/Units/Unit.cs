@@ -2,11 +2,13 @@
 
 using UnityEngine;
 
-public enum UnitState {
+public enum UnitState
+{
     Idle, Moving, Attacking, Chopping, Minig, Building
 }
 
-public enum UnitTask {
+public enum UnitTask
+{
     None, Build, Chop, Mine, Attack
 }
 
@@ -41,11 +43,20 @@ public abstract class Unit : MonoBehaviour
         if (TryGetComponent<AIPawn>(out var aiPawn))
         {
             m_AIPawn = aiPawn;
+            m_AIPawn.OnNewPositionSelected += TurnToPosition;
         }
 
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         m_OriginalMaterial = m_SpriteRenderer.material;
         m_HighlightMaterial = Resources.Load<Material>("Materials/Outline");
+    }
+
+    void OnDestroy()
+    {
+        if (m_AIPawn != null)
+        {
+            m_AIPawn.OnNewPositionSelected -= TurnToPosition;
+        }
     }
 
     public void SetTask(UnitTask task)
@@ -84,7 +95,7 @@ public abstract class Unit : MonoBehaviour
         IsTargeted = false;
     }
 
-    protected virtual void OnSetDestination(){}
+    protected virtual void OnSetDestination() { }
 
     protected virtual void OnSetTask(UnitTask oldTask, UnitTask newTask)
     {
@@ -99,6 +110,12 @@ public abstract class Unit : MonoBehaviour
     protected Collider2D[] RunProximityObjectDetection()
     {
         return Physics2D.OverlapCircleAll(transform.position, m_ObjectDetectionRadius);
+    }
+
+    void TurnToPosition(Vector3 newPosition)
+    {
+        var direction = (newPosition - transform.position).normalized;
+        m_SpriteRenderer.flipX = direction.x < 0;
     }
 
     void Highlight()
