@@ -1,12 +1,12 @@
 
 
-using System.Numerics;
 using UnityEngine;
 
 public class StructureUnit: Unit
 {
     private BuildingProcess m_BuildingProcess;
 
+    public override bool IsBuilding => true;
     public bool IsUnderConstuction => m_BuildingProcess != null;
 
     void Update()

@@ -29,6 +29,8 @@ public abstract class Unit : MonoBehaviour
     public UnitTask CurrentTask { get; protected set; } = UnitTask.None;
     public Unit Target { get; protected set; }
 
+    public virtual bool IsPlayer => true;
+    public virtual bool IsBuilding => false;
     public ActionSO[] Actions => m_Actions;
     public SpriteRenderer Renderer => m_SpriteRenderer;
     public bool HasTarget => Target != null;

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameManager
   - TilemapManager
+  - Building
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
-  - Building
+  - Unit
+  - 
   - 
   - 
   - 
