@@ -23,9 +23,10 @@ public class HumanoidUnit : Unit
     {
         UpdateVelocity();
         UpdateBehaviour();
+        UpdateMovementAnimation();
     }
 
-    protected virtual void UpdateBehaviour(){}
+    protected virtual void UpdateBehaviour() { }
 
     protected virtual void UpdateVelocity()
     {
@@ -37,9 +38,15 @@ public class HumanoidUnit : Unit
         m_LastPosition = transform.position;
         m_SmoothedSpeed = Mathf.Lerp(m_SmoothedSpeed, CurrentSpeed, Time.deltaTime * m_SmoothFactor);
 
-        var state = m_SmoothedSpeed > 0.1f ? UnitState.Moving : UnitState.Idle;
-        SetState(state);
+        if (CurrentState != UnitState.Attacking)
+        {
+            var state = m_SmoothedSpeed > 0.1f ? UnitState.Moving : UnitState.Idle;
+            SetState(state);
+        }
+    }
 
+    protected virtual void UpdateMovementAnimation()
+    {
         m_Animator?.SetFloat("Speed", Mathf.Clamp01(m_SmoothedSpeed));
     }
 }
