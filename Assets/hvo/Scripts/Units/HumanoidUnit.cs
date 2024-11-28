@@ -13,8 +13,9 @@ public class HumanoidUnit : Unit
 
     public float CurrentSpeed => m_Velocity.magnitude;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         m_LastPosition = transform.position;
     }
 
