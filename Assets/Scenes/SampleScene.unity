@@ -1884,7 +1884,7 @@ Tilemap:
       - {fileID: 7752229987998269982, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: -4710801888167562894, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: 6853023835892009477, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
-      m_AnimationSpeed: 10
+      m_AnimationSpeed: 10.000001
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -12, y: -8, z: 0}
@@ -2514,7 +2514,7 @@ Tilemap:
       - {fileID: 7752229987998269982, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: -4710801888167562894, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: 6853023835892009477, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
-      m_AnimationSpeed: 10
+      m_AnimationSpeed: 10.000001
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -2, y: 8, z: 0}
@@ -9455,6 +9455,7 @@ MonoBehaviour:
   m_ObjectDetectionRadius: 3
   m_UnitDetectionCheckRate: 0.5
   m_AttackRange: 1
+  m_AutoAttackFrequency: 1.5
   IsTargeted: 0
 --- !u!70 &618694903
 CapsuleCollider2D:
@@ -9684,7 +9685,7 @@ Transform:
   m_GameObject: {fileID: 631601136}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.92, y: -3.68, z: 0}
+  m_LocalPosition: {x: 9.05, y: -3.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9706,6 +9707,7 @@ MonoBehaviour:
   m_ObjectDetectionRadius: 5
   m_UnitDetectionCheckRate: 0.5
   m_AttackRange: 1
+  m_AutoAttackFrequency: 1.5
   IsTargeted: 0
 --- !u!114 &631601141
 MonoBehaviour:
@@ -9719,7 +9721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250122f2265ea4e6c886bff11db5bcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 5
+  m_Speed: 3
 --- !u!70 &631601142
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -10340,7 +10342,7 @@ Tilemap:
       - {fileID: -2417548612333543299, guid: dc2ff17b0e49741978645d0977afcc60, type: 3}
       - {fileID: 2648045286040330466, guid: dc2ff17b0e49741978645d0977afcc60, type: 3}
       - {fileID: 2763439710183631591, guid: dc2ff17b0e49741978645d0977afcc60, type: 3}
-      m_AnimationSpeed: 10.000001
+      m_AnimationSpeed: 10
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -15, y: 2, z: 0}
@@ -17375,6 +17377,7 @@ MonoBehaviour:
   m_ObjectDetectionRadius: 1
   m_UnitDetectionCheckRate: 0.5
   m_AttackRange: 0.8
+  m_AutoAttackFrequency: 1.5
   IsTargeted: 0
 --- !u!1 &1484846381
 GameObject:

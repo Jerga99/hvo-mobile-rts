@@ -43,7 +43,7 @@ public class EnemyUnit : HumanoidUnit
                 {
                     if (IsTargetInRange(Target.transform))
                     {
-                        Debug.Log("Attacking!");
+                        TryAttackCurrentTarget();
                     }
                     else
                     {
