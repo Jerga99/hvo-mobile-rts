@@ -110,6 +110,11 @@ public abstract class Unit : MonoBehaviour
         IsTargeted = false;
     }
 
+    public void StopMovement()
+    {
+        m_AIPawn.Stop();
+    }
+
     protected virtual void OnSetDestination() { }
 
     protected virtual void OnSetTask(UnitTask oldTask, UnitTask newTask)
