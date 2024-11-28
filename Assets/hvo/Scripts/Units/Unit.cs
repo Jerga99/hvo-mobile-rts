@@ -156,13 +156,19 @@ public abstract class Unit : MonoBehaviour
     {
         if (Time.time >= m_NextAutoAttackTime)
         {
-            Debug.Log("Attack!");
+            Debug.Log("Attacking!");
             m_NextAutoAttackTime = Time.time + m_AutoAttackFrequency;
+            PerformAttackAnimation();
             return true;
         }
 
         Debug.Log("Attack is on CD");
         return false;
+    }
+
+    protected virtual void PerformAttackAnimation()
+    {
+
     }
 
     protected bool IsTargetInRange(Transform target)
