@@ -36,7 +36,7 @@ public class TextPopup: MonoBehaviour
         m_Text.fontSize += m_FontSizeCurve.Evaluate(normalizedTime) / 5;
         m_Text.color = new Color(m_Text.color.r, m_Text.color.g, m_Text.color.b, alpha);
         float xOffset = m_XOffsetCurve.Evaluate(normalizedTime);
-        float yOffset = m_YOffsetCurve.Evaluate(normalizedTime);
+        float yOffset = m_YOffsetCurve.Evaluate(normalizedTime) * 1.5f;
 
         transform.position += new Vector3(xOffset, yOffset, 0) * Time.deltaTime;
     }
