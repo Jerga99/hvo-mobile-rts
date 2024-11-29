@@ -16,6 +16,7 @@ public class GameManager : SingletonManager<GameManager>
     [SerializeField] private PointToClick m_PointToBuildPrefab;
     [SerializeField] private ActionBar m_ActionBar;
     [SerializeField] private ConfirmationBar m_BuildConfirmationBar;
+    [SerializeField] private TextPopupController m_TextPopupController;
 
     [Header("Camera Settings")]
     [SerializeField] private float m_PanSpeed = 100;
@@ -83,6 +84,11 @@ public class GameManager : SingletonManager<GameManager>
         {
             m_Enemies.Remove(unit);
         }
+    }
+
+    public void ShowTextPopup(string text, Vector3 position, Color color)
+    {
+        m_TextPopupController.Spawn(text, position, color);
     }
 
     public Unit FindClosestUnit(Vector3 originPosition, float maxDistance, bool isPlayer)
