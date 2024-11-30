@@ -1584,7 +1584,7 @@ Tilemap:
       - {fileID: 7752229987998269982, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: -4710801888167562894, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: 6853023835892009477, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
-      m_AnimationSpeed: 10
+      m_AnimationSpeed: 10.000001
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -5, y: -11, z: 0}
@@ -1989,7 +1989,7 @@ Tilemap:
       - {fileID: 7752229987998269982, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: -4710801888167562894, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: 6853023835892009477, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
-      m_AnimationSpeed: 10
+      m_AnimationSpeed: 10.000001
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -12, y: -6, z: 0}
@@ -2154,7 +2154,7 @@ Tilemap:
       - {fileID: 7752229987998269982, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: -4710801888167562894, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: 6853023835892009477, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
-      m_AnimationSpeed: 10.000001
+      m_AnimationSpeed: 10
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 13, y: -1, z: 0}
@@ -2244,7 +2244,7 @@ Tilemap:
       - {fileID: 7752229987998269982, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: -4710801888167562894, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
       - {fileID: 6853023835892009477, guid: 88b97c8877d02442e8f48e07c5f75dce, type: 3}
-      m_AnimationSpeed: 10.000001
+      m_AnimationSpeed: 10
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 13, y: 2, z: 0}
@@ -9504,6 +9504,7 @@ MonoBehaviour:
   m_AutoAttackDamageDelay: 0.5
   m_AutoAttackDamage: 10
   m_Health: 15
+  m_DamageFlashColor: {r: 1, g: 0.6554875, b: 0.6462264, a: 1}
   IsTargeted: 0
 --- !u!70 &618694903
 CapsuleCollider2D:
@@ -9759,6 +9760,7 @@ MonoBehaviour:
   m_AutoAttackDamageDelay: 0.5
   m_AutoAttackDamage: 7
   m_Health: 100
+  m_DamageFlashColor: {r: 1, g: 0.27, b: 0.25, a: 1}
   IsTargeted: 0
 --- !u!114 &631601141
 MonoBehaviour:
@@ -17433,6 +17435,7 @@ MonoBehaviour:
   m_AutoAttackDamageDelay: 0.5
   m_AutoAttackDamage: 7
   m_Health: 8
+  m_DamageFlashColor: {r: 1, g: 0.27, b: 0.25, a: 1}
   IsTargeted: 0
 --- !u!1 &1484846381
 GameObject:
