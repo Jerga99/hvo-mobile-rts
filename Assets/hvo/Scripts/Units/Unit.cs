@@ -183,10 +183,11 @@ public abstract class Unit : MonoBehaviour
     }
 
     protected virtual void PerformAttackAnimation(){}
+    protected virtual void RunDeadEffect(){}
     protected virtual void Die()
     {
         SetState(UnitState.Dead);
-        Destroy(gameObject);
+        RunDeadEffect();
     }
 
 

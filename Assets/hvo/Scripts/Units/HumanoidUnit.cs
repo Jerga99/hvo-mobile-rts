@@ -66,5 +66,10 @@ public class HumanoidUnit : Unit
             m_Animator.SetTrigger(direction.y > 0 ? "AttackUp" : "AttackDown");
         }
     }
+
+    protected override void RunDeadEffect()
+    {
+        m_Animator.SetTrigger("Dead");
+    }
 }
 
