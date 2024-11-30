@@ -90,6 +90,7 @@ public class GameManager : SingletonManager<GameManager>
                 ActiveUnit = null;
             }
 
+            unit.StopMovement();
             m_PlayerUnits.Remove(unit);
         }
         else

@@ -80,8 +80,6 @@ public abstract class Unit : MonoBehaviour
         {
             m_AIPawn.OnNewPositionSelected -= TurnToPosition;
         }
-
-        UnregisterUnit();
     }
 
     public void SetTask(UnitTask task)
@@ -188,6 +186,7 @@ public abstract class Unit : MonoBehaviour
     {
         SetState(UnitState.Dead);
         RunDeadEffect();
+        UnregisterUnit();
     }
 
 
