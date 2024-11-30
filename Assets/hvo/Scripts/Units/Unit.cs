@@ -169,6 +169,8 @@ public abstract class Unit : MonoBehaviour
 
     protected virtual bool TryAttackCurrentTarget()
     {
+        if (Target.CurrentState == UnitState.Dead) return false;
+
         if (Time.time >= m_NextAutoAttackTime)
         {
             m_NextAutoAttackTime = Time.time + m_AutoAttackFrequency;
@@ -214,7 +216,14 @@ public abstract class Unit : MonoBehaviour
 
         if (target != null)
         {
-            target.TakeDamage(damage, this);
+            if (target.CurrentState == UnitState.Dead)
+            {
+                SetTarget(null);
+            }
+            else
+            {
+                target.TakeDamage(damage, this);
+            }
         }
     }
 
