@@ -185,13 +185,8 @@ public abstract class Unit : MonoBehaviour
     protected virtual void PerformAttackAnimation(){}
     protected virtual void Die()
     {
-        Debug.Log("Unit is dead!");
         SetState(UnitState.Dead);
-
-        if (IsTargeted)
-        {
-            Deselect();
-        }
+        Destroy(gameObject);
     }
 
 
