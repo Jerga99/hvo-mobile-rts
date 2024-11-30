@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum UnitState
 {
-    Idle, Moving, Attacking, Chopping, Minig, Building
+    Idle, Moving, Attacking, Chopping, Minig, Building, Dead
 }
 
 public enum UnitTask
@@ -22,6 +22,7 @@ public abstract class Unit : MonoBehaviour
     [SerializeField] protected float m_AutoAttackFrequency = 1.5f;
     [SerializeField] protected float m_AutoAttackDamageDelay = 0.5f;
     [SerializeField] protected int m_AutoAttackDamage = 7;
+    [SerializeField] protected int m_Health = 100;
 
     public bool IsTargeted;
     protected GameManager m_GameManager;
@@ -33,6 +34,7 @@ public abstract class Unit : MonoBehaviour
     protected CapsuleCollider2D m_Collider;
     protected float m_NextUnitDetectionTime;
     protected float m_NextAutoAttackTime;
+    protected int m_CurrentHealth;
 
     public UnitState CurrentState { get; protected set; } = UnitState.Idle;
     public UnitTask CurrentTask { get; protected set; } = UnitTask.None;
@@ -43,6 +45,7 @@ public abstract class Unit : MonoBehaviour
     public ActionSO[] Actions => m_Actions;
     public SpriteRenderer Renderer => m_SpriteRenderer;
     public bool HasTarget => Target != null;
+    public int CurrentHealth => m_CurrentHealth;
 
     protected virtual void Start()
     {
@@ -67,6 +70,8 @@ public abstract class Unit : MonoBehaviour
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         m_OriginalMaterial = m_SpriteRenderer.material;
         m_HighlightMaterial = Resources.Load<Material>("Materials/Outline");
+
+        m_CurrentHealth = m_Health;
     }
 
     void OnDestroy()
@@ -177,19 +182,36 @@ public abstract class Unit : MonoBehaviour
         return false;
     }
 
-    protected virtual void PerformAttackAnimation()
+    protected virtual void PerformAttackAnimation(){}
+    protected virtual void Die()
     {
+        Debug.Log("Unit is dead!");
+        SetState(UnitState.Dead);
 
+        if (IsTargeted)
+        {
+            Deselect();
+        }
     }
+
 
     protected virtual void TakeDamage(int damage, Unit damager)
     {
+        if (CurrentState == UnitState.Dead) return;
+
+        m_CurrentHealth -= damage;
         m_GameManager.ShowTextPopup(
             damage.ToString(),
             GetTopPosition(),
             Color.red
         );
+
+        if (m_CurrentHealth <= 0)
+        {
+            Die();
+        }
     }
+
 
     protected IEnumerator DelayDamage(float delay, int damage, Unit target)
     {

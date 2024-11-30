@@ -100,6 +100,8 @@ public class GameManager : SingletonManager<GameManager>
 
         foreach (Unit unit in units)
         {
+            if (unit.CurrentState == UnitState.Dead) continue;
+
             float sqrDistance = (unit.transform.position - originPosition).sqrMagnitude;
             if (sqrDistance < sqrMaxDistance && sqrDistance < closestDistanceSqr)
             {
@@ -199,6 +201,8 @@ public class GameManager : SingletonManager<GameManager>
 
     void SelectNewUnit(Unit unit)
     {
+        if (unit.CurrentState == UnitState.Dead) return;
+
         if (HasActiveUnit)
         {
             ActiveUnit.Deselect();
