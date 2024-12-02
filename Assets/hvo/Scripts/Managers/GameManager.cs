@@ -214,7 +214,6 @@ public class GameManager : SingletonManager<GameManager>
         if (HasActiveUnit)
         {
             ActiveUnit.SetTarget(enemyUnit);
-            ActiveUnit.MoveTo(enemyUnit.transform.position);
             ActiveUnit.SetTask(UnitTask.Attack);
             DisplayClickEffect(enemyUnit.GetTopPosition(), ClickType.Attack);
         }
