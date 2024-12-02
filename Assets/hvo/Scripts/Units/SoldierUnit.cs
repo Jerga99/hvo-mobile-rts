@@ -14,4 +14,37 @@ public class SoldierUnit: HumanoidUnit
 
         base.OnSetTask(oldTask, newTask);
     }
+
+    protected override void UpdateBehaviour()
+    {
+        if (CurrentState == UnitState.Idle || CurrentState == UnitState.Moving)
+        {
+            if (HasTarget)
+            {
+                if (IsTargetInRange(Target.transform))
+                {
+                    StopMovement();
+                    SetState(UnitState.Attacking);
+                }
+            }
+        }
+        else if (CurrentState == UnitState.Attacking)
+        {
+            if (HasTarget)
+            {
+                if (IsTargetInRange(Target.transform))
+                {
+                    TryAttackCurrentTarget();
+                }
+                else
+                {
+                    SetState(UnitState.Idle);
+                }
+            }
+            else
+            {
+                SetState(UnitState.Idle);
+            }
+        }
+    }
 }
