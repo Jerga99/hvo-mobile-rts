@@ -15,6 +15,15 @@ public class SoldierUnit: HumanoidUnit
         base.OnSetTask(oldTask, newTask);
     }
 
+    protected override void OnSetDestination()
+    {
+        if (CurrentTask == UnitTask.Attack)
+        {
+            SetTask(UnitTask.None);
+            SetTarget(null);
+        }
+    }
+
     protected override void UpdateBehaviour()
     {
         if (CurrentState == UnitState.Idle || CurrentState == UnitState.Moving)
@@ -25,6 +34,14 @@ public class SoldierUnit: HumanoidUnit
                 {
                     StopMovement();
                     SetState(UnitState.Attacking);
+                }
+            }
+            else
+            {
+                if (TryFindClosestFoe(out var foe))
+                {
+                    SetTarget(foe);
+                    SetTask(UnitTask.Attack);
                 }
             }
         }
