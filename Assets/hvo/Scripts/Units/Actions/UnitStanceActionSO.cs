@@ -19,7 +19,7 @@ public class UnitStanceActionSO : ActionSO
     {
         if (manager.ActiveUnit != null)
         {
-            Debug.Log("Change state to: " + m_UnitStance.ToString());
+            manager.ActiveUnit.SetStance(this);
         }
     }
 }
