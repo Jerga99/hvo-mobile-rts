@@ -3,7 +3,7 @@
 
 using UnityEngine;
 
-public class SoldierUnit: HumanoidUnit
+public class SoldierUnit : HumanoidUnit
 {
     private bool m_IsRetreating = false;
 
@@ -50,13 +50,20 @@ public class SoldierUnit: HumanoidUnit
                     StopMovement();
                     SetState(UnitState.Attacking);
                 }
+                else if (CurrentStance == UnitStance.Offensive)
+                {
+                    MoveTo(Target.transform.position);
+                }
             }
             else
             {
-                if (!m_IsRetreating && TryFindClosestFoe(out var foe))
+                if (CurrentStance == UnitStance.Offensive)
                 {
-                    SetTarget(foe);
-                    SetTask(UnitTask.Attack);
+                    if (!m_IsRetreating && TryFindClosestFoe(out var foe))
+                    {
+                        SetTarget(foe);
+                        SetTask(UnitTask.Attack);
+                    }
                 }
             }
         }
@@ -70,7 +77,15 @@ public class SoldierUnit: HumanoidUnit
                 }
                 else
                 {
-                    SetState(UnitState.Idle);
+                    if (CurrentStance == UnitStance.Defensive)
+                    {
+                        SetTarget(null);
+                        SetState(UnitState.Idle);
+                    }
+                    else
+                    {
+                        MoveTo(Target.transform.position);
+                    }
                 }
             }
             else
