@@ -25,13 +25,9 @@ public class SoldierUnit : HumanoidUnit
             && (CurrentTask == UnitTask.Attack || CurrentState == UnitState.Attacking))
         {
             m_IsRetreating = true;
-            Debug.Log("Retreating!");
-        }
-
-        if (CurrentTask == UnitTask.Attack)
-        {
-            SetTask(UnitTask.None);
             SetTarget(null);
+            SetTask(UnitTask.None);
+            Debug.Log("Retreating!");
         }
     }
 
