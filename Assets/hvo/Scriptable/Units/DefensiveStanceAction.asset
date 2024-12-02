@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2558a8a11ab4b43e5a98641b77f5fcff, type: 3}
+  m_Name: DefensiveStanceAction
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 9158683398484645407, guid: 1e1bddd4513bd4e8092d09d754ac2d95, type: 3}
+  ActionName: Defensive Stance
+  Guid: 89d0c942-7dcc-4ec7-86fd-285afc003a8f
+  m_UnitStance: 0
