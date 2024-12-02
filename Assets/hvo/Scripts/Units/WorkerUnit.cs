@@ -13,7 +13,7 @@ public class WorkerUnit : HumanoidUnit
         }
     }
 
-    protected override void OnSetDestination() => ResetState();
+    protected override void OnSetDestination(DestinationSource source) => ResetState();
 
     public void OnBuildingFinished() => ResetState();
 

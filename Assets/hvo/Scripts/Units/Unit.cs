@@ -13,6 +13,11 @@ public enum UnitTask
     None, Build, Chop, Mine, Attack
 }
 
+public enum DestinationSource
+{
+    CodeTriggered, PlayerClick
+}
+
 public abstract class Unit : MonoBehaviour
 {
     [SerializeField] private ActionSO[] m_Actions;
@@ -108,13 +113,13 @@ public abstract class Unit : MonoBehaviour
         Debug.Log("Change state to: " + m_CurrentStance.ToString());
     }
 
-    public void MoveTo(Vector3 destination)
+    public void MoveTo(Vector3 destination, DestinationSource source = DestinationSource.CodeTriggered)
     {
         var direction = (destination - transform.position).normalized;
         m_SpriteRenderer.flipX = direction.x < 0;
 
         m_AIPawn.SetDestination(destination);
-        OnSetDestination();
+        OnSetDestination(source);
     }
 
     public void Select()
@@ -141,7 +146,7 @@ public abstract class Unit : MonoBehaviour
         return transform.position + Vector3.up * m_Collider.size.y / 2;
     }
 
-    protected virtual void OnSetDestination() { }
+    protected virtual void OnSetDestination(DestinationSource source) { }
 
     protected virtual void OnSetTask(UnitTask oldTask, UnitTask newTask)
     {

@@ -185,7 +185,7 @@ public class GameManager : SingletonManager<GameManager>
         if (HasActiveUnit && IsHumanoid(ActiveUnit))
         {
             DisplayClickEffect(worldPoint, ClickType.Move);
-            ActiveUnit.MoveTo(worldPoint);
+            ActiveUnit.MoveTo(worldPoint, DestinationSource.PlayerClick);
         }
     }
 

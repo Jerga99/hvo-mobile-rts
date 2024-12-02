@@ -17,11 +17,15 @@ public class SoldierUnit : HumanoidUnit
         base.OnSetTask(oldTask, newTask);
     }
 
-    protected override void OnSetDestination()
+    protected override void OnSetDestination(DestinationSource source)
     {
-        if (HasTarget && (CurrentTask == UnitTask.Attack || CurrentState == UnitState.Attacking))
+        if (
+            HasTarget
+            && source == DestinationSource.PlayerClick
+            && (CurrentTask == UnitTask.Attack || CurrentState == UnitState.Attacking))
         {
             m_IsRetreating = true;
+            Debug.Log("Retreating!");
         }
 
         if (CurrentTask == UnitTask.Attack)
