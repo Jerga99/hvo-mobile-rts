@@ -64,6 +64,7 @@ public abstract class Unit : MonoBehaviour
         {
             m_AIPawn = aiPawn;
             m_AIPawn.OnNewPositionSelected += TurnToPosition;
+            m_AIPawn.OnDestinationReached += OnDestinationReached;
         }
 
         m_Collider = GetComponent<CapsuleCollider2D>();
@@ -80,6 +81,7 @@ public abstract class Unit : MonoBehaviour
         if (m_AIPawn != null)
         {
             m_AIPawn.OnNewPositionSelected -= TurnToPosition;
+            m_AIPawn.OnDestinationReached -= OnDestinationReached;
         }
     }
 
@@ -142,6 +144,8 @@ public abstract class Unit : MonoBehaviour
     {
         CurrentState = newState;
     }
+
+    protected virtual void OnDestinationReached(){}
 
     protected virtual void RegisterUnit()
     {
