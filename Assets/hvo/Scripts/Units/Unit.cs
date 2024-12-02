@@ -110,7 +110,6 @@ public abstract class Unit : MonoBehaviour
     public virtual void SetStance(UnitStanceActionSO stanceActionSO)
     {
         m_CurrentStance = stanceActionSO.UnitStance;
-        Debug.Log("Change state to: " + m_CurrentStance.ToString());
     }
 
     public void MoveTo(Vector3 destination, DestinationSource source = DestinationSource.CodeTriggered)
@@ -215,6 +214,12 @@ public abstract class Unit : MonoBehaviour
         if (CurrentState == UnitState.Dead) return;
 
         m_CurrentHealth -= damage;
+
+        if (!HasTarget)
+        {
+            SetTarget(damager);
+        }
+
         m_GameManager.ShowTextPopup(
             damage.ToString(),
             GetTopPosition(),

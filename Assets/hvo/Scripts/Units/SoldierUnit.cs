@@ -7,6 +7,18 @@ public class SoldierUnit : HumanoidUnit
 {
     private bool m_IsRetreating = false;
 
+    public override void SetStance(UnitStanceActionSO stanceActionSO)
+    {
+        base.SetStance(stanceActionSO);
+
+        if (CurrentStance == UnitStance.Defensive)
+        {
+            SetState(UnitState.Idle);
+            StopMovement();
+            m_IsRetreating = false;
+        }
+    }
+
     protected override void OnSetTask(UnitTask oldTask, UnitTask newTask)
     {
         if (newTask == UnitTask.Attack && HasTarget)
