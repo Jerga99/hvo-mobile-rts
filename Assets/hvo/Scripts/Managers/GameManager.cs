@@ -14,6 +14,7 @@ public class GameManager : SingletonManager<GameManager>
     [Header("UI")]
     [SerializeField] private PointToClick m_PointToMovePrefab;
     [SerializeField] private PointToClick m_PointToBuildPrefab;
+    [SerializeField] private PointToClick m_PointToAttackPrefab;
     [SerializeField] private ActionBar m_ActionBar;
     [SerializeField] private ConfirmationBar m_BuildConfirmationBar;
     [SerializeField] private TextPopupController m_TextPopupController;
@@ -156,6 +157,10 @@ public class GameManager : SingletonManager<GameManager>
             {
                 HandleClickOnPlayerUnit(unit);
             }
+            else
+            {
+                HandleClickOnEnemy(unit);
+            }
         }
         else
         {
@@ -202,6 +207,17 @@ public class GameManager : SingletonManager<GameManager>
         }
 
         SelectNewUnit(unit);
+    }
+
+    void HandleClickOnEnemy(Unit enemyUnit)
+    {
+        if (HasActiveUnit)
+        {
+            ActiveUnit.SetTarget(enemyUnit);
+            ActiveUnit.MoveTo(enemyUnit.transform.position);
+            ActiveUnit.SetTask(UnitTask.Attack);
+            DisplayClickEffect(enemyUnit.GetTopPosition(), ClickType.Attack);
+        }
     }
 
     bool WorkerClickedOnUnfinishedBuild(Unit clickedUnit)
@@ -253,6 +269,10 @@ public class GameManager : SingletonManager<GameManager>
         else if (clickType == ClickType.Build)
         {
             Instantiate(m_PointToBuildPrefab, (Vector3)worldPoint, Quaternion.identity);
+        }
+        else if (clickType == ClickType.Attack)
+        {
+            Instantiate(m_PointToAttackPrefab, (Vector3)worldPoint, Quaternion.identity);
         }
     }
 

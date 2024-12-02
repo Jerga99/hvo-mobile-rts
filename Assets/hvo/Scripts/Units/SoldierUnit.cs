@@ -1,0 +1,7 @@
+
+
+
+public class SoldierUnit: HumanoidUnit
+{
+
+}
