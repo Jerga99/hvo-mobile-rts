@@ -1,11 +1,12 @@
 
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Projectile: MonoBehaviour
 {
     [SerializeField] private float m_Speed = 10f;
-    [SerializeField] private float m_Damage = 10f;
+    [SerializeField] private int m_Damage = 10;
 
     private Unit m_Target;
     private Unit m_Owner;
@@ -29,5 +30,17 @@ public class Projectile: MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
         transform.position += direction * m_Speed * Time.deltaTime;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.TryGetComponent<Unit>(out var targetUnit))
+        {
+            if (targetUnit == m_Target)
+            {
+                targetUnit.TakeDamage(m_Damage, m_Owner);
+                Destroy(gameObject);
+            }
+        }
     }
 }
