@@ -6,15 +6,17 @@ using UnityEngine;
 public class Projectile: MonoBehaviour
 {
     [SerializeField] private float m_Speed = 10f;
-    [SerializeField] private int m_Damage = 10;
+
+    private int m_Damage = 10;
 
     private Unit m_Target;
     private Unit m_Owner;
 
-    public void Initialize(Unit owner, Unit target)
+    public void Initialize(Unit owner, Unit target, int damage)
     {
         m_Owner = owner;
         m_Target = target;
+        m_Damage = damage;
     }
 
     void Update()

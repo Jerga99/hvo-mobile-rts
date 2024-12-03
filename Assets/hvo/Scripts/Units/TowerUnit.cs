@@ -16,13 +16,14 @@ public class TowerUnit: StructureUnit
     {
         if (TryFindClosestFoe(out var foe))
         {
-            Attack(foe);
+            SetTarget(foe);
+            TryAttackCurrentTarget();
         }
     }
 
-    void Attack(Unit target)
+    protected override void OnAttackReady(Unit target)
     {
         var projectile = Instantiate(m_ProjectilePrefab, transform.position, Quaternion.identity);
-        projectile.Initialize(this, target);
+        projectile.Initialize(this, target, m_AutoAttackDamage);
     }
 }
