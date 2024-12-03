@@ -54,6 +54,7 @@ public abstract class Unit : MonoBehaviour
     public bool HasTarget => Target != null;
     public int CurrentHealth => m_CurrentHealth;
     public UnitStance CurrentStance => m_CurrentStance;
+    public CapsuleCollider2D Collider => m_Collider;
 
     protected virtual void Start()
     {
@@ -290,9 +291,12 @@ public abstract class Unit : MonoBehaviour
         }
     }
 
-    protected bool IsTargetInRange(Transform target)
+    protected bool IsTargetInRange(Unit target)
     {
-        return Vector3.Distance(target.transform.position, transform.position) <= m_AttackRange;
+        var targetCollider = target.Collider;
+        var targetClosestPoint = targetCollider.ClosestPoint(transform.position);
+
+        return Vector3.Distance(targetClosestPoint, transform.position) <= m_AttackRange;
     }
 
     protected Collider2D[] RunProximityObjectDetection()

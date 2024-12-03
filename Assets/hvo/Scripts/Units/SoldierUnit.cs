@@ -66,7 +66,7 @@ public class SoldierUnit : HumanoidUnit
         {
             if (HasTarget)
             {
-                if (IsTargetInRange(Target.transform))
+                if (IsTargetInRange(Target))
                 {
                     StopMovement();
                     SetState(UnitState.Attacking);
@@ -92,7 +92,7 @@ public class SoldierUnit : HumanoidUnit
         {
             if (HasTarget)
             {
-                if (IsTargetInRange(Target.transform))
+                if (IsTargetInRange(Target))
                 {
                     TryAttackCurrentTarget();
                 }
