@@ -19,6 +19,16 @@ public class SoldierUnit : HumanoidUnit
         }
     }
 
+    protected override void OnSetState(UnitState oldState, UnitState newState)
+    {
+        if (newState == UnitState.Attacking)
+        {
+            m_NextAutoAttackTime = Time.time + m_AutoAttackFrequency / 2f;
+        }
+
+        base.OnSetState(oldState, newState);
+    }
+
     protected override void OnSetTask(UnitTask oldTask, UnitTask newTask)
     {
         if (newTask == UnitTask.Attack && HasTarget)
