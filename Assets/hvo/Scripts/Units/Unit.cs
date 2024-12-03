@@ -227,6 +227,7 @@ public abstract class Unit : MonoBehaviour
     }
 
 
+    private Coroutine m_FlashCoroutine;
     protected virtual void TakeDamage(int damage, Unit damager)
     {
         if (CurrentState == UnitState.Dead) return;
@@ -243,7 +244,11 @@ public abstract class Unit : MonoBehaviour
             GetTopPosition(),
             Color.red
         );
-        StartCoroutine(FlashEffect(0.2f, 2, m_DamageFlashColor));
+
+        if (m_FlashCoroutine == null)
+        {
+            m_FlashCoroutine = StartCoroutine(FlashEffect(0.2f, 2, m_DamageFlashColor));
+        }
 
         if (m_CurrentHealth <= 0)
         {
@@ -263,6 +268,9 @@ public abstract class Unit : MonoBehaviour
             m_SpriteRenderer.color = originalColor;
             yield return new WaitForSeconds(duration / 2f);
         }
+
+        m_SpriteRenderer.color = originalColor;
+        m_FlashCoroutine = null;
     }
 
     protected IEnumerator DelayDamage(float delay, int damage, Unit target)
