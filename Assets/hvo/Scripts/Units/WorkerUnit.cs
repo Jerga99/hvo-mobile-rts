@@ -61,26 +61,3 @@ public class WorkerUnit : HumanoidUnit
         SetTarget(null);
     }
 }
-
-
-
-
-
-// void CheckForCloseObjects()
-//     {
-//         Debug.Log("Checking!");
-//         var hits = RunProximityObjectDetection();
-
-//         foreach (var hit in hits)
-//         {
-//             if (hit.gameObject == this.gameObject) continue;
-
-//             if (CurrentTask == UnitTask.Build && hit.gameObject == Target.gameObject)
-//             {
-//                 if (hit.TryGetComponent<StructureUnit>(out var unit))
-//                 {
-//                     StartBuilding(unit);
-//                 }
-//             }
-//         }
-//     }

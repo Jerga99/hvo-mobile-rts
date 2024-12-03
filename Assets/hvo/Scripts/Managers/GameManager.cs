@@ -70,9 +70,6 @@ public class GameManager : SingletonManager<GameManager>
         {
             m_Enemies.Add(unit);
         }
-
-        Debug.Log("Player Units: " + string.Join(", ", m_PlayerUnits.Select(unit => unit.gameObject.name)));
-        Debug.Log("Enemies: " + string.Join(", ", m_Enemies.Select(unit => unit.gameObject.name)));
     }
 
     public void UnregisterUnit(Unit unit)
@@ -125,6 +122,11 @@ public class GameManager : SingletonManager<GameManager>
         }
 
         return closestUnit;
+    }
+
+    public List<Unit> GetFriendlyUnits(bool isPlayer)
+    {
+        return isPlayer ? m_PlayerUnits : m_Enemies;
     }
 
     public void StartBuildProcess(BuildActionSO buildAction)
