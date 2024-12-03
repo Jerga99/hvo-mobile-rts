@@ -139,9 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: []
-  m_ObjectDetectionRadius: 3
+  m_ObjectDetectionRadius: 7
   m_UnitDetectionCheckRate: 0.5
-  m_AttackRange: 2
+  m_AttackRange: 6.8
   m_AutoAttackFrequency: 1.5
   m_AutoAttackDamageDelay: 0.5
   m_AutoAttackDamage: 7

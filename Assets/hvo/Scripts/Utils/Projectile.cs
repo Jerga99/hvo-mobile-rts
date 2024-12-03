@@ -14,14 +14,20 @@ public class Projectile: MonoBehaviour
     {
         m_Owner = owner;
         m_Target = target;
-
-        Debug.Log(m_Owner.gameObject.name);
-        Debug.Log(target.gameObject.name);
     }
-
 
     void Update()
     {
+        if (m_Target == null || m_Target.CurrentState == UnitState.Dead)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
+        var direction = (m_Target.transform.position - transform.position).normalized;
+        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+        transform.position += direction * m_Speed * Time.deltaTime;
     }
 }
