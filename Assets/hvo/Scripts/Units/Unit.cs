@@ -134,6 +134,15 @@ public abstract class Unit : MonoBehaviour
     {
         Highlight();
         IsTargeted = true;
+
+        for (int i = 0; i < m_Actions.Length; i++)
+        {
+            if (m_Actions[i] is UnitStanceActionSO stanceAction && stanceAction.UnitStance == m_CurrentStance)
+            {
+                m_GameManager.FocusActionUI(i);
+                return;
+            }
+        }
     }
 
     public void Deselect()

@@ -241,9 +241,9 @@ public class GameManager : SingletonManager<GameManager>
             ActiveUnit.Deselect();
         }
 
+        ShowUnitActions(unit);
         ActiveUnit = unit;
         ActiveUnit.Select();
-        ShowUnitActions(unit);
     }
 
     bool HasClickedOnActiveUnit(Unit clickedUnit)
