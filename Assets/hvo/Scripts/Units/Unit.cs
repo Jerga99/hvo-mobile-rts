@@ -110,6 +110,15 @@ public abstract class Unit : MonoBehaviour
     public virtual void SetStance(UnitStanceActionSO stanceActionSO)
     {
         m_CurrentStance = stanceActionSO.UnitStance;
+
+        for (int i = 0; i < m_Actions.Length; i++)
+        {
+            if (m_Actions[i] == stanceActionSO)
+            {
+                m_GameManager.FocusActionUI(i);
+                return;
+            }
+        }
     }
 
     public void MoveTo(Vector3 destination, DestinationSource source = DestinationSource.CodeTriggered)
