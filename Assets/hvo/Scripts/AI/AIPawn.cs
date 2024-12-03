@@ -10,6 +10,7 @@ public class AIPawn : MonoBehaviour
     [SerializeField]
     private float m_Speed = 5f;
 
+    private Vector3? m_CurrentDestination;
     private List<Vector3> m_CurrentPath = new();
     private TilemapManager m_TilemapManager;
     private int m_CurrentNodeIndex;
@@ -26,6 +27,7 @@ public class AIPawn : MonoBehaviour
     {
         if (!IsPathValid())
         {
+            m_CurrentDestination = null;
             return;
         }
 
@@ -51,18 +53,12 @@ public class AIPawn : MonoBehaviour
 
     public void SetDestination(Vector3 destination)
     {
-        if (m_CurrentPath.Count > 0)
+        if (m_CurrentDestination.HasValue && Vector3.Distance(m_CurrentDestination.Value, destination) < 0.1f)
         {
-            Node newEndNode = m_TilemapManager.FindNode(destination);
-            Vector3 endPosition = new Vector3(newEndNode.centerX, newEndNode.centerY);
-            var distance = Vector3.Distance(endPosition, m_CurrentPath[^1]);
-
-            if (distance < 0.1f)
-            {
-                return;
-            }
+            return;
         }
 
+        m_CurrentDestination = destination;
         m_CurrentPath = m_TilemapManager.FindPath(transform.position, destination);
         m_CurrentNodeIndex = 0;
         OnNewPositionSelected.Invoke(m_CurrentPath[m_CurrentNodeIndex]);

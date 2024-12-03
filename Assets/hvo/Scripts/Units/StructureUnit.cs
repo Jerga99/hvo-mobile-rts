@@ -45,8 +45,8 @@ public class StructureUnit: Unit
 
     void UpdateWalkability()
     {
-        int buildingWidthInTiles = 6;
-        int buildingHeightInTiles = 6;
+        int buildingWidthInTiles = 4;
+        int buildingHeightInTiles = 4;
 
         float halfWidth = buildingWidthInTiles / 2f;
         float halfHeight = buildingHeightInTiles / 2f;
