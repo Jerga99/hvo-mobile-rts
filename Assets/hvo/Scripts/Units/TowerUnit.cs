@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TowerUnit: StructureUnit
+public class TowerUnit : StructureUnit
 {
     [SerializeField] private Projectile m_ProjectilePrefab;
 
@@ -17,10 +17,16 @@ public class TowerUnit: StructureUnit
     {
         if (CurrentState == UnitState.Dead) return;
 
-        if (TryFindClosestFoe(out var foe))
+        if (HasTarget)
         {
-            SetTarget(foe);
             TryAttackCurrentTarget();
+        }
+        else
+        {
+            if (TryFindClosestFoe(out var foe))
+            {
+                SetTarget(foe);
+            }
         }
     }
 
