@@ -94,7 +94,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -108,7 +108,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -173,10 +173,10 @@ TextureImporter:
       name: TNT_Red_0
       rect:
         serializedVersion: 2
-        x: 57
-        y: 440
-        width: 88
-        height: 70
+        x: 0
+        y: 384
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +195,10 @@ TextureImporter:
       name: TNT_Red_1
       rect:
         serializedVersion: 2
-        x: 250
-        y: 440
-        width: 85
-        height: 70
+        x: 192
+        y: 384
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,10 +217,10 @@ TextureImporter:
       name: TNT_Red_2
       rect:
         serializedVersion: 2
-        x: 443
-        y: 440
-        width: 85
-        height: 70
+        x: 384
+        y: 384
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +239,10 @@ TextureImporter:
       name: TNT_Red_3
       rect:
         serializedVersion: 2
-        x: 634
-        y: 440
-        width: 88
-        height: 68
+        x: 576
+        y: 384
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,10 +261,10 @@ TextureImporter:
       name: TNT_Red_4
       rect:
         serializedVersion: 2
-        x: 824
-        y: 440
-        width: 88
-        height: 67
+        x: 768
+        y: 384
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,10 +283,10 @@ TextureImporter:
       name: TNT_Red_5
       rect:
         serializedVersion: 2
-        x: 1016
-        y: 440
-        width: 84
-        height: 68
+        x: 960
+        y: 384
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,10 +305,10 @@ TextureImporter:
       name: TNT_Red_6
       rect:
         serializedVersion: 2
-        x: 1099
-        y: 487
-        width: 6
-        height: 6
+        x: 0
+        y: 192
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -327,10 +327,10 @@ TextureImporter:
       name: TNT_Red_7
       rect:
         serializedVersion: 2
-        x: 59
-        y: 250
-        width: 82
-        height: 66
+        x: 192
+        y: 192
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -349,10 +349,10 @@ TextureImporter:
       name: TNT_Red_8
       rect:
         serializedVersion: 2
-        x: 252
-        y: 250
-        width: 82
-        height: 69
+        x: 384
+        y: 192
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -371,10 +371,10 @@ TextureImporter:
       name: TNT_Red_9
       rect:
         serializedVersion: 2
-        x: 443
-        y: 250
-        width: 85
-        height: 62
+        x: 576
+        y: 192
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -393,10 +393,10 @@ TextureImporter:
       name: TNT_Red_10
       rect:
         serializedVersion: 2
-        x: 633
-        y: 250
-        width: 87
-        height: 66
+        x: 768
+        y: 192
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,10 +415,10 @@ TextureImporter:
       name: TNT_Red_11
       rect:
         serializedVersion: 2
-        x: 824
-        y: 250
-        width: 84
-        height: 69
+        x: 960
+        y: 192
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -437,10 +437,10 @@ TextureImporter:
       name: TNT_Red_12
       rect:
         serializedVersion: 2
-        x: 1017
-        y: 250
-        width: 82
-        height: 62
+        x: 0
+        y: 0
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -459,10 +459,10 @@ TextureImporter:
       name: TNT_Red_13
       rect:
         serializedVersion: 2
-        x: 54
-        y: 56
-        width: 79
-        height: 74
+        x: 192
+        y: 0
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -481,10 +481,10 @@ TextureImporter:
       name: TNT_Red_14
       rect:
         serializedVersion: 2
-        x: 242
-        y: 56
-        width: 78
-        height: 77
+        x: 384
+        y: 0
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -503,10 +503,10 @@ TextureImporter:
       name: TNT_Red_15
       rect:
         serializedVersion: 2
-        x: 439
-        y: 56
-        width: 77
-        height: 62
+        x: 576
+        y: 0
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -525,10 +525,10 @@ TextureImporter:
       name: TNT_Red_16
       rect:
         serializedVersion: 2
-        x: 633
-        y: 56
-        width: 76
-        height: 65
+        x: 768
+        y: 0
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -547,10 +547,10 @@ TextureImporter:
       name: TNT_Red_17
       rect:
         serializedVersion: 2
-        x: 824
-        y: 56
-        width: 75
-        height: 70
+        x: 960
+        y: 0
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -569,10 +569,10 @@ TextureImporter:
       name: TNT_Red_18
       rect:
         serializedVersion: 2
-        x: 1014
-        y: 56
-        width: 66
-        height: 83
+        x: 1152
+        y: 0
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -587,33 +587,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: TNT_Red_19
-      rect:
-        serializedVersion: 2
-        x: 1210
-        y: 56
-        width: 68
-        height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2d18a89a120186b30800000000000000
-      internalID: 4280689182580048338
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 22eacd76747cf43ca8d29c6191b6d23e
     internalID: 0
     vertices: []
     indices: 
@@ -634,7 +612,6 @@ TextureImporter:
       TNT_Red_16: 3382624021105550442
       TNT_Red_17: 1747851038808546189
       TNT_Red_18: -1111592450808163120
-      TNT_Red_19: 4280689182580048338
       TNT_Red_2: -8545997469525324644
       TNT_Red_3: 472558964566126397
       TNT_Red_4: -3272573693725979801
