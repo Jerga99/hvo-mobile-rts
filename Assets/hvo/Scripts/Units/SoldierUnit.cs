@@ -95,6 +95,7 @@ public class SoldierUnit : HumanoidUnit
                 if (IsTargetInRange(Target))
                 {
                     TryAttackCurrentTarget();
+                    StopMovement();
                 }
                 else
                 {

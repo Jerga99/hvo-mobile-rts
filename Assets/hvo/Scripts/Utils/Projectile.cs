@@ -6,6 +6,7 @@ using UnityEngine;
 public class Projectile: MonoBehaviour
 {
     [SerializeField] private float m_Speed = 10f;
+    [SerializeField] private bool m_EnableDynamiteRotation = false;
 
     private int m_Damage = 10;
 
@@ -28,7 +29,18 @@ public class Projectile: MonoBehaviour
         }
 
         var direction = (m_Target.transform.position - transform.position).normalized;
-        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        float angle;
+
+        if (m_EnableDynamiteRotation)
+        {
+            float currentRotation = transform.eulerAngles.z;
+            angle = currentRotation + 720 * Time.deltaTime;
+        }
+        else
+        {
+            angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        }
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
         transform.position += direction * m_Speed * Time.deltaTime;
