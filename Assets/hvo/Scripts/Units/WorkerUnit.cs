@@ -28,12 +28,19 @@ public class WorkerUnit : HumanoidUnit
 
     public void SendToChop(Tree tree)
     {
-        if (tree.TryOccupy())
+        if (tree.TryToClaim())
         {
             MoveTo(tree.GetBottomPosition());
             SetTask(UnitTask.Chop);
             m_AssignedTree = tree;
         }
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+        if (m_AssignedTree != null) m_AssignedTree.Release();
+
     }
 
     void CheckForConstruction()
@@ -63,7 +70,7 @@ public class WorkerUnit : HumanoidUnit
 
         if (m_AssignedTree != null)
         {
-            m_AssignedTree.Unoccupy();
+            m_AssignedTree.Release();
             m_AssignedTree = null;
         }
     }
