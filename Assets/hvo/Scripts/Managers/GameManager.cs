@@ -1,12 +1,10 @@
 
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public enum ClickType
 {
-    Move, Attack, Build
+    Move, Attack, Build, Chop
 }
 
 public class GameManager : SingletonManager<GameManager>
@@ -15,6 +13,7 @@ public class GameManager : SingletonManager<GameManager>
     [SerializeField] private PointToClick m_PointToMovePrefab;
     [SerializeField] private PointToClick m_PointToBuildPrefab;
     [SerializeField] private PointToClick m_PointToAttackPrefab;
+    [SerializeField] private PointToClick m_PointToChopPrefab;
     [SerializeField] private ActionBar m_ActionBar;
     [SerializeField] private ConfirmationBar m_BuildConfirmationBar;
     [SerializeField] private TextPopupController m_TextPopupController;
@@ -153,9 +152,11 @@ public class GameManager : SingletonManager<GameManager>
         Vector2 worldPoint = Camera.main.ScreenToWorldPoint(inputPosition);
         RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
 
-        if (WorkerHasClickedOnTree(hit))
+        if (WorkerHasClickedOnTree(hit, out Tree tree))
         {
-            Debug.Log("Clicking on tree!");
+            (ActiveUnit as WorkerUnit).SendToChop(tree);
+            DisplayClickEffect(tree.transform.position, ClickType.Chop);
+            return;
         }
 
         if (HasClickedOnUnit(hit, out var unit))
@@ -180,8 +181,9 @@ public class GameManager : SingletonManager<GameManager>
         m_ActionBar.FocusAction(idx);
     }
 
-    bool WorkerHasClickedOnTree(RaycastHit2D hit)
+    bool WorkerHasClickedOnTree(RaycastHit2D hit, out Tree tree)
     {
+        tree = null;
         if (hit.collider != null)
         {
             var treeLayerMask = LayerMask.GetMask("Tree");
@@ -189,6 +191,7 @@ public class GameManager : SingletonManager<GameManager>
             && ActiveUnit is WorkerUnit
             && ((1 << hit.collider.gameObject.layer & treeLayerMask) != 0))
             {
+                tree = hit.collider.GetComponent<Tree>();
                 return true;
             }
         }
@@ -300,6 +303,10 @@ public class GameManager : SingletonManager<GameManager>
         else if (clickType == ClickType.Attack)
         {
             Instantiate(m_PointToAttackPrefab, (Vector3)worldPoint, Quaternion.identity);
+        }
+        else if (clickType == ClickType.Chop)
+        {
+            Instantiate(m_PointToChopPrefab, (Vector3)worldPoint, Quaternion.identity);
         }
     }
 

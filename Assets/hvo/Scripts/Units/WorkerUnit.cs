@@ -25,6 +25,11 @@ public class WorkerUnit : HumanoidUnit
         SetTask(UnitTask.Build);
     }
 
+    public void SendToChop(Tree tree)
+    {
+        Debug.Log(tree.gameObject.name);
+    }
+
     void CheckForConstruction()
     {
         var distanceToConstruction = Vector3.Distance(transform.position, Target.transform.position);
