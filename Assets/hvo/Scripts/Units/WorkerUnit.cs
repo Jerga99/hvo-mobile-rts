@@ -12,12 +12,15 @@ public class WorkerUnit : HumanoidUnit
         {
             CheckForConstruction();
         }
+        else if (CurrentTask == UnitTask.Chop && m_AssignedTree != null)
+        {
+            HandleChoppingTask();
+        }
     }
 
     protected override void OnSetDestination(DestinationSource source) => ResetState();
 
     public void OnBuildingFinished() => ResetState();
-
 
     public void SendToBuild(StructureUnit structure)
     {
@@ -41,6 +44,26 @@ public class WorkerUnit : HumanoidUnit
         base.Die();
         if (m_AssignedTree != null) m_AssignedTree.Release();
 
+    }
+
+    void HandleChoppingTask()
+    {
+        var treeBottomPosition = m_AssignedTree.GetBottomPosition();
+        var workerClosestPoint = Collider.ClosestPoint(treeBottomPosition);
+
+        var distance = Vector3.Distance(treeBottomPosition, workerClosestPoint);
+
+        if (distance <= 0.1f)
+        {
+            StopMovement();
+            SetState(UnitState.Chopping);
+            StartChopping();
+        }
+    }
+
+    void StartChopping()
+    {
+        Debug.Log("Chopping!");
     }
 
     void CheckForConstruction()
