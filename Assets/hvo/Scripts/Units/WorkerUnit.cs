@@ -60,6 +60,12 @@ public class WorkerUnit : HumanoidUnit
         if (HasTarget) CleanupTarget();
 
         m_Animator.SetBool("IsBuilding", false);
+
+        if (m_AssignedTree != null)
+        {
+            m_AssignedTree.Unoccupy();
+            m_AssignedTree = null;
+        }
     }
 
     void CleanupTarget()

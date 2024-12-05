@@ -20,6 +20,11 @@ public class Tree: MonoBehaviour
         return false;
     }
 
+    public void Unoccupy()
+    {
+        m_Occupied = false;
+    }
+
     public Vector3 GetBottomPosition()
     {
         return m_Collider.bounds.min;
