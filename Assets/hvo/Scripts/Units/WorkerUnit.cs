@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WorkerUnit : HumanoidUnit
 {
+    private Tree m_AssignedTree;
 
     protected override void UpdateBehaviour()
     {
@@ -27,7 +28,12 @@ public class WorkerUnit : HumanoidUnit
 
     public void SendToChop(Tree tree)
     {
-        Debug.Log(tree.gameObject.name);
+        if (tree.TryOccupy())
+        {
+            MoveTo(tree.GetBottomPosition());
+            SetTask(UnitTask.Chop);
+            m_AssignedTree = tree;
+        }
     }
 
     void CheckForConstruction()
