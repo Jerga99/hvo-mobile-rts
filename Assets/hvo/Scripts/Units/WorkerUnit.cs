@@ -16,6 +16,12 @@ public class WorkerUnit : HumanoidUnit
         {
             HandleChoppingTask();
         }
+
+
+        if (CurrentState == UnitState.Chopping)
+        {
+            StartChopping();
+        }
     }
 
     protected override void OnSetDestination(DestinationSource source) => ResetState();
@@ -57,13 +63,12 @@ public class WorkerUnit : HumanoidUnit
         {
             StopMovement();
             SetState(UnitState.Chopping);
-            StartChopping();
         }
     }
 
     void StartChopping()
     {
-        Debug.Log("Chopping!");
+        m_Animator.SetBool("IsChopping", true);
     }
 
     void CheckForConstruction()
@@ -90,6 +95,7 @@ public class WorkerUnit : HumanoidUnit
         if (HasTarget) CleanupTarget();
 
         m_Animator.SetBool("IsBuilding", false);
+        m_Animator.SetBool("IsChopping", false);
 
         if (m_AssignedTree != null)
         {
