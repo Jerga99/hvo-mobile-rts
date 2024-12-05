@@ -93,11 +93,14 @@ public class WorkerUnit : HumanoidUnit
                 m_HoldingGoldSprite.gameObject.SetActive(false);
                 m_HoldingWoodSprite.gameObject.SetActive(true);
             }
+
+            m_Animator.SetFloat("IsHoldingResource", 1f);
         }
         else
         {
             m_HoldingGoldSprite.gameObject.SetActive(false);
             m_HoldingWoodSprite.gameObject.SetActive(false);
+            m_Animator.SetFloat("IsHoldingResource", 0f);
         }
     }
 
