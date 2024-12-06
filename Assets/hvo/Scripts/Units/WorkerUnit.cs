@@ -70,6 +70,11 @@ public class WorkerUnit : HumanoidUnit
 
     public void OnBuildingFinished() => ResetState();
 
+    public void SetWoodStorage(StructureUnit storage)
+    {
+        m_AssignedWoodStorage = storage;
+    }
+
     public void SendToBuild(StructureUnit structure)
     {
         MoveTo(structure.transform.position);

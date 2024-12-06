@@ -136,7 +136,7 @@ public class GameManager : SingletonManager<GameManager>
             }
         }
 
-        foreach(var tree in m_Trees)
+        foreach (var tree in m_Trees)
         {
             if (tree.Claimed) continue;
 
@@ -300,15 +300,34 @@ public class GameManager : SingletonManager<GameManager>
                 CancelActiveUnit();
                 return;
             }
-            else if (WorkerClickedOnUnfinishedBuild(unit))
+            else if (ActiveUnit is WorkerUnit worker)
             {
-                DisplayClickEffect(unit.transform.position, ClickType.Build);
-                ((WorkerUnit)ActiveUnit).SendToBuild(unit as StructureUnit);
-                return;
+                if (WorkerClickedOnUnfinishedBuild(unit))
+                {
+                    DisplayClickEffect(unit.transform.position, ClickType.Build);
+                    worker.SendToBuild(unit as StructureUnit);
+                    return;
+                }
+                else if (worker.IsHoldingWood && WorkerClickedOnWoodStorage(unit))
+                {
+                    var closestPoint = unit.Collider.ClosestPoint(worker.transform.position);
+                    worker.MoveTo(closestPoint, DestinationSource.PlayerClick);
+                    worker.SetTask(UnitTask.ReturnResource);
+                    worker.SetWoodStorage(unit as StructureUnit);
+                    DisplayClickEffect(unit.transform.position, ClickType.Build);
+                    return;
+                }
             }
         }
 
         SelectNewUnit(unit);
+    }
+
+    bool WorkerClickedOnWoodStorage(Unit clickedUnit)
+    {
+        return
+            (clickedUnit is StructureUnit structure)
+            && structure.CanStoreWood;
     }
 
     void HandleClickOnEnemy(Unit enemyUnit)
@@ -324,7 +343,6 @@ public class GameManager : SingletonManager<GameManager>
     bool WorkerClickedOnUnfinishedBuild(Unit clickedUnit)
     {
         return
-            ActiveUnit is WorkerUnit &&
             clickedUnit is StructureUnit structure &&
             structure.IsUnderConstuction;
     }
