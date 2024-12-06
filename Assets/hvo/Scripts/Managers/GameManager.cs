@@ -25,8 +25,12 @@ public class GameManager : SingletonManager<GameManager>
     [Header("VFX")]
     [SerializeField] private ParticleSystem m_ConstructionEffectPrefab;
 
+    [Header("Resources")]
+    [SerializeField] private Transform m_TreeContainer;
+
     public Unit ActiveUnit;
 
+    private Tree[] m_Trees = new Tree[0];
     private List<Unit> m_PlayerUnits = new();
     private List<StructureUnit> m_PlayerBuildings = new();
     private List<Unit> m_Enemies = new();
@@ -115,6 +119,37 @@ public class GameManager : SingletonManager<GameManager>
     public void ShowTextPopup(string text, Vector3 position, Color color)
     {
         m_TextPopupController.Spawn(text, position, color);
+    }
+
+    public Tree FindClosestUnclaimedTree(Vector3 originPosition)
+    {
+        Tree closestTree = null;
+        float closestDistanceSqr = float.MaxValue;
+
+        if (m_Trees.Length == 0)
+        {
+            m_Trees = new Tree[m_TreeContainer.childCount];
+
+            for (int i = 0; i < m_TreeContainer.childCount; i++)
+            {
+                m_Trees[i] = m_TreeContainer.GetChild(i).GetComponent<Tree>();
+            }
+        }
+
+        foreach(var tree in m_Trees)
+        {
+            if (tree.Claimed) continue;
+
+            float sqrDistance = (tree.transform.position - originPosition).sqrMagnitude;
+
+            if (sqrDistance < closestDistanceSqr)
+            {
+                closestDistanceSqr = sqrDistance;
+                closestTree = tree;
+            }
+        }
+
+        return closestTree;
     }
 
     public Unit FindClosestUnit(Vector3 originPosition, float maxDistance, bool isPlayer)
