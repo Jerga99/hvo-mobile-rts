@@ -48,7 +48,8 @@ public class WorkerUnit : HumanoidUnit
         HandleResourceDisplay();
     }
 
-    protected override void OnSetDestination(DestinationSource source){
+    protected override void OnSetDestination(DestinationSource source)
+    {
         SetState(UnitState.Moving);
         ResetState();
     }
@@ -137,11 +138,24 @@ public class WorkerUnit : HumanoidUnit
 
             if (m_WoodCollected == m_WoodCapacity)
             {
-                m_Animator.SetBool("IsChopping", false);
-                SetState(UnitState.Idle);
+                HandleChoppingFinished();
             }
         }
+    }
 
+    void HandleChoppingFinished()
+    {
+        m_Animator.SetBool("IsChopping", false);
+
+        var storage = m_GameManager.FindClosestWoodStorage(transform.position);
+
+        if (storage != null)
+        {
+            MoveTo(storage.transform.position);
+        }
+
+        SetState(UnitState.Idle);
+        SetTask(UnitTask.ReturnResource);
     }
 
     void CheckForConstruction()

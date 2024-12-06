@@ -10,7 +10,7 @@ public enum UnitState
 
 public enum UnitTask
 {
-    None, Build, Chop, Mine, Attack
+    None, Build, Chop, Mine, Attack, ReturnResource
 }
 
 public enum DestinationSource

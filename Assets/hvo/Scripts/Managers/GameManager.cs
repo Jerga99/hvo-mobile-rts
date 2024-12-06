@@ -28,6 +28,7 @@ public class GameManager : SingletonManager<GameManager>
     public Unit ActiveUnit;
 
     private List<Unit> m_PlayerUnits = new();
+    private List<StructureUnit> m_PlayerBuildings = new();
     private List<Unit> m_Enemies = new();
     private CameraController m_CameraController;
     private PlacementProcess m_PlacementProcess;
@@ -63,7 +64,14 @@ public class GameManager : SingletonManager<GameManager>
     {
         if (unit.IsPlayer)
         {
-            m_PlayerUnits.Add(unit);
+            if (unit.IsBuilding)
+            {
+                m_PlayerBuildings.Add(unit as StructureUnit);
+            }
+            else
+            {
+                m_PlayerUnits.Add(unit);
+            }
         }
         else
         {
@@ -88,7 +96,15 @@ public class GameManager : SingletonManager<GameManager>
             }
 
             unit.StopMovement();
-            m_PlayerUnits.Remove(unit);
+
+            if (unit.IsBuilding)
+            {
+                m_PlayerBuildings.Remove(unit as StructureUnit);
+            }
+            else
+            {
+                m_PlayerUnits.Remove(unit);
+            }
         }
         else
         {
@@ -117,6 +133,26 @@ public class GameManager : SingletonManager<GameManager>
             {
                 closestUnit = unit;
                 closestDistanceSqr = sqrDistance;
+            }
+        }
+
+        return closestUnit;
+    }
+
+    public StructureUnit FindClosestWoodStorage(Vector3 originPoint)
+    {
+        float closestDistacenSqr = float.MaxValue;
+        StructureUnit closestUnit = null;
+
+        foreach (StructureUnit unit in m_PlayerBuildings)
+        {
+            if (unit.CurrentState == UnitState.Dead || !unit.CanStoreWood) continue;
+
+            float sqrDistance = (unit.transform.position - originPoint).sqrMagnitude;
+            if (sqrDistance < closestDistacenSqr)
+            {
+                closestUnit = unit;
+                closestDistacenSqr = sqrDistance;
             }
         }
 

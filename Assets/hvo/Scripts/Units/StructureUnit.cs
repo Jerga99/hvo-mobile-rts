@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class StructureUnit : Unit
 {
+    [SerializeField] private bool m_CanStoreWood = false;
+    [SerializeField] private bool m_CanStoreGold = false;
     private BuildingProcess m_BuildingProcess;
 
     public override bool IsBuilding => true;
     public bool IsUnderConstuction => m_BuildingProcess != null;
+    public bool CanStoreGold => m_CanStoreGold;
+    public bool CanStoreWood => m_CanStoreWood;
 
     void Update()
     {
