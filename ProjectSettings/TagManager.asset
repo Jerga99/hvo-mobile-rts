@@ -7,6 +7,7 @@ TagManager:
   - GameManager
   - TilemapManager
   - Building
+  - GoldMine
   layers:
   - Default
   - TransparentFX
