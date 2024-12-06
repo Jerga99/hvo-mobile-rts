@@ -18,6 +18,7 @@ public class WorkerUnit : HumanoidUnit
     private int m_WoodCapacity = 5;
     private int m_GoldCapacity = 10;
     private Tree m_AssignedTree;
+    private StructureUnit m_AssignedWoodStorage;
 
     public bool IsHoldingWood => m_WoodCollected > 0;
     public bool IsHoldingGold => m_GoldCollected > 0;
@@ -37,14 +38,27 @@ public class WorkerUnit : HumanoidUnit
         {
             HandleChoppingTask();
         }
+        else if (
+            CurrentTask == UnitTask.ReturnResource
+            && m_AssignedWoodStorage != null
+            && IsHoldingWood
+        )
+        {
+            var closesPointOnStorage = m_AssignedWoodStorage.Collider.ClosestPoint(transform.position);
+            var distance = Vector3.Distance(closesPointOnStorage, transform.position);
 
+            if (distance < 1f)
+            {
+                Debug.Log("Returning wood!");
+                m_WoodCollected = 0;
+            }
+        }
 
         if (CurrentState == UnitState.Chopping && m_WoodCollected < m_WoodCapacity)
         {
             StartChopping();
         }
 
-        Debug.Log(m_WoodCollected);
         HandleResourceDisplay();
     }
 
@@ -147,11 +161,12 @@ public class WorkerUnit : HumanoidUnit
     {
         m_Animator.SetBool("IsChopping", false);
 
-        var storage = m_GameManager.FindClosestWoodStorage(transform.position);
+        m_AssignedWoodStorage = m_GameManager.FindClosestWoodStorage(transform.position);
 
-        if (storage != null)
+        if (m_AssignedWoodStorage != null)
         {
-            MoveTo(storage.transform.position);
+            var closestPointOnStorage = m_AssignedWoodStorage.Collider.ClosestPoint(transform.position);
+            MoveTo(closestPointOnStorage);
         }
 
         SetState(UnitState.Idle);
