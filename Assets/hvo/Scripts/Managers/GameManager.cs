@@ -116,6 +116,12 @@ public class GameManager : SingletonManager<GameManager>
         }
     }
 
+    public void AddResources(int gold, int wood)
+    {
+        m_Gold += gold;
+        m_Wood += wood;
+    }
+
     public void ShowTextPopup(string text, Vector3 position, Color color)
     {
         m_TextPopupController.Spawn(text, position, color);
