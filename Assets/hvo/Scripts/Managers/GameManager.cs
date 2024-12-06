@@ -17,6 +17,7 @@ public class GameManager : SingletonManager<GameManager>
     [SerializeField] private ActionBar m_ActionBar;
     [SerializeField] private ConfirmationBar m_BuildConfirmationBar;
     [SerializeField] private TextPopupController m_TextPopupController;
+    [SerializeField] private ResourceDataUI m_ResourceDataUI;
 
     [Header("Camera Settings")]
     [SerializeField] private float m_PanSpeed = 100;
@@ -36,8 +37,8 @@ public class GameManager : SingletonManager<GameManager>
     private List<Unit> m_Enemies = new();
     private CameraController m_CameraController;
     private PlacementProcess m_PlacementProcess;
-    private int m_Gold = 1000;
-    private int m_Wood = 1000;
+    private int m_Gold = 0;
+    private int m_Wood = 0;
 
     public int Gold => m_Gold;
     public int Wood => m_Wood;
@@ -48,6 +49,7 @@ public class GameManager : SingletonManager<GameManager>
     {
         m_CameraController = new CameraController(m_PanSpeed, m_MobilePanSpeed);
         ClearActionBarUI();
+        AddResources(500, 500);
     }
 
     void Update()
@@ -120,6 +122,8 @@ public class GameManager : SingletonManager<GameManager>
     {
         m_Gold += gold;
         m_Wood += wood;
+
+        m_ResourceDataUI.UpdateResourceDisplay(m_Gold, m_Wood);
     }
 
     public void ShowTextPopup(string text, Vector3 position, Color color)
@@ -456,14 +460,8 @@ public class GameManager : SingletonManager<GameManager>
         }
         else
         {
-            RevertResources(m_PlacementProcess.GoldCost, m_PlacementProcess.WoodCost);
+            AddResources(m_PlacementProcess.GoldCost, m_PlacementProcess.WoodCost);
         }
-    }
-
-    void RevertResources(int gold, int wood)
-    {
-        m_Gold += gold;
-        m_Wood += wood;
     }
 
     void CancelBuildPlacement()
@@ -478,8 +476,7 @@ public class GameManager : SingletonManager<GameManager>
     {
         if (m_Gold >= goldCost && m_Wood >= woodCost)
         {
-            m_Gold -= goldCost;
-            m_Wood -= woodCost;
+            AddResources(-goldCost, -woodCost);
             return true;
         }
 
@@ -488,9 +485,6 @@ public class GameManager : SingletonManager<GameManager>
 
     void OnGUI()
     {
-        GUI.Label(new Rect(20, 40, 200, 20), "Gold: " + m_Gold.ToString(), new GUIStyle { fontSize = 30 });
-        GUI.Label(new Rect(20, 80, 200, 20), "Wood: " + m_Wood.ToString(), new GUIStyle { fontSize = 30 });
-
         if (ActiveUnit != null)
         {
             GUI.Label(new Rect(20, 120, 200, 20), "State: " + ActiveUnit.CurrentState.ToString(), new GUIStyle { fontSize = 30 });
