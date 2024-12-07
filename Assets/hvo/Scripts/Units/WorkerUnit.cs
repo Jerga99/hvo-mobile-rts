@@ -18,6 +18,7 @@ public class WorkerUnit : HumanoidUnit
     private int m_WoodCapacity = 10;
     private int m_GoldCapacity = 10;
     private Tree m_AssignedTree;
+    private GoldMine m_AssignedMine;
     private StructureUnit m_AssignedWoodStorage;
 
     public bool IsHoldingWood => m_WoodCollected > 0;
@@ -92,6 +93,13 @@ public class WorkerUnit : HumanoidUnit
             SetTask(UnitTask.Chop);
             m_AssignedTree = tree;
         }
+    }
+
+     public void SendToMine(GoldMine mine)
+    {
+        MoveTo(mine.GetBottomPosition());
+        SetTask(UnitTask.Mine);
+        m_AssignedMine = mine;
     }
 
     protected override void Die()

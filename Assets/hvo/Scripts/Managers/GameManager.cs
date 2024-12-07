@@ -233,11 +233,21 @@ public class GameManager : SingletonManager<GameManager>
         Vector2 worldPoint = Camera.main.ScreenToWorldPoint(inputPosition);
         RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
 
-        if (WorkerHasClickedOnTree(hit, out Tree tree))
+        if (HasActiveUnit && ActiveUnit is WorkerUnit worker)
         {
-            (ActiveUnit as WorkerUnit).SendToChop(tree);
-            DisplayClickEffect(tree.transform.position, ClickType.Chop);
-            return;
+            if (WorkerHasClickedOnTree(hit, out Tree tree))
+            {
+                worker.SendToChop(tree);
+                DisplayClickEffect(tree.transform.position, ClickType.Chop);
+                return;
+            }
+            else if (WorkerHasClickedOnGoldMine(hit, out GoldMine mine))
+            {
+                worker.SendToMine(mine);
+                DisplayClickEffect(mine.transform.position, ClickType.Build);
+                return;
+            }
+
         }
 
         if (HasClickedOnUnit(hit, out var unit))
@@ -268,11 +278,25 @@ public class GameManager : SingletonManager<GameManager>
         if (hit.collider != null)
         {
             var treeLayerMask = LayerMask.GetMask("Tree");
-            if (HasActiveUnit
-            && ActiveUnit is WorkerUnit
-            && ((1 << hit.collider.gameObject.layer & treeLayerMask) != 0))
+            if ((1 << hit.collider.gameObject.layer & treeLayerMask) != 0)
             {
                 tree = hit.collider.GetComponent<Tree>();
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    bool WorkerHasClickedOnGoldMine(RaycastHit2D hit, out GoldMine mine)
+    {
+        mine = null;
+        if (hit.collider != null)
+        {
+            var mineLayerMask = LayerMask.GetMask("GoldMine");
+            if ((1 << hit.collider.gameObject.layer & mineLayerMask) != 0)
+            {
+                mine = hit.collider.GetComponent<GoldMine>();
                 return true;
             }
         }
