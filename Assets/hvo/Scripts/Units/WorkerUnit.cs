@@ -40,6 +40,14 @@ public class WorkerUnit : HumanoidUnit
             HandleChoppingTask();
         }
         else if (
+            CurrentTask == UnitTask.Mine
+            && m_AssignedMine != null
+            && !IsHoldingGold
+        )
+        {
+            HandleMinningTask();
+        }
+        else if (
             CurrentTask == UnitTask.ReturnResource
             && m_AssignedWoodStorage != null
             && IsHoldingWood
@@ -95,7 +103,7 @@ public class WorkerUnit : HumanoidUnit
         }
     }
 
-     public void SendToMine(GoldMine mine)
+    public void SendToMine(GoldMine mine)
     {
         MoveTo(mine.GetBottomPosition());
         SetTask(UnitTask.Mine);
@@ -131,6 +139,21 @@ public class WorkerUnit : HumanoidUnit
             m_HoldingGoldSprite.gameObject.SetActive(false);
             m_HoldingWoodSprite.gameObject.SetActive(false);
             m_Animator.SetFloat("IsHoldingResource", 0f);
+        }
+    }
+
+    void HandleMinningTask()
+    {
+        var mineBottomPosition = m_AssignedMine.GetBottomPosition();
+        var workerClosestPoint = Collider.ClosestPoint(mineBottomPosition);
+        var distance = Vector3.Distance(mineBottomPosition, workerClosestPoint);
+        Debug.Log(distance);
+
+        if (distance <= 0.20f)
+        {
+            StopMovement();
+            SetState(UnitState.Minig);
+            m_AssignedMine.EnterMine();
         }
     }
 
