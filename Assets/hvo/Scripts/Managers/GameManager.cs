@@ -235,13 +235,13 @@ public class GameManager : SingletonManager<GameManager>
 
         if (HasActiveUnit && ActiveUnit is WorkerUnit worker)
         {
-            if (WorkerHasClickedOnTree(hit, out Tree tree))
+            if (TryGetClickedResource(hit, out Tree tree))
             {
                 worker.SendToChop(tree);
                 DisplayClickEffect(tree.transform.position, ClickType.Chop);
                 return;
             }
-            else if (WorkerHasClickedOnGoldMine(hit, out GoldMine mine))
+            else if (TryGetClickedResource(hit, out GoldMine mine))
             {
                 worker.SendToMine(mine);
                 DisplayClickEffect(mine.transform.position, ClickType.Build);
@@ -272,36 +272,11 @@ public class GameManager : SingletonManager<GameManager>
         m_ActionBar.FocusAction(idx);
     }
 
-    bool WorkerHasClickedOnTree(RaycastHit2D hit, out Tree tree)
+    bool TryGetClickedResource<T>(RaycastHit2D hit, out T resource) where T : MonoBehaviour
     {
-        tree = null;
-        if (hit.collider != null)
-        {
-            var treeLayerMask = LayerMask.GetMask("Tree");
-            if ((1 << hit.collider.gameObject.layer & treeLayerMask) != 0)
-            {
-                tree = hit.collider.GetComponent<Tree>();
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    bool WorkerHasClickedOnGoldMine(RaycastHit2D hit, out GoldMine mine)
-    {
-        mine = null;
-        if (hit.collider != null)
-        {
-            var mineLayerMask = LayerMask.GetMask("GoldMine");
-            if ((1 << hit.collider.gameObject.layer & mineLayerMask) != 0)
-            {
-                mine = hit.collider.GetComponent<GoldMine>();
-                return true;
-            }
-        }
-
-        return false;
+        resource = null;
+        if (hit.collider == null) return false;
+        return hit.collider.TryGetComponent(out resource);
     }
 
     bool HasClickedOnUnit(RaycastHit2D hit, out Unit unit)
