@@ -267,6 +267,14 @@ public class GameManager : SingletonManager<GameManager>
         }
     }
 
+    public void CancelActiveUnit()
+    {
+        ActiveUnit.Deselect();
+        ActiveUnit = null;
+
+        ClearActionBarUI();
+    }
+
     public void FocusActionUI(int idx)
     {
         m_ActionBar.FocusAction(idx);
@@ -295,6 +303,8 @@ public class GameManager : SingletonManager<GameManager>
     {
         if (HasActiveUnit && IsHumanoid(ActiveUnit))
         {
+            if (ActiveUnit.CurrentState == UnitState.Minig) return;
+
             DisplayClickEffect(worldPoint, ClickType.Move);
             ActiveUnit.MoveTo(worldPoint, DestinationSource.PlayerClick);
         }
@@ -378,14 +388,6 @@ public class GameManager : SingletonManager<GameManager>
     bool IsHumanoid(Unit unit)
     {
         return unit is HumanoidUnit;
-    }
-
-    void CancelActiveUnit()
-    {
-        ActiveUnit.Deselect();
-        ActiveUnit = null;
-
-        ClearActionBarUI();
     }
 
     void DisplayClickEffect(Vector2 worldPoint, ClickType clickType)

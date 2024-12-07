@@ -75,6 +75,8 @@ public class WorkerUnit : HumanoidUnit
 
     protected override void OnSetDestination(DestinationSource source)
     {
+        if (CurrentState == UnitState.Minig) return;
+
         SetState(UnitState.Moving);
         ResetState();
     }
@@ -147,13 +149,16 @@ public class WorkerUnit : HumanoidUnit
         var mineBottomPosition = m_AssignedMine.GetBottomPosition();
         var workerClosestPoint = Collider.ClosestPoint(mineBottomPosition);
         var distance = Vector3.Distance(mineBottomPosition, workerClosestPoint);
-        Debug.Log(distance);
 
         if (distance <= 0.20f)
         {
-            StopMovement();
-            SetState(UnitState.Minig);
-            m_AssignedMine.EnterMine();
+            if (m_AssignedMine.TryToEnterMine(this))
+            {
+                m_WoodCollected = 0;
+                m_GameManager.CancelActiveUnit();
+                StopMovement();
+                SetState(UnitState.Minig);
+            }
         }
     }
 

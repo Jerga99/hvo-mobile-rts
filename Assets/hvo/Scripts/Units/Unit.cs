@@ -122,6 +122,18 @@ public abstract class Unit : MonoBehaviour
         }
     }
 
+    public void Hide()
+    {
+        m_SpriteRenderer.enabled = false;
+        m_Collider.enabled = false;
+    }
+
+    public void Show()
+    {
+        m_SpriteRenderer.enabled = true;
+        m_Collider.enabled = true;
+    }
+
     public void MoveTo(Vector3 destination, DestinationSource source = DestinationSource.CodeTriggered)
     {
         var direction = (destination - transform.position).normalized;

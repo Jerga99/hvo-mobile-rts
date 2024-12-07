@@ -22,7 +22,7 @@ public class HumanoidUnit : Unit
 
     protected void Update()
     {
-        if (CurrentState == UnitState.Dead) return;
+        if (CurrentState == UnitState.Dead || CurrentState == UnitState.Minig) return;
 
         UpdateVelocity();
         UpdateBehaviour();
