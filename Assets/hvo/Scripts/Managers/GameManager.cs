@@ -357,6 +357,15 @@ public class GameManager : SingletonManager<GameManager>
                     DisplayClickEffect(unit.transform.position, ClickType.Build);
                     return;
                 }
+                else if (worker.IsHoldingGold && WorkerClickedOnGoldStorage(unit))
+                {
+                    var closestPoint = unit.Collider.ClosestPoint(worker.transform.position);
+                    worker.MoveTo(closestPoint, DestinationSource.PlayerClick);
+                    worker.SetTask(UnitTask.ReturnResource);
+                    worker.SetGoldStorage(unit as StructureUnit);
+                    DisplayClickEffect(unit.transform.position, ClickType.Build);
+                    return;
+                }
             }
         }
 
@@ -368,6 +377,13 @@ public class GameManager : SingletonManager<GameManager>
         return
             (clickedUnit is StructureUnit structure)
             && structure.CanStoreWood;
+    }
+
+    bool WorkerClickedOnGoldStorage(Unit clickedUnit)
+    {
+        return
+            (clickedUnit is StructureUnit structure)
+            && structure.CanStoreGold;
     }
 
     void HandleClickOnEnemy(Unit enemyUnit)

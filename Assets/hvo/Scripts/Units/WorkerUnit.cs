@@ -90,6 +90,11 @@ public class WorkerUnit : HumanoidUnit
         m_AssignedWoodStorage = storage;
     }
 
+    public void SetGoldStorage(StructureUnit storage)
+    {
+        m_AssignedGoldStorage = storage;
+    }
+
     public void SendToBuild(StructureUnit structure)
     {
         MoveTo(structure.transform.position);
