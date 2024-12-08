@@ -7,12 +7,27 @@ using UnityEngine;
 
 public class GoldMine: MonoBehaviour
 {
+    [SerializeField] private Sprite m_ActiveSprite;
+    [SerializeField] private Sprite m_DefaultSprite;
     [SerializeField] private CapsuleCollider2D m_Collider;
+    [SerializeField] private SpriteRenderer m_Renderer;
     [SerializeField] private float m_EnterMineFreq = 2f;
     [SerializeField] private float m_MinningDuration = 2f;
     private int m_MaxAllowedMiners = 2;
     private Queue<WorkerUnit> m_ActiveMinersQueue = new();
     private float m_NextPossibleEnterTime;
+
+    void Update()
+    {
+        if (m_ActiveMinersQueue.Count > 0)
+        {
+            m_Renderer.sprite = m_ActiveSprite;
+        }
+        else
+        {
+            m_Renderer.sprite = m_DefaultSprite;
+        }
+    }
 
     public bool TryToEnterMine(WorkerUnit worker)
     {
