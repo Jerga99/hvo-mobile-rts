@@ -48,39 +48,22 @@ public class WorkerUnit : HumanoidUnit
         {
             HandleMinningTask();
         }
-        else if (
-            CurrentTask == UnitTask.ReturnResource
-            && m_AssignedWoodStorage != null
-            && IsHoldingWood
-        )
+        else if (CurrentTask == UnitTask.ReturnResource)
         {
-            var closesPointOnStorage = m_AssignedWoodStorage.Collider.ClosestPoint(transform.position);
-            var distance = Vector3.Distance(closesPointOnStorage, transform.position);
-
-            if (distance < 1f)
-            {
-                m_GameManager.ShowTextPopup(m_WoodCollected.ToString(), GetTopPosition(), Color.green);
-                m_GameManager.AddResources(0, m_WoodCollected);
-                m_WoodCollected = 0;
-                TryMoveToClosestTree();
-            }
-        }
-        else if (
-            CurrentTask == UnitTask.ReturnResource
-            && m_AssignedGoldStorage != null
-            && IsHoldingGold
-        )
-        {
-            var closesPointOnStorage = m_AssignedGoldStorage.Collider.ClosestPoint(transform.position);
-            var distance = Vector3.Distance(closesPointOnStorage, transform.position);
-
-            if (distance < 0.5f)
+            if (IsHoldingGold && TryToReturnResources(m_AssignedGoldStorage))
             {
                 m_GameManager.ShowTextPopup(m_GoldCollected.ToString(), GetTopPosition(), Color.yellow);
                 m_GameManager.AddResources(m_GoldCollected, 0);
                 m_GoldCollected = 0;
                 MoveTo(m_GameManager.ActiveGoldMine.GetBottomPosition());
                 SetTask(UnitTask.Mine);
+            }
+            else if (IsHoldingWood && TryToReturnResources(m_AssignedWoodStorage, 1f))
+            {
+                m_GameManager.ShowTextPopup(m_WoodCollected.ToString(), GetTopPosition(), Color.green);
+                m_GameManager.AddResources(0, m_WoodCollected);
+                m_WoodCollected = 0;
+                TryMoveToClosestTree();
             }
         }
 
@@ -156,6 +139,18 @@ public class WorkerUnit : HumanoidUnit
             MoveTo(m_AssignedGoldStorage.transform.position);
             SetTask(UnitTask.ReturnResource);
         }
+    }
+
+    bool TryToReturnResources(StructureUnit storage, float distanceTreshold = 0.5f)
+    {
+        if (storage != null)
+        {
+            var closestPoint = storage.Collider.ClosestPoint(transform.position);
+            var distance = Vector3.Distance(closestPoint, transform.position);
+            return distance < distanceTreshold;
+        }
+
+        return false;
     }
 
     void HandleResourceDisplay()
