@@ -350,26 +350,36 @@ public class GameManager : SingletonManager<GameManager>
                 }
                 else if (worker.IsHoldingWood && WorkerClickedOnWoodStorage(unit))
                 {
-                    var closestPoint = unit.Collider.ClosestPoint(worker.transform.position);
-                    worker.MoveTo(closestPoint, DestinationSource.PlayerClick);
-                    worker.SetTask(UnitTask.ReturnResource);
-                    worker.SetWoodStorage(unit as StructureUnit);
-                    DisplayClickEffect(unit.transform.position, ClickType.Build);
+                    HandleResourceReturn(worker, unit as StructureUnit);
                     return;
                 }
                 else if (worker.IsHoldingGold && WorkerClickedOnGoldStorage(unit))
                 {
-                    var closestPoint = unit.Collider.ClosestPoint(worker.transform.position);
-                    worker.MoveTo(closestPoint, DestinationSource.PlayerClick);
-                    worker.SetTask(UnitTask.ReturnResource);
-                    worker.SetGoldStorage(unit as StructureUnit);
-                    DisplayClickEffect(unit.transform.position, ClickType.Build);
+                    HandleResourceReturn(worker, unit as StructureUnit);
                     return;
                 }
             }
         }
 
         SelectNewUnit(unit);
+    }
+
+    void HandleResourceReturn(WorkerUnit worker, StructureUnit structure)
+    {
+        var closestPoint = structure.Collider.ClosestPoint(worker.transform.position);
+        worker.MoveTo(closestPoint, DestinationSource.PlayerClick);
+        worker.SetTask(UnitTask.ReturnResource);
+
+        if (worker.IsHoldingGold && structure.CanStoreGold)
+        {
+            worker.SetGoldStorage(structure);
+        }
+        else if (worker.IsHoldingWood && structure.CanStoreWood)
+        {
+            worker.SetWoodStorage(structure);
+        }
+
+        DisplayClickEffect(structure.transform.position, ClickType.Build);
     }
 
     bool WorkerClickedOnWoodStorage(Unit clickedUnit)
