@@ -264,6 +264,37 @@ public class GameManager : SingletonManager<GameManager>
             Debug.Log("Not Enough Resources!");
             return;
         }
+
+        Collider2D castleCollider = ActiveUnit.Collider;
+        float spawnRadius = castleCollider.bounds.extents.x;
+        int maxSpawnAttemps = 20;
+
+        for (int i = 0; i < maxSpawnAttemps; i++)
+        {
+            float angle = (360f / maxSpawnAttemps) * i;
+            Vector2 spawnOffset = new Vector2(
+                Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)) * spawnRadius;
+            Vector2 spawnPosition = (Vector2)ActiveUnit.transform.position + spawnOffset;
+
+            var unitLayerMask = LayerMask.GetMask("Unit");
+            var hits = Physics2D.OverlapCircleAll(spawnPosition, 0.5f, unitLayerMask);
+            bool isPositionOccupied = false;
+
+            foreach (var hit in hits)
+            {
+                if (hit != castleCollider)
+                {
+                    isPositionOccupied = true;
+                    break;
+                }
+            }
+
+            if (!isPositionOccupied)
+            {
+                Instantiate(trainUnitAction.UnitPrefab, spawnPosition, Quaternion.identity);
+                return;
+            }
+        }
     }
 
     void CancelUnitTrainingConfirmation()
@@ -506,6 +537,11 @@ public class GameManager : SingletonManager<GameManager>
 
     void ClearActionBarUI()
     {
+        if (m_BuildConfirmationBar.enabled)
+        {
+            m_BuildConfirmationBar.Hide();
+        }
+
         m_ActionBar.ClearActions();
         m_ActionBar.Hide();
     }
