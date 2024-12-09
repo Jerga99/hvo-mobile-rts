@@ -16,7 +16,7 @@ public class ResourceRequirementsDisplay: MonoBehaviour
         UpdateColorRequirements(reqGold, reqWood);
     }
 
-    void UpdateColorRequirements(int reqGold, int reqWood)
+    public void UpdateColorRequirements(int reqGold, int reqWood)
     {
         var manager = GameManager.Get();
         var greenColor = new Color(0, 0.8f, 0, 1f);

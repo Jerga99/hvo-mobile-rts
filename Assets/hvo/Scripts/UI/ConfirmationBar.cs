@@ -15,8 +15,7 @@ public class ConfirmationBar: MonoBehaviour
 
     void OnDisable()
     {
-        m_ConfirmButton.onClick.RemoveAllListeners();
-        m_CancelButton.onClick.RemoveAllListeners();
+        UnsubscribeAll();
     }
 
     public void Show(int gold, int wood)
@@ -29,9 +28,22 @@ public class ConfirmationBar: MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void UpdateRequirementsUI(int gold, int wood)
+    {
+        m_ResourceDisplay.UpdateColorRequirements(gold, wood);
+    }
+
     public void SetupHooks(UnityAction onConfirm, UnityAction onCancel)
     {
+        UnsubscribeAll();
+
         m_ConfirmButton.onClick.AddListener(onConfirm);
         m_CancelButton.onClick.AddListener(onCancel);
+    }
+
+    void UnsubscribeAll()
+    {
+        m_ConfirmButton.onClick.RemoveAllListeners();
+        m_CancelButton.onClick.RemoveAllListeners();
     }
 }
