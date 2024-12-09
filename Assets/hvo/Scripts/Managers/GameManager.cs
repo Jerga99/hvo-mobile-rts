@@ -244,6 +244,11 @@ public class GameManager : SingletonManager<GameManager>
         m_CameraController.LockCamera = true;
     }
 
+    public void StartUnitTrainProcess(TrainUnitActionSO trainUnitAction)
+    {
+        Debug.Log("Start training!");
+    }
+
     void DetectClick(Vector2 inputPosition)
     {
         if (HvoUtils.IsPointerOverUIElement())

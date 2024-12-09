@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2f8e9c280f04dfab27405601fd219c, type: 3}
+  m_Name: TrainArcherAction
+  m_EditorClassIdentifier: 
+  Icon: {fileID: -6267725191955626604, guid: 15f327a9cb88b4473ad1d9dc1cd26697, type: 3}
+  ActionName: Train Archer
+  Guid: b1c66331-7d3c-4b4a-957b-75e4b350d93b
+  m_UnitPrefab: {fileID: 502053571519911108, guid: 81b51374671bc4d6ca4e1f73db8035dd, type: 3}
+  m_GoldCost: 100
+  m_WoodCost: 150
