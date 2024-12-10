@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6630db44c396f46b689b2eaa10476371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_IsKingUnit: 0
   m_Actions: []
   m_ObjectDetectionRadius: 5
   m_UnitDetectionCheckRate: 0.5
@@ -185,6 +186,6 @@ MonoBehaviour:
   m_AutoAttackFrequency: 1.5
   m_AutoAttackDamageDelay: 0.5
   m_AutoAttackDamage: 7
-  m_Health: 10
+  m_Health: 100
   m_DamageFlashColor: {r: 1, g: 0.654902, b: 0.64705884, a: 1}
   IsTargeted: 0
