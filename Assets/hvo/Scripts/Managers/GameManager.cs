@@ -32,6 +32,7 @@ public class GameManager : SingletonManager<GameManager>
 
     public Unit ActiveUnit;
 
+    private Unit m_KingUnit;
     private Tree[] m_Trees = new Tree[0];
     private List<Unit> m_PlayerUnits = new();
     private List<StructureUnit> m_PlayerBuildings = new();
@@ -45,6 +46,7 @@ public class GameManager : SingletonManager<GameManager>
     public int Wood => m_Wood;
     public GoldMine ActiveGoldMine => m_ActiveGoldMine;
     public bool HasActiveUnit => ActiveUnit != null;
+    public Unit KingUnit => m_KingUnit;
 
     void Start()
     {
@@ -74,6 +76,10 @@ public class GameManager : SingletonManager<GameManager>
             if (unit.IsBuilding)
             {
                 m_PlayerBuildings.Add(unit as StructureUnit);
+            }
+            else if (unit.IsKingUnit)
+            {
+                m_KingUnit = unit;
             }
             else
             {
@@ -107,6 +113,10 @@ public class GameManager : SingletonManager<GameManager>
             if (unit.IsBuilding)
             {
                 m_PlayerBuildings.Remove(unit as StructureUnit);
+            }
+            else if (unit.IsKingUnit)
+            {
+                m_KingUnit = null;
             }
             else
             {

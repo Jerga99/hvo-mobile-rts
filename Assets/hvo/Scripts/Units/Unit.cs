@@ -20,6 +20,7 @@ public enum DestinationSource
 
 public abstract class Unit : MonoBehaviour
 {
+    [SerializeField] private bool m_IsKingUnit = false;
     [SerializeField] private ActionSO[] m_Actions;
     [SerializeField] protected float m_ObjectDetectionRadius = 3f;
     [SerializeField] protected float m_UnitDetectionCheckRate = 0.5f;
@@ -55,6 +56,7 @@ public abstract class Unit : MonoBehaviour
     public int CurrentHealth => m_CurrentHealth;
     public UnitStance CurrentStance => m_CurrentStance;
     public CapsuleCollider2D Collider => m_Collider;
+    public bool IsKingUnit => m_IsKingUnit;
 
     protected virtual void Start()
     {
