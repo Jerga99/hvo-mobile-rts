@@ -29,6 +29,8 @@ public class EnemySpawner : MonoBehaviour
 
     private int m_CurrentWaveIndex;
     private float m_DelayBetweenWavesTimer;
+    private float m_WaveDurationTimer;
+    private float m_SpawnFrequencyTimer;
     private SpawnState m_SpawnState = SpawnState.Idle;
 
     public SpawnState SpawnState => m_SpawnState;
@@ -36,8 +38,8 @@ public class EnemySpawner : MonoBehaviour
     public void Startup()
     {
         m_SpawnState = SpawnState.Waiting;
-        m_DelayBetweenWavesTimer = m_DelayBetweenWaves;
         m_CurrentWaveIndex = 0;
+        InitializeTimers();
     }
 
     void Update()
@@ -59,7 +61,40 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (m_SpawnState == SpawnState.Spawning)
         {
-            Debug.Log("Spawning!");
+            m_WaveDurationTimer -= Time.deltaTime;
+            m_SpawnFrequencyTimer -= Time.deltaTime;
+
+            if (m_WaveDurationTimer <= 0)
+            {
+                m_CurrentWaveIndex++;
+
+                if (m_CurrentWaveIndex >= m_SpawnWaves.Length)
+                {
+                    m_SpawnState = SpawnState.Finished;
+                }
+                else
+                {
+                    m_SpawnState = SpawnState.Waiting;
+                    InitializeTimers();
+                }
+            }
+            else if (m_SpawnFrequencyTimer <= 0)
+            {
+                Spawn();
+                m_SpawnFrequencyTimer = m_SpawnWaves[m_CurrentWaveIndex].Frequency;
+            }
         }
+    }
+
+    void InitializeTimers()
+    {
+        m_DelayBetweenWavesTimer = m_DelayBetweenWaves;
+        m_WaveDurationTimer = m_SpawnWaves[m_CurrentWaveIndex].Duration;
+        m_SpawnFrequencyTimer = m_SpawnWaves[m_CurrentWaveIndex].Frequency;
+    }
+
+    void Spawn()
+    {
+        Debug.Log("Spawning new enemey!");
     }
 }
