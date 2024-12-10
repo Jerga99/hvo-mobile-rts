@@ -95,6 +95,25 @@ public class EnemySpawner : MonoBehaviour
 
     void Spawn()
     {
-        Debug.Log("Spawning new enemey!");
+        float totalPropability = 0;
+
+        foreach (var enemyConfig in m_SpawnWaves[m_CurrentWaveIndex].Enemies)
+        {
+            totalPropability += enemyConfig.Propability;
+        }
+
+        float randomPropability = Random.Range(0, totalPropability);
+
+        foreach (var enemyConfig in m_SpawnWaves[m_CurrentWaveIndex].Enemies)
+        {
+            if (randomPropability <= enemyConfig.Propability)
+            {
+                var spawnPoint = m_SpawnPoints[Random.Range(0, m_SpawnPoints.Length)];
+                Instantiate(enemyConfig.EnemyPrefab, spawnPoint.position, Quaternion.identity);
+                break;
+            }
+
+            randomPropability -= enemyConfig.Propability;
+        }
     }
 }
