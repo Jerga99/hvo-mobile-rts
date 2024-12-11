@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff88f3e1a11c4c80a3a85eaa56a0b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_IsKingUnit: 0
   m_Actions: []
   m_ObjectDetectionRadius: 7
   m_UnitDetectionCheckRate: 0.5
@@ -147,5 +148,30 @@ MonoBehaviour:
   m_AutoAttackDamage: 5
   m_Health: 400
   m_DamageFlashColor: {r: 1, g: 0.65, b: 0.65, a: 1}
+  m_InteractionAudioSettings:
+    Clips:
+    - {fileID: 8300000, guid: a08aeae90db7b452cb4d41056a5dbd74, type: 3}
+    - {fileID: 8300000, guid: 2e07031f1a425413f9c841c8937fc1a3, type: 3}
+    - {fileID: 8300000, guid: a128cebb85c2e4a2e986eb16fd3f09aa, type: 3}
+    Volume: 0.6
+    Pitch: 1
+    Loop: 0
+    SpatialBlend: 0
+    MinDistance: 1
+    MaxDistance: 15
+    Priority: 128
+    RolloffMode: 1
+  m_AttackAudioSettings:
+    Clips: []
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 15
+    Priority: 128
+    RolloffMode: 1
   IsTargeted: 0
+  m_CanStoreWood: 0
+  m_CanStoreGold: 0
   m_ProjectilePrefab: {fileID: 3450234200251435520, guid: ec355fb7fb8eb4f5a864742e663e2cf2, type: 3}

@@ -96,26 +96,26 @@ public class WorkerUnit : HumanoidUnit
         m_AssignedGoldStorage = storage;
     }
 
-    public void SendToBuild(StructureUnit structure)
+    public void SendToBuild(StructureUnit structure, DestinationSource destinationSource = DestinationSource.CodeTriggered)
     {
-        MoveTo(structure.transform.position);
+        MoveTo(structure.transform.position, destinationSource);
         SetTarget(structure);
         SetTask(UnitTask.Build);
     }
 
-    public void SendToChop(Tree tree)
+    public void SendToChop(Tree tree, DestinationSource destinationSource = DestinationSource.CodeTriggered)
     {
         if (tree.TryToClaim())
         {
-            MoveTo(tree.GetBottomPosition());
+            MoveTo(tree.GetBottomPosition(), destinationSource);
             SetTask(UnitTask.Chop);
             m_AssignedTree = tree;
         }
     }
 
-    public void SendToMine(GoldMine mine)
+    public void SendToMine(GoldMine mine, DestinationSource destinationSource = DestinationSource.CodeTriggered)
     {
-        MoveTo(mine.GetBottomPosition());
+        MoveTo(mine.GetBottomPosition(), destinationSource);
         SetTask(UnitTask.Mine);
         m_AssignedMine = mine;
     }

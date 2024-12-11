@@ -338,13 +338,13 @@ public class GameManager : SingletonManager<GameManager>
         {
             if (TryGetClickedResource(hit, out Tree tree))
             {
-                worker.SendToChop(tree);
+                worker.SendToChop(tree, DestinationSource.PlayerClick);
                 DisplayClickEffect(tree.transform.position, ClickType.Chop);
                 return;
             }
             else if (TryGetClickedResource(hit, out GoldMine mine))
             {
-                worker.SendToMine(mine);
+                worker.SendToMine(mine, DestinationSource.PlayerClick);
                 DisplayClickEffect(mine.transform.position, ClickType.Build);
                 return;
             }
@@ -425,7 +425,7 @@ public class GameManager : SingletonManager<GameManager>
                 if (WorkerClickedOnUnfinishedBuild(unit))
                 {
                     DisplayClickEffect(unit.transform.position, ClickType.Build);
-                    worker.SendToBuild(unit as StructureUnit);
+                    worker.SendToBuild(unit as StructureUnit, DestinationSource.PlayerClick);
                     return;
                 }
                 else if (worker.IsHoldingWood && WorkerClickedOnWoodStorage(unit))
@@ -480,7 +480,7 @@ public class GameManager : SingletonManager<GameManager>
     {
         if (HasActiveUnit)
         {
-            ActiveUnit.SetTarget(enemyUnit);
+            ActiveUnit.SetTarget(enemyUnit, DestinationSource.PlayerClick);
             ActiveUnit.SetTask(UnitTask.Attack);
             DisplayClickEffect(enemyUnit.GetTopPosition(), ClickType.Attack);
         }

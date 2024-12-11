@@ -109,8 +109,13 @@ public abstract class Unit : MonoBehaviour
         OnSetState(CurrentState, state);
     }
 
-    public void SetTarget(Unit target)
+    public void SetTarget(Unit target, DestinationSource destinationSource = DestinationSource.CodeTriggered)
     {
+        if (destinationSource == DestinationSource.PlayerClick)
+        {
+            OnPlayInteractionSound();
+        }
+
         Target = target;
     }
 
