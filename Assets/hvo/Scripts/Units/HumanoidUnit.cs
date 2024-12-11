@@ -2,10 +2,13 @@
 
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HumanoidUnit : Unit
 {
+    [SerializeField] private AudioSettings m_FootstepAudioSettings;
+    [SerializeField] private float m_FootstepFrequency = 0.3f;
     protected Vector2 m_Velocity;
     protected Vector3 m_LastPosition;
 
@@ -13,6 +16,8 @@ public class HumanoidUnit : Unit
     protected float m_SmoothedSpeed;
 
     public float CurrentSpeed => m_Velocity.magnitude;
+
+    private float m_LastFootStepTime;
 
     protected override void Start()
     {
@@ -45,6 +50,16 @@ public class HumanoidUnit : Unit
         {
             var state = m_SmoothedSpeed > 0.1f ? UnitState.Moving : UnitState.Idle;
             SetState(state);
+        }
+
+        if (
+            IsTargeted
+            && CurrentState == UnitState.Moving
+            && Time.time >= m_LastFootStepTime + m_FootstepFrequency
+        )
+        {
+            m_AudioManager.PlaySound(m_FootstepAudioSettings, transform.position);
+            m_LastFootStepTime = Time.time;
         }
     }
 
