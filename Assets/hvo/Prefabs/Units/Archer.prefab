@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a8b6cbcf288466a9b34a4fcd54a5a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_IsKingUnit: 0
   m_Actions:
   - {fileID: 11400000, guid: 38211ed7c80c3438dbfe9d83ff2fbae0, type: 2}
   - {fileID: 11400000, guid: 2eefeec19b77442c9bc13179cc763a4c, type: 2}
@@ -189,5 +190,35 @@ MonoBehaviour:
   m_AutoAttackDamage: 3
   m_Health: 100
   m_DamageFlashColor: {r: 1, g: 0.65, b: 0.65, a: 1}
+  m_InteractionAudioSettings:
+    Clips:
+    - {fileID: 8300000, guid: ae64802ac2fc04dfd8bba485f881ee76, type: 3}
+    - {fileID: 8300000, guid: 92c5dbd7af4ea49efb34082206492bb8, type: 3}
+    - {fileID: 8300000, guid: d3268cee5fc81419c9d11a10a5c7c180, type: 3}
+    - {fileID: 8300000, guid: ed2476fdf9f8a452cb15687d554178a6, type: 3}
+    - {fileID: 8300000, guid: 89fb504b7296e4f06bf00992d387ba8b, type: 3}
+    - {fileID: 8300000, guid: 41d571022e1e84863ad8a07f81d805f5, type: 3}
+    - {fileID: 8300000, guid: 32fed269273964508b53b003ba552004, type: 3}
+    - {fileID: 8300000, guid: 3119bc65d411c406e8b20ce5ee1433ec, type: 3}
+    - {fileID: 8300000, guid: 1386339034c8140089f8cb7612d6881f, type: 3}
+    - {fileID: 8300000, guid: 44d35aace274e449dbade6d021aca9df, type: 3}
+    Volume: 0.6
+    Pitch: 1
+    Loop: 0
+    SpatialBlend: 0
+    MinDistance: 1
+    MaxDistance: 15
+    Priority: 128
+    RolloffMode: 1
+  m_AttackAudioSettings:
+    Clips: []
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 15
+    Priority: 128
+    RolloffMode: 1
   IsTargeted: 0
   m_ProjectilePrefab: {fileID: 3450234200251435520, guid: ec355fb7fb8eb4f5a864742e663e2cf2, type: 3}

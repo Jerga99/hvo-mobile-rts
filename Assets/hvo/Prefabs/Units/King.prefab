@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.96, y: -7.41, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 25
   m_Sprite: {fileID: 1448252480329919801, guid: 9c8e4d4405d484e799af3b959f0be372, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.514151, g: 0.9896543, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c2a29cd3a3048d6ac851373aa32d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_IsKingUnit: 1
   m_Actions:
   - {fileID: 11400000, guid: 38211ed7c80c3438dbfe9d83ff2fbae0, type: 2}
   - {fileID: 11400000, guid: 2eefeec19b77442c9bc13179cc763a4c, type: 2}
@@ -189,4 +190,37 @@ MonoBehaviour:
   m_AutoAttackDamage: 10
   m_Health: 400
   m_DamageFlashColor: {r: 1, g: 0.654902, b: 0.64705884, a: 1}
+  m_InteractionAudioSettings:
+    Clips:
+    - {fileID: 8300000, guid: e0274de0521d74da2bf7e2f6121d3b30, type: 3}
+    - {fileID: 8300000, guid: b4e027bdc22884aecbc13c6153f22379, type: 3}
+    - {fileID: 8300000, guid: e5bd3cc2fb973429d98466bfbd8cd1c5, type: 3}
+    - {fileID: 8300000, guid: ddc5606f2091b4ec3859912b93594ebd, type: 3}
+    - {fileID: 8300000, guid: 75fdce6cc3c1e4911a7f6f09b7264f7d, type: 3}
+    - {fileID: 8300000, guid: 5c545463f37b34d4881ea5978789250b, type: 3}
+    - {fileID: 8300000, guid: f6a97dd90f2554fe7915dbedd44be191, type: 3}
+    - {fileID: 8300000, guid: 10d71fd1e87d24243a26859dc30a63bd, type: 3}
+    - {fileID: 8300000, guid: db2c3eed1d0394bfbb7b135bcca5efe4, type: 3}
+    - {fileID: 8300000, guid: 5a3ac6157388848e0a6e93a8c06eb8ef, type: 3}
+    Volume: 0.6
+    Pitch: 1
+    Loop: 0
+    SpatialBlend: 0
+    MinDistance: 1
+    MaxDistance: 15
+    Priority: 128
+    RolloffMode: 1
+  m_AttackAudioSettings:
+    Clips:
+    - {fileID: 8300000, guid: e526cb0b1600e40ab850e227e82af2a6, type: 3}
+    - {fileID: 8300000, guid: 0263a650bfe804ca39bd36bf1157a9f6, type: 3}
+    - {fileID: 8300000, guid: 1484d5ca3a2bf464fb8a45084e3c58e7, type: 3}
+    Volume: 0.6
+    Pitch: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 15
+    Priority: 128
+    RolloffMode: 1
   IsTargeted: 0

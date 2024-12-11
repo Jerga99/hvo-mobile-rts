@@ -202,10 +202,10 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 8c865f0f3635e4d1b84fac90f8981ce4, type: 3}
     - {fileID: 8300000, guid: 0e5ab3a5114d34d339b0b42aa6d184e6, type: 3}
     - {fileID: 8300000, guid: fbe7b49f24bf649418f26f2e7a041511, type: 3}
-    Volume: 1
+    Volume: 0.6
     Pitch: 1
     Loop: 0
-    SpatialBlend: 1
+    SpatialBlend: 0
     MinDistance: 5
     MaxDistance: 50
     Priority: 128

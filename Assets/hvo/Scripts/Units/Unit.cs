@@ -151,6 +151,7 @@ public abstract class Unit : MonoBehaviour
 
     public void Select()
     {
+        OnPlayInteractionSound();
         Highlight();
         IsTargeted = true;
 
@@ -182,7 +183,13 @@ public abstract class Unit : MonoBehaviour
         return transform.position + Vector3.up * m_Collider.size.y / 2;
     }
 
-    protected virtual void OnSetDestination(DestinationSource source) { }
+    protected virtual void OnSetDestination(DestinationSource source)
+    {
+        if (source == DestinationSource.PlayerClick)
+        {
+            OnPlayInteractionSound();
+        }
+    }
 
     protected virtual void OnSetTask(UnitTask oldTask, UnitTask newTask)
     {
@@ -201,6 +208,10 @@ public abstract class Unit : MonoBehaviour
         AudioManager.Get().PlaySound(m_AttackAudioSettings, transform.position);
     }
 
+    protected virtual void OnPlayInteractionSound()
+    {
+        AudioManager.Get().PlaySound(m_InteractionAudioSettings, transform.position);
+    }
 
     protected virtual void RegisterUnit()
     {

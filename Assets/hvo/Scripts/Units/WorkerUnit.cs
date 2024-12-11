@@ -77,6 +77,7 @@ public class WorkerUnit : HumanoidUnit
 
     protected override void OnSetDestination(DestinationSource source)
     {
+        base.OnSetDestination(source);
         if (CurrentState == UnitState.Minig) return;
 
         SetState(UnitState.Moving);

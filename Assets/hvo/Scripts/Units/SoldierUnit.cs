@@ -41,6 +41,8 @@ public class SoldierUnit : HumanoidUnit
 
     protected override void OnSetDestination(DestinationSource source)
     {
+        base.OnSetDestination(source);
+
         if (
             HasTarget
             && source == DestinationSource.PlayerClick
