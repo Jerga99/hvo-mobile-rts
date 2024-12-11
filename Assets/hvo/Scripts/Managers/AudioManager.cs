@@ -21,6 +21,7 @@ public class AudioSettings
     public float MinDistance = 1f;
     public float MaxDistance = 15f;
     public AudioPriority Priority = AudioPriority.Medium;
+    public AudioRolloffMode RolloffMode = AudioRolloffMode.Linear;
 }
 
 
@@ -42,8 +43,26 @@ public class AudioManager : SingletonManager<AudioManager>
     {
         if (audioSettings == null || audioSettings.Clips.Length == 0) return;
 
-        Debug.Log("Let's play some sound!");
-        Debug.Log(position);
+        var source = GetAvailableAudioSource();
+
+        Debug.Log(source);
+        Debug.Log("Audio Pool: " + m_AudioSourcePool.Count);
+        Debug.Log("Active Sounds: " + m_ActiveSources.Count);
+    }
+
+    AudioSource GetAvailableAudioSource()
+    {
+        if (m_AudioSourcePool.Count <= 0)
+        {
+            for (int i = 0; i < m_InitialPoolSize; i++)
+            {
+                CreateAudioSourceObject();
+            }
+        }
+
+        AudioSource source = m_AudioSourcePool.Dequeue();
+        m_ActiveSources.Add(source);
+        return source;
     }
 
     void InitializeAudioPool()
