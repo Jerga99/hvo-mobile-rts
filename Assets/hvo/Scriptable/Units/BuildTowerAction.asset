@@ -22,5 +22,5 @@ MonoBehaviour:
   m_CompletionSprite: {fileID: 21300000, guid: 9ee0d74cfce104377afdfbacfb6ee9a2, type: 3}
   m_BuildingSize: {x: 2, y: 3, z: 0}
   m_OriginOffset: {x: -1, y: -2, z: 0}
-  m_GoldCost: 400
-  m_WoodCost: 300
+  m_GoldCost: 150
+  m_WoodCost: 150

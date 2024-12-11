@@ -350,6 +350,17 @@ MonoBehaviour:
     MaxDistance: 15
     Priority: 128
     RolloffMode: 1
+  m_BuildAudioSettings:
+    Clips:
+    - {fileID: 8300000, guid: 728ec1cb8508344eeb2986739185c6e4, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 15
+    Priority: 128
+    RolloffMode: 1
 --- !u!1 &7671291386242181561
 GameObject:
   m_ObjectHideFlags: 0
