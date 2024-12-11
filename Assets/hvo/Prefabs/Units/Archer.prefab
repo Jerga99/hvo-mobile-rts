@@ -211,8 +211,9 @@ MonoBehaviour:
     Priority: 128
     RolloffMode: 1
   m_AttackAudioSettings:
-    Clips: []
-    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: fcba6eb6990124ca2ac021aaca2c4e5e, type: 3}
+    Volume: 0.6
     Pitch: 1
     Loop: 0
     SpatialBlend: 1

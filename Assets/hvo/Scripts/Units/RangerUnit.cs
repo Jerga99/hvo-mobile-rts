@@ -8,6 +8,7 @@ public class RangerUnit: SoldierUnit
 
     protected override void OnAttackReady(Unit target)
     {
+        OnPlayAttackSound();
         PerformAttackAnimation();
         StartCoroutine(ShootProjectile(0.4f, target));
     }

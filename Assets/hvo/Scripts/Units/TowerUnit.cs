@@ -32,6 +32,7 @@ public class TowerUnit : StructureUnit
 
     protected override void OnAttackReady(Unit target)
     {
+        OnPlayAttackSound();
         var projectile = Instantiate(m_ProjectilePrefab, transform.position, Quaternion.identity);
         projectile.Initialize(this, target, m_AutoAttackDamage);
     }
