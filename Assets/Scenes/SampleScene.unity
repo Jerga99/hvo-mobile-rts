@@ -36018,11 +36018,12 @@ MonoBehaviour:
   m_Health: 300
   m_DamageFlashColor: {r: 1, g: 0.65, b: 0.65, a: 1}
   m_InteractionAudioSettings:
-    Clips: []
-    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 646f82f8045f94d07af497bc530791cd, type: 3}
+    Volume: 0.6
     Pitch: 1
     Loop: 0
-    SpatialBlend: 1
+    SpatialBlend: 0
     MinDistance: 5
     MaxDistance: 50
     Priority: 128
@@ -55983,11 +55984,12 @@ MonoBehaviour:
   m_Health: 500
   m_DamageFlashColor: {r: 1, g: 0.65, b: 0.65, a: 1}
   m_InteractionAudioSettings:
-    Clips: []
-    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 646f82f8045f94d07af497bc530791cd, type: 3}
+    Volume: 0.6
     Pitch: 1
     Loop: 0
-    SpatialBlend: 1
+    SpatialBlend: 0
     MinDistance: 5
     MaxDistance: 50
     Priority: 128
