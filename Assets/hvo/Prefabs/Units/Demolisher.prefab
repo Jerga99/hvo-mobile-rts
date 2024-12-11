@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e30fcef7ff74c97afe21cafa7a0807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_IsKingUnit: 0
   m_Actions: []
   m_ObjectDetectionRadius: 6
   m_UnitDetectionCheckRate: 0.5
@@ -187,5 +188,26 @@ MonoBehaviour:
   m_AutoAttackDamage: 4
   m_Health: 100
   m_DamageFlashColor: {r: 1, g: 0.65, b: 0.65, a: 1}
+  m_InteractionAudioSettings:
+    Clips: []
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 15
+    Priority: 128
+    RolloffMode: 1
+  m_AttackAudioSettings:
+    Clips:
+    - {fileID: 8300000, guid: ed12349f783e14bc1a61c9155cd55a3e, type: 3}
+    Volume: 0.6
+    Pitch: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 15
+    Priority: 128
+    RolloffMode: 1
   IsTargeted: 0
   m_ProjectilePrefab: {fileID: 8420781875477167110, guid: d16c5c6ab389a4c808811ab4dd662e4e, type: 3}

@@ -9,6 +9,7 @@ public class EnemyRangerUnit : EnemyUnit
 
     protected override void OnAttackReady(Unit target)
     {
+        OnPlayAttackSound();
         PerformAttackAnimation();
         StartCoroutine(ShootProjectile(0.4f, target));
     }
