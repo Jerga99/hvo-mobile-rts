@@ -28,6 +28,7 @@ public class AudioSettings
 
 public class AudioManager : SingletonManager<AudioManager>
 {
+    [SerializeField] private AudioSource m_MusicSource;
     [SerializeField] private int m_InitialPoolSize = 10;
 
     private Queue<AudioSource> m_AudioSourcePool;
@@ -38,6 +39,14 @@ public class AudioManager : SingletonManager<AudioManager>
         base.Awake();
         DontDestroyOnLoad(gameObject);
         InitializeAudioPool();
+    }
+
+    public void PlayMusic(AudioSettings settings)
+    {
+        if (settings == null || settings.Clips.Length == 0) return;
+
+        ConfigureAudioSource(m_MusicSource, settings);
+        m_MusicSource.Play();
     }
 
     public void PlaySound(AudioSettings audioSettings, Vector3 position)
