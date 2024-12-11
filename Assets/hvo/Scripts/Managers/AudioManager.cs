@@ -1,5 +1,6 @@
 
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum AudioPriority
@@ -17,17 +18,51 @@ public class AudioSettings
     public float Pitch = 1.0f;
     public bool Loop = false;
     public float SpatialBlend = 1.0f;
-    public float MinDistance = 5.0f;
-    public float MaxDistance = 50.0f;
+    public float MinDistance = 1f;
+    public float MaxDistance = 15f;
     public AudioPriority Priority = AudioPriority.Medium;
 }
 
 
 public class AudioManager : SingletonManager<AudioManager>
 {
+    [SerializeField] private int m_InitialPoolSize = 10;
+
+    private Queue<AudioSource> m_AudioSourcePool;
+    private List<AudioSource> m_ActiveSources;
+
     protected override void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         base.Awake();
+        DontDestroyOnLoad(gameObject);
+        InitializeAudioPool();
+    }
+
+    public void PlaySound(AudioSettings audioSettings, Vector3 position)
+    {
+        if (audioSettings == null || audioSettings.Clips.Length == 0) return;
+
+        Debug.Log("Let's play some sound!");
+        Debug.Log(position);
+    }
+
+    void InitializeAudioPool()
+    {
+        m_AudioSourcePool = new();
+        m_ActiveSources = new();
+
+        for (int i = 0; i < m_InitialPoolSize; i++)
+        {
+            CreateAudioSourceObject();
+        }
+    }
+
+    void CreateAudioSourceObject()
+    {
+        GameObject audioObject = new("PooledAudioSource");
+        audioObject.transform.SetParent(transform);
+        AudioSource audioSource = audioObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        m_AudioSourcePool.Enqueue(audioSource);
     }
 }

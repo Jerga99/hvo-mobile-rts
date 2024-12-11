@@ -33,6 +33,7 @@ public abstract class Unit : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] protected AudioSettings m_InteractionAudioSettings;
+    [SerializeField] protected AudioSettings m_AttackAudioSettings;
 
     public bool IsTargeted;
     protected GameManager m_GameManager;
@@ -195,6 +196,12 @@ public abstract class Unit : MonoBehaviour
 
     protected virtual void OnDestinationReached(){}
 
+    protected virtual void OnPlayAttackSound()
+    {
+        AudioManager.Get().PlaySound(m_AttackAudioSettings, transform.position);
+    }
+
+
     protected virtual void RegisterUnit()
     {
         m_GameManager.RegisterUnit(this);
@@ -222,6 +229,7 @@ public abstract class Unit : MonoBehaviour
 
     protected virtual void OnAttackReady(Unit target)
     {
+        OnPlayAttackSound();
         PerformAttackAnimation();
         StartCoroutine(DelayDamage(m_AutoAttackDamageDelay, m_AutoAttackDamage, Target));
     }
