@@ -44,10 +44,22 @@ public class AudioManager : SingletonManager<AudioManager>
         if (audioSettings == null || audioSettings.Clips.Length == 0) return;
 
         var source = GetAvailableAudioSource();
+        ConfigureAudioSource(source, audioSettings);
+        source.transform.position = position;
+        source.Play();
+    }
 
-        Debug.Log(source);
-        Debug.Log("Audio Pool: " + m_AudioSourcePool.Count);
-        Debug.Log("Active Sounds: " + m_ActiveSources.Count);
+    void ConfigureAudioSource(AudioSource source, AudioSettings settings)
+    {
+        source.clip = settings.Clips[Random.Range(0, settings.Clips.Length)];
+        source.volume = settings.Volume;
+        source.pitch = settings.Pitch;
+        source.loop = settings.Loop;
+        source.spatialBlend = settings.SpatialBlend;
+        source.minDistance = settings.MinDistance;
+        source.maxDistance = settings.MaxDistance;
+        source.priority = (int)settings.Priority;
+        source.rolloffMode = settings.RolloffMode;
     }
 
     AudioSource GetAvailableAudioSource()

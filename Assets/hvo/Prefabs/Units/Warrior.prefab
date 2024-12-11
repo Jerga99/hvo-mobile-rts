@@ -188,7 +188,7 @@ MonoBehaviour:
   m_AutoAttackFrequency: 1.5
   m_AutoAttackDamageDelay: 0.5
   m_AutoAttackDamage: 10
-  m_Health: 100
+  m_Health: 500
   m_DamageFlashColor: {r: 1, g: 0.654902, b: 0.64705884, a: 1}
   m_InteractionAudioSettings:
     Clips:
@@ -209,16 +209,18 @@ MonoBehaviour:
     MinDistance: 5
     MaxDistance: 50
     Priority: 128
+    RolloffMode: 1
   m_AttackAudioSettings:
     Clips:
     - {fileID: 8300000, guid: e526cb0b1600e40ab850e227e82af2a6, type: 3}
     - {fileID: 8300000, guid: 0263a650bfe804ca39bd36bf1157a9f6, type: 3}
     - {fileID: 8300000, guid: 1484d5ca3a2bf464fb8a45084e3c58e7, type: 3}
-    Volume: 1
+    Volume: 0.6
     Pitch: 1
     Loop: 0
     SpatialBlend: 1
     MinDistance: 1
     MaxDistance: 15
     Priority: 128
+    RolloffMode: 1
   IsTargeted: 0
