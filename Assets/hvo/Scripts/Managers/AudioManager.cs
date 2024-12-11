@@ -49,9 +49,6 @@ public class AudioManager : SingletonManager<AudioManager>
         source.transform.position = position;
         source.Play();
 
-        Debug.Log("Pool Sources: " + m_AudioSourcePool.Count);
-        Debug.Log("Active Sources: " + m_ActiveSources.Count);
-
         if (!source.loop)
         {
             StartCoroutine(ReturnToPoolWhenDone(source));

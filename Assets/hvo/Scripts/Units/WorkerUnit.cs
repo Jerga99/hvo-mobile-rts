@@ -10,6 +10,7 @@ public class WorkerUnit : HumanoidUnit
 
     [SerializeField] private SpriteRenderer m_HoldingWoodSprite;
     [SerializeField] private SpriteRenderer m_HoldingGoldSprite;
+    [SerializeField] private AudioSettings m_ChopAudioSettings;
 
     private float m_ChoppingTimer;
     private float m_HitTreeTimer;
@@ -226,6 +227,7 @@ public class WorkerUnit : HumanoidUnit
         {
             m_HitTreeTimer = 0;
             m_AssignedTree.Hit();
+            m_AudioManager.PlaySound(m_ChopAudioSettings, transform.position);
         }
 
         if (m_ChoppingTimer >= m_WoodGatherTickTime)

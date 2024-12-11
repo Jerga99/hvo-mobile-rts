@@ -322,9 +322,20 @@ MonoBehaviour:
   IsTargeted: 0
   m_WoodGatherTickTime: 1
   m_WoodPerTick: 1
-  m_HitTreeFrequency: 0.3
+  m_HitTreeFrequency: 0.6
   m_HoldingWoodSprite: {fileID: 5765609739039593306}
   m_HoldingGoldSprite: {fileID: 7893745309872384362}
+  m_ChopAudioSettings:
+    Clips:
+    - {fileID: 8300000, guid: 06ecde887bb984baca4ae47ce7efb9d8, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 15
+    Priority: 128
+    RolloffMode: 1
 --- !u!1 &7671291386242181561
 GameObject:
   m_ObjectHideFlags: 0
