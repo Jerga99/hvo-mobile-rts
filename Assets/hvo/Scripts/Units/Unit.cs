@@ -34,6 +34,7 @@ public abstract class Unit : MonoBehaviour
     [Header("Audio")]
     [SerializeField] protected AudioSettings m_InteractionAudioSettings;
     [SerializeField] protected AudioSettings m_AttackAudioSettings;
+    [SerializeField] protected AudioSettings m_TerminationAudioSettings;
 
     public bool IsTargeted;
     protected GameManager m_GameManager;
@@ -218,6 +219,11 @@ public abstract class Unit : MonoBehaviour
         AudioManager.Get().PlaySound(m_InteractionAudioSettings, transform.position);
     }
 
+    protected virtual void OnPlayTerminationSound()
+    {
+        AudioManager.Get().PlaySound(m_TerminationAudioSettings, transform.position);
+    }
+
     protected virtual void RegisterUnit()
     {
         m_GameManager.RegisterUnit(this);
@@ -269,6 +275,7 @@ public abstract class Unit : MonoBehaviour
     protected virtual void Die()
     {
         SetState(UnitState.Dead);
+        OnPlayTerminationSound();
 
         if (m_AIPawn != null)
         {
