@@ -155,7 +155,6 @@ public class GameManager : SingletonManager<GameManager>
             else if (unit.IsKingUnit)
             {
                 m_KingUnit = null;
-                HandleGameOver(false);
             }
             else
             {
@@ -657,7 +656,7 @@ public class GameManager : SingletonManager<GameManager>
         return false;
     }
 
-    void HandleGameOver(bool isVictory)
+    public void HandleGameOver(bool isVictory)
     {
         if (isVictory)
         {
@@ -675,6 +674,25 @@ public class GameManager : SingletonManager<GameManager>
 
     void RestartGame()
     {
+        foreach (var unit in m_PlayerUnits)
+        {
+            Destroy(unit.gameObject);
+        }
+
+        foreach (var enemy in m_Enemies)
+        {
+            Destroy(enemy.gameObject);
+        }
+
+        foreach (var structure in m_PlayerBuildings)
+        {
+            Destroy(structure.gameObject);
+        }
+
+        m_PlayerUnits.Clear();
+        m_Enemies.Clear();
+        m_PlayerBuildings.Clear();
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
