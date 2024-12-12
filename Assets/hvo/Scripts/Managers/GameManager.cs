@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public enum ClickType
 {
@@ -134,13 +135,13 @@ public class GameManager : SingletonManager<GameManager>
     {
         if (unit.IsPlayer)
         {
-            if (m_PlacementProcess != null)
-            {
-                CancelBuildPlacement();
-            }
-
             if (ActiveUnit == unit)
             {
+                if (m_PlacementProcess != null)
+                {
+                    CancelBuildPlacement();
+                }
+
                 ClearActionBarUI();
                 ActiveUnit.Deselect();
                 ActiveUnit = null;
@@ -211,9 +212,14 @@ public class GameManager : SingletonManager<GameManager>
         return closestTree;
     }
 
+    IEnumerable<Unit> GetAllPlayerUnits()
+    {
+        return m_PlayerUnits.Concat(m_PlayerBuildings);
+    }
+
     public Unit FindClosestUnit(Vector3 originPosition, float maxDistance, bool isPlayer)
     {
-        List<Unit> units = isPlayer ? m_PlayerUnits : m_Enemies;
+        IEnumerable<Unit> units = isPlayer ? GetAllPlayerUnits() : m_Enemies;
         float sqrMaxDistance = maxDistance * maxDistance;
         Unit closestUnit = null;
         float closestDistanceSqr = float.MaxValue;
