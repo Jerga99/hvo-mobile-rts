@@ -146,7 +146,7 @@ MonoBehaviour:
   m_AutoAttackFrequency: 1.5
   m_AutoAttackDamageDelay: 0
   m_AutoAttackDamage: 5
-  m_Health: 30
+  m_Health: 100
   m_DamageFlashColor: {r: 1, g: 0.65, b: 0.65, a: 1}
   m_InteractionAudioSettings:
     Clips:

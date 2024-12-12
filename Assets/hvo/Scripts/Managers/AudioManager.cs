@@ -30,6 +30,7 @@ public class AudioManager : SingletonManager<AudioManager>
 {
     [SerializeField] private AudioSource m_MusicSource;
     [SerializeField] private int m_InitialPoolSize = 10;
+    [SerializeField] private AudioSettings m_UiClickAudioSettings;
 
     private Queue<AudioSource> m_AudioSourcePool;
     private List<AudioSource> m_ActiveSources;
@@ -39,6 +40,11 @@ public class AudioManager : SingletonManager<AudioManager>
         base.Awake();
         DontDestroyOnLoad(gameObject);
         InitializeAudioPool();
+    }
+
+    public void PlayBtnClick()
+    {
+        PlaySound(m_UiClickAudioSettings, Vector3.zero);
     }
 
     public void PlayMusic(AudioSettings settings)

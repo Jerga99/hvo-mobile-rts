@@ -37,11 +37,13 @@ public class GameOverLayout: MonoBehaviour
 
     void RestartGame()
     {
+        AudioManager.Get().PlayBtnClick();
         OnRestartClicked.Invoke();
     }
 
     void QuitGame()
     {
+        AudioManager.Get().PlayBtnClick();
         OnQuitClicked.Invoke();
     }
 

@@ -29,11 +29,13 @@ public class HomeScreen: MonoBehaviour
 
     void OnPlayBtnClicked()
     {
+        AudioManager.Get().PlayBtnClick();
         SceneManager.LoadScene("PlayScene");
     }
 
     void OnExitBtnClicked()
     {
+        AudioManager.Get().PlayBtnClick();
         Application.Quit();
     }
 }
