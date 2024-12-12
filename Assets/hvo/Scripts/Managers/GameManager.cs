@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum ClickType
 {
@@ -64,14 +65,24 @@ public class GameManager : SingletonManager<GameManager>
     public bool HasActiveUnit => ActiveUnit != null;
     public Unit KingUnit => m_KingUnit;
 
+    void OnDestroy()
+    {
+        m_GameOverLayout.OnRestartClicked -= RestartGame;
+        m_GameOverLayout.OnQuitClicked -= GoToMenu;
+    }
+
     void Start()
     {
+        Time.timeScale = 1;
         m_CameraController = new CameraController(m_PanSpeed, m_MobilePanSpeed);
         ClearActionBarUI();
         AddResources(500, 500);
 
         m_EnemySpawner.Startup();
         AudioManager.Get().PlayMusic(m_BgMusicAudioSettings);
+
+        m_GameOverLayout.OnRestartClicked += RestartGame;
+        m_GameOverLayout.OnQuitClicked += GoToMenu;
     }
 
     void Update()
@@ -144,6 +155,7 @@ public class GameManager : SingletonManager<GameManager>
             else if (unit.IsKingUnit)
             {
                 m_KingUnit = null;
+                HandleGameOver(false);
             }
             else
             {
@@ -661,13 +673,23 @@ public class GameManager : SingletonManager<GameManager>
         m_GameState = GameState.Paused;
     }
 
+    void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void GoToMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
+
     void OnGUI()
     {
-        if (ActiveUnit != null)
-        {
-            GUI.Label(new Rect(20, 120, 200, 20), "State: " + ActiveUnit.CurrentState.ToString(), new GUIStyle { fontSize = 30 });
-            GUI.Label(new Rect(20, 160, 200, 20), "Task: " + ActiveUnit.CurrentTask.ToString(), new GUIStyle { fontSize = 30 });
-            GUI.Label(new Rect(20, 200, 200, 20), "Stance: " + ActiveUnit.CurrentStance.ToString(), new GUIStyle { fontSize = 30 });
-        }
+        // if (ActiveUnit != null)
+        // {
+        //     GUI.Label(new Rect(20, 120, 200, 20), "State: " + ActiveUnit.CurrentState.ToString(), new GUIStyle { fontSize = 30 });
+        //     GUI.Label(new Rect(20, 160, 200, 20), "Task: " + ActiveUnit.CurrentTask.ToString(), new GUIStyle { fontSize = 30 });
+        //     GUI.Label(new Rect(20, 200, 200, 20), "Stance: " + ActiveUnit.CurrentStance.ToString(), new GUIStyle { fontSize = 30 });
+        // }
     }
 }
