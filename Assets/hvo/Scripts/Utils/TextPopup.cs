@@ -29,7 +29,7 @@ public class TextPopup: MonoBehaviour
 
     void Update()
     {
-        m_ElapsedTime += Time.deltaTime;
+        m_ElapsedTime += Time.unscaledDeltaTime;
         var normalizedTime = m_ElapsedTime / m_Duration;
 
         if (normalizedTime >= 1)
@@ -44,6 +44,6 @@ public class TextPopup: MonoBehaviour
         float xOffset = m_XOffsetCurve.Evaluate(normalizedTime) * 1.1f * m_RandomXDirection;
         float yOffset = m_YOffsetCurve.Evaluate(normalizedTime) * 1.1f;
 
-        transform.position += new Vector3(xOffset, yOffset, 0) * Time.deltaTime;
+        transform.position += new Vector3(xOffset, yOffset, 0) * Time.unscaledDeltaTime;
     }
 }
