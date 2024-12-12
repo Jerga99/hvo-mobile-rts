@@ -23,6 +23,7 @@ public class GameManager : SingletonManager<GameManager>
     [SerializeField] private ConfirmationBar m_BuildConfirmationBar;
     [SerializeField] private TextPopupController m_TextPopupController;
     [SerializeField] private ResourceDataUI m_ResourceDataUI;
+    [SerializeField] private GameOverLayout m_GameOverLayout;
 
     [Header("Camera Settings")]
     [SerializeField] private float m_PanSpeed = 100;
@@ -656,6 +657,7 @@ public class GameManager : SingletonManager<GameManager>
         }
 
         Time.timeScale = 0;
+        m_GameOverLayout.ShowGameOver(isVictory);
         m_GameState = GameState.Paused;
     }
 
