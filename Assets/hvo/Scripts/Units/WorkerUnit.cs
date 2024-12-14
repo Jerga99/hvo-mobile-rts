@@ -5,7 +5,7 @@ using UnityEngine;
 public class WorkerUnit : HumanoidUnit
 {
     [SerializeField] private float m_WoodGatherTickTime = 1f;
-    [SerializeField] private int m_WoodPerTick = 1;
+    [SerializeField] private int m_WoodPerTick = 4;
     [SerializeField] private float m_HitTreeFrequency = 0.5f;
 
     [SerializeField] private SpriteRenderer m_HoldingWoodSprite;
@@ -17,7 +17,7 @@ public class WorkerUnit : HumanoidUnit
     private float m_HitTreeTimer;
     private int m_WoodCollected;
     private int m_GoldCollected;
-    private int m_WoodCapacity = 10;
+    private int m_WoodCapacity = 20;
     private int m_GoldCapacity = 10;
     private Tree m_AssignedTree;
     private GoldMine m_AssignedMine;
