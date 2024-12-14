@@ -50,14 +50,6 @@ public static class HvoUtils
 
     public static bool IsPointerOverUIElement()
     {
-        if (Input.touchCount > 0)
-        {
-            var touch = Input.GetTouch(0);
-            return EventSystem.current.IsPointerOverGameObject(touch.fingerId);
-        }
-        else
-        {
-            return EventSystem.current.IsPointerOverGameObject();
-        }
+        return EventSystem.current.IsPointerOverGameObject();
     }
 }
